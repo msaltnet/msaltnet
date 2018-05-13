@@ -1,4 +1,4 @@
-# [맛소금](https://www.facebook.com/msalt.net)
+## [맛소금 페북](https://www.facebook.com/msalt.net)
 한국에서 태어난 지구별 개발자 입니다. S/W가 주력이지만 이것 저것 많이 하고, 관심도 많습니다!ㅎ
 
 ## [개인 웹페이지](http://msalt.net/)
