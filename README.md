@@ -1,15 +1,13 @@
-# 맛타리
-맛소금의 Tizen IoT, Raspberry Pi 이야기
+# [맛소금](https://www.facebook.com/msalt.net)
+한국에서 태어난 지구별 개발자 입니다. S/W가 주력이지만 이것 저것 많이 하고, 관심도 많습니다!ㅎ
 
-직접 만들어보고 경험담과 노하우를 공유하려 합니다. 소스는 [github/mtr](https://github.com/msaltnet/mtr) 에 올려두고, 글은 일기 쓰듯이 편하게 작성하겠습니다. 존댓말은 이 페이지가 마지막 입니다.ㅋ
+## [개인 웹페이지](http://msalt.net/)
+아주 적은 노력만으로도 많은 사람에게 기쁨을 줄 수 있을 것 같은 웹 프로젝트를 만들어서 올리는 곳입니다. 
 
-## [맛소금](https://www.facebook.com/msalt.net)
-지구에 살고 있는 개발자 인간입니다. [블로그](http://blog.msalt.net/)도 있고 [개인 웹페이지](http://msalt.net/)도 있지만, 이번 일은 책처럼 만들어서 공개하면 좋을것 같아서 [gitbook](https://msaltnet.gitbooks.io/mtr)을 사용해 보게 되었습니다.
+## [고마워서 만든 블로그](http://blog.msalt.net/)
+수많은 블로거들에게 받기만 하는 것이 미안해서, 나도 다른 사람한테 조금이나마 도움이 될 수 있을까 싶은 마음으로 만든 블로그입니다.
 
-## [Tizen IoT](https://www.tizen.org/)
-최근 릴리즈된 Tizen 4.0의 지향점은 강력한 IoT 플랫폼으로 자리잡기 위한 앱 생태계 확대와 디바이스 생태계 구축이라고 합니다. 현재 라즈베리파이 3와 Artik을 지원하는 [Tizen IoT Preview1](https://developer.tizen.org/development/iot-preview/getting-started)이 배포되었습니다.
+## [맛타리](https://msaltnet.gitbooks.io/mtr/)
+어쩌다 라즈베리파이와 인연이 닿아서, 한번 직접 뭐라도 만들어 보고 경험을 공유해 볼라고 시작한 프로젝트 입니다.
 
-## [Raspberry Pi](https://www.raspberrypi.org/)
-교육용으로 시작되었지만, 이제 학생들 뿐만 아니라 수많은 덕후들과 개발자들, 프로슈머들의 사랑을 받고 있습니다. 싸고 작지만 쓸모가 아주 많은 컴퓨터 입니다.
-
-`#맛소금` `#타이젠` `#라즈베리파이` `#IoT` `#타르타르뱅뱅` `#타라만세` `#이젠타` `#티파세끼`
+#### 소개할 만한 다른 프로젝트가 생기면 업데이트 할께요!ㅎ
