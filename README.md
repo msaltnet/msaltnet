@@ -28,4 +28,4 @@
 
 #### 소개할 만한 다른 프로젝트가 생기면 업데이트 할께요!ㅎ
 
-![kakaopay_qr_ro_don_bone_juseo_1527643021608](https://user-images.githubusercontent.com/9311990/40693503-35bfacbe-63a7-11e8-9a28-ce211d2492bb.png){: max-width="300px"}
+![kakaopay_qr_ro_don_bone_juseo_1527643021608](https://user-images.githubusercontent.com/9311990/40693503-35bfacbe-63a7-11e8-9a28-ce211d2492bb.png){: width="300px"}
