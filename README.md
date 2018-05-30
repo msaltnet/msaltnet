@@ -9,7 +9,7 @@
 최근 관심사는...
 `인공지능`, `블락체인`, `IoT`, `서핑`, `기타`
 
-![개발자로서 한국사람으로서 항상 세종대왕님께 감사드립니다](https://tistory1.daumcdn.net/tistory/1673693/attach/e4888dbc9d14404a8d23872acbf3f166)
+![dsc07474](https://user-images.githubusercontent.com/9311990/40693435-e680c610-63a6-11e8-802f-9c8691b85551.jpg)
 
 ## [맛소금 페북](https://www.facebook.com/msalt.net)
 맛소금과 관련된 소식을 전하는 페이스북 채널입니다.
@@ -27,3 +27,5 @@
 `@맛소금`으로 검색!
 
 #### 소개할 만한 다른 프로젝트가 생기면 업데이트 할께요!ㅎ
+
+![kakaopay_qr_ro_don_bone_juseo_1527643021608](https://user-images.githubusercontent.com/9311990/40693503-35bfacbe-63a7-11e8-9a28-ce211d2492bb.png)
