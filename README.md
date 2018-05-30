@@ -28,4 +28,4 @@
 
 #### 소개할 만한 다른 프로젝트가 생기면 업데이트 할께요!ㅎ
 
-<img src=https://user-images.githubusercontent.com/9311990/40693503-35bfacbe-63a7-11e8-9a28-ce211d2492bb.png style=:max-width=400px !important:>
+<img src=https://user-images.githubusercontent.com/9311990/40693503-35bfacbe-63a7-11e8-9a28-ce211d2492bb.png style=:max-width: 400px !important:>
