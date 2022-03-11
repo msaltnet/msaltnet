@@ -28,11 +28,20 @@
 Cross Platform Tizen Log Viewer 입니다. 사외에서 Tizen을 소개할 때 개발자들이 로그 뷰어가 없어서 힘들어하는 것을 보고 개발 하기로 마음먹게 되었습니다. 오픈소스 프로젝트이니 관심있는 분들의 많이 참여부탁드립니다. 1.0.0 릴리즈하였습니다ㅎ
 
 ## [smtm](https://github.com/msaltnet/smtm)
-[![smtm_wide](https://user-images.githubusercontent.com/9311990/139519401-a87bd8a7-b2ca-4ca7-b242-0bdd9c8ce3f1.jpg)](https://github.com/msaltnet/smtm)
+[![smtm icon](https://user-images.githubusercontent.com/9311990/157684063-67f1a1c6-9c76-4575-943c-a93c74485a41.jpg)](https://smtm.msalt.net)
 
 간단한 알고리즘 트레이딩 시스템을 만들어 보았습니다. 비밀스럽게 진행하던 프로젝트였는데, 이래 저래 진행은 안되고 시간만 흐르다가 큰 마음 먹고 오픈소스 프로젝트로 전향해서 진행중입니다. 시뮬레이션과 실전거래 모두 직접 사용하면서 조금씩 계속 개선해 나가고 있습니다. 푼돈 말고 큰 돈을 버는 것이 목표지만, 쓸만하게 만들어서 누가 가져다 쓰기만 해도 다행이라는 생각이 들기도 합니다. 일단 제가 먼저 도그 푸딩 해보겠습니다.
 
-사용법이나 실적에 대해서 책과 안내페이지, 커뮤니티도 준비중인데, 새소식 생기면 업데이트 할께요.
+최근에 첫번째 버전 [v1.0.0](https://github.com/msaltnet/smtm/releases/tag/v1.0.0)을 릴리즈 하였습니다.
+
+사용법에 대해서는 책을 출판하였고 간단하 [소개 페이지](https://smtm.msalt.net)도 만들었습니다. 소개 페이지에는 실시간 실적도 업데이트 해보려구요.ㅎ
+
+## [암호화폐 자동매매 시스템 만들기 with 파이썬](http://www.yes24.com/Product/Goods/107635612)
+[![smtm-book](https://user-images.githubusercontent.com/9311990/157685437-dcedd2c0-9f0c-400c-a3d4-017354279b60.png)](http://www.yes24.com/Product/Goods/107635612)
+
+파이썬과 smtm을 만드는 방법에 대해서 책으로 정리해서 출판하였습니다. 파이썬에 대한 기본적인 내용은 물론이고, 요구사항을 도출하고 간단하게 설계하여 TDD로 하나의 프로그램을 만드는 과정을 모두 소개하였습니다. 뿐만 아니라 만들어진 프로그램을 활용해서 대량의 시뮬레이션을 구동하는 방법, 전략을 최적화하는 방법에 대해서도 정리하였습니다.
+
+파이썬을 배워보고 싶은 사람과 자동매매 시스템을 만들어보고 싶은 사람에게 도움이 되었으면 합니다. 잘 만든 전략으로 부자되세요~
 
 ## [초코딩](https://chcd.tistory.com/22)
 [![chkd](https://user-images.githubusercontent.com/9311990/139869393-0edae56d-59b5-4c8c-acb4-d4a25961d5f5.jpg)](https://www.youtube.com/channel/UCULjnB1m5RQ_NZSMXZ_axgg)
