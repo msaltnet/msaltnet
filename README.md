@@ -28,7 +28,7 @@
 Cross Platform Tizen Log Viewer 입니다. 사외에서 Tizen을 소개할 때 개발자들이 로그 뷰어가 없어서 힘들어하는 것을 보고 개발 하기로 마음먹게 되었습니다. 오픈소스 프로젝트이니 관심있는 분들의 많이 참여부탁드립니다. 1.0.0 릴리즈하였습니다ㅎ
 
 ## [smtm](https://github.com/msaltnet/smtm)
-[![smtm icon](https://user-images.githubusercontent.com/9311990/157684063-67f1a1c6-9c76-4575-943c-a93c74485a41.jpg)](https://smtm.msalt.net)
+[![smtm icon](https://user-images.githubusercontent.com/9311990/161744914-05e3d116-0e9b-447f-a015-136e0b9ec22b.png)](https://smtm.msalt.net/)
 
 간단한 알고리즘 트레이딩 시스템을 만들어 보았습니다. 비밀스럽게 진행하던 프로젝트였는데, 이래 저래 진행은 안되고 시간만 흐르다가 큰 마음 먹고 오픈소스 프로젝트로 전향해서 진행중입니다. 시뮬레이션과 실전거래 모두 직접 사용하면서 조금씩 계속 개선해 나가고 있습니다. 푼돈 말고 큰 돈을 버는 것이 목표지만, 쓸만하게 만들어서 누가 가져다 쓰기만 해도 다행이라는 생각이 들기도 합니다. 일단 제가 먼저 도그 푸딩 해보겠습니다.
 
