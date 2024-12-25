@@ -8,4 +8,4 @@
 
 연락주세요.😉 꿈 이야기가 듣고 싶으시면.
 
-https://me.msalt.net
+https://msalt.net
