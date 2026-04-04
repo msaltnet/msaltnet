@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N3Z7SSC');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -39,16 +46,11 @@
 
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYGJLCMWE4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VYGJLCMWE4');
-</script>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3Z7SSC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
@@ -62,17 +64,30 @@
   <section id="portfolio" class="portfolio">
     <div class="container" data-aos="fade-up">
 
-      <div class="section-title">
-        <h2>꿈꾸는 사람</h2>
-        <p>
-          지금은 삼성전자 슬시 사업부에서 좋은 소프트웨어를 만들기 위해 노력하고 있습니다.
-        </p>
-        <p>
-          우연히 들어온 회사에서 좋은 사람도 많이 만나고 다양한 경험도 많이 했습니다. 하루가 어떻게 가는지 모르게 코 박고 일하며 살고 있지만 여전히 불가능한 꿈을 꿉니다. 오늘을 치열하게, 그리고 즐겁게 보내면서도 가슴속에는 오래전부터 품은 꿈이 있습니다.
-        </p>
-        <p>
-          꿈 이야기가 듣고 싶으시면. 연락주세요.😉
-        </p>
+      <div class="section-title d-flex justify-content-center">
+        <div class="col-xl-6 col-lg-10">
+          <h2>젊은 시인에게 주는 충고</h2>
+          <p>
+            마음속의 풀리지 않는 모든 문제들에 대해<br/>
+            인내를 가지라.<br/>
+            문제 그 자체를 사랑하라.<br/>
+            지금 당장 해답을 얻으려 하지 말라.<br/>
+            그건 지금 당장 주어질 순 없으니까.<br/>
+            중요한건<br/>
+            모든 것을 살아보는 일이다.<br/>
+            지금 그 문제들을 살라.<br/>
+            그러면 언젠가 먼 미래에<br/>
+            자신도 알지 못하는 사이에<br/>
+            삶이 너에게 해답을 가져다줄테니까.<br/>
+          </p>
+          <p>
+            - 라이너 마리아 릴케
+          </p>
+          <p>
+            때때로 검색과 댓글의 서급한 해답말고<br/>
+            온전히 내 자신의 해답이 필요하다.
+          </p>
+        </div>
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -89,12 +104,15 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-programmer">
           <div class="portfolio-wrap">
-            <img src="assets/img/smtm.jpg" class="img-fluid" alt="">
+            <picture>
+              <source srcset="assets/img/smtm.webp" type="image/webp">
+              <img src="assets/img/smtm.jpg" class="img-fluid" alt="">
+            </picture>
             <div class="portfolio-info">
-              <h4>smtm</h4>
-              <p>파이썬 암호화폐 자동매매 프로그램</p>
+              <h4>smtm - Open Source Project</h4>
+              <p>Python Crypto Trading System</p>
               <div class="portfolio-links">
-                <a href="https://github.com/msaltnet/smtm" target="_blank"><i class="bx bx-link"></i></a>
+                <a id="smtm-github-link" href="https://github.com/msaltnet/smtm" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -102,12 +120,15 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-writer">
           <div class="portfolio-wrap">
-            <img src="assets/img/smtm-book.png" class="img-fluid" alt="">
+            <picture>
+              <source srcset="assets/img/smtm-book.webp" type="image/webp">
+              <img src="assets/img/smtm-book.png" class="img-fluid" alt="">
+            </picture>
             <div class="portfolio-info">
               <h4>암호화폐 자동매매 시스템 만들기 with 파이썬</h4>
               <p>지은이 정성문</p>
               <div class="portfolio-links">
-                <a href="https://smtm.msalt.net" target="_blank"><i class="bx bx-link"></i></a>
+                <a id="smtm-book-link" href="https://smtm.msalt.net" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -115,12 +136,31 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-programmer">
           <div class="portfolio-wrap">
-            <img src="assets/img/tviewer.png" class="img-fluid" alt="">
+            <picture>
+              <source srcset="assets/img/nanobot.webp" type="image/webp">
+              <img src="assets/img/nanobot.png" class="img-fluid" alt="">
+            </picture>
             <div class="portfolio-info">
-              <h4>T.Viewer</h4>
-              <p>Cross Platform Tizen Log Viewer</p>
+              <h4>nanobot on rpi</h4>
+              <p>nanobot과 라즈베리파이로 나만의 비서 만들기</p>
               <div class="portfolio-links">
-                <a href="https://github.com/msaltnet/T.Viewer" target="_blank"><i class="bx bx-link"></i></a>
+                <a id="smtm-nanobot-link" href="https://nanobot.msalt.net" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-programmer">
+          <div class="portfolio-wrap">
+            <picture>
+              <source srcset="assets/img/tviewer.webp" type="image/webp">
+              <img src="assets/img/tviewer.png" class="img-fluid" alt="">
+            </picture>
+            <div class="portfolio-info">
+              <h4>T.Viewer - Cross Platform Tizen Log Viewer</h4>
+              <p>Electron + Vuetify Open Source Project</p>
+              <div class="portfolio-links">
+                <a id="tviewer-github-link" href="https://github.com/msaltnet/T.Viewer" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -128,12 +168,15 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-writer">
           <div class="portfolio-wrap">
-            <img src="assets/img/climatebook.jpg" class="img-fluid" alt="">
+            <picture>
+              <source srcset="assets/img/climatebook.webp" type="image/webp">
+              <img src="assets/img/climatebook.jpg" class="img-fluid" alt="">
+            </picture>
             <div class="portfolio-info">
-              <h4>맛소금 브런치</h4>
-              <p>작가의 생각</p>
+              <h4>맛소금 브런치 스토리</h4>
+              <p>글로 옮겨진 작가의 생각 모음</p>
               <div class="portfolio-links">
-                <a href="https://brunch.co.kr/@msaltnet" target="_blank"><i class="bx bx-link"></i></a>
+                <a id="brunch-link" href="https://brunch.co.kr/@msaltnet" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -141,12 +184,15 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-writer">
           <div class="portfolio-wrap">
-            <img src="assets/img/judgement.jpg" class="img-fluid" alt="">
+            <picture>
+              <source srcset="assets/img/judgement.webp" type="image/webp">
+              <img src="assets/img/judgement.jpg" class="img-fluid" alt="">
+            </picture>
             <div class="portfolio-info">
               <h4>고마워서 만든 블로그</h4>
-              <p>나누고 싶은 생각과 정보</p>
+              <p>나누면 좋을 것 같은 생각과 정보</p>
               <div class="portfolio-links">
-                <a href="https://blog.msalt.net/" target="_blank"><i class="bx bx-link"></i></a>
+                <a id="blog-link" href="https://blog.msalt.net/" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -157,6 +203,7 @@
     </div>
   </section><!-- End Portfolio Section -->
 
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
@@ -165,13 +212,13 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a id="bootstrap-link" href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- End  Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a class="ga-ignore" href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
