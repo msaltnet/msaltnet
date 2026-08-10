@@ -91,6 +91,14 @@ class BuiltSiteTest(unittest.TestCase):
         self.assertNotIn("assets/vendor/", html)
         self.assertNotIn("bootstrap", html.lower())
 
+    def test_korean_fonts_are_served_locally(self):
+        html = (SITE / "index.html").read_text(encoding="utf-8")
+        css = (SITE / "assets/css/style.css").read_text(encoding="utf-8")
+        self.assertNotIn("fonts.googleapis.com", html)
+        self.assertIn('@font-face', css)
+        self.assertIn('url("../fonts/ibm-plex-sans-kr-400.woff2")', css)
+        self.assertIn('url("../fonts/noto-serif-kr-400.woff2")', css)
+
 
 if __name__ == "__main__":
     unittest.main()
