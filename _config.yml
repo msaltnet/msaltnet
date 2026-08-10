@@ -1,0 +1,29 @@
+title: "맛소금"
+tagline: "지구별에서 소프트웨어를 만들고, 때때로 생각을 적습니다."
+description: "소프트웨어를 만들고 가끔 생각을 기록하는 맛소금의 개인 웹 페이지"
+url: "https://msalt.net"
+baseurl: ""
+lang: "ko-KR"
+timezone: "Asia/Seoul"
+permalink: /article/:slug/
+markdown: kramdown
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      image: /assets/img/hero-bg.jpg
+exclude:
+  - docs
+  - node_modules
+  - package.json
+  - package-lock.json
+  - playwright.config.mjs
+  - tests
+  - vendor

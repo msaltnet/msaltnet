@@ -6,3 +6,9 @@
 .claude
 .superpowers/
 .worktrees/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/bundle/
+test-results/
+playwright-report/
