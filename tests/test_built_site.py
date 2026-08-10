@@ -99,6 +99,25 @@ class BuiltSiteTest(unittest.TestCase):
         self.assertIn('url("../fonts/ibm-plex-sans-kr-400.woff2")', css)
         self.assertIn('url("../fonts/noto-serif-kr-400.woff2")', css)
 
+    def test_development_files_and_legacy_vendor_assets_are_not_deployed(self):
+        excluded_paths = [
+            "Gemfile",
+            "Gemfile.lock",
+            "README.md",
+            "assets/vendor",
+            "package.json",
+            "package-lock.json",
+            "playwright.config.mjs",
+            "test-results",
+            "tests",
+            "webp.py",
+        ]
+        for relative_path in excluded_paths:
+            self.assertFalse(
+                (SITE / relative_path).exists(),
+                f"{relative_path} must not be included in the deployed site",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

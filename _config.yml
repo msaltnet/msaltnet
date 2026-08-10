@@ -20,10 +20,16 @@ defaults:
       layout: post
       image: /assets/img/hero-bg.jpg
 exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
   - docs
   - node_modules
   - package.json
   - package-lock.json
   - playwright.config.mjs
+  - test-results
   - tests
   - vendor
+  - webp.py
+  - assets/vendor
