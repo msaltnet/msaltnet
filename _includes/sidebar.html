@@ -1,0 +1,27 @@
+{% assign sidebar_post = site.posts | where: "sidebar_feature", true | first %}
+<aside class="home-sidebar" id="project" aria-label="소개와 프로젝트">
+  <a class="sidebar-wordmark" href="{{ '/' | relative_url }}">맛소금</a>
+
+  {% if sidebar_post %}
+    <section class="sidebar-poem" aria-labelledby="sidebar-poem-title">
+      <h2 id="sidebar-poem-title">{{ sidebar_post.title }}</h2>
+      <div class="sidebar-poem-content">{{ sidebar_post.content }}</div>
+    </section>
+  {% endif %}
+
+  <section class="projects" aria-labelledby="project-title">
+    <p class="section-kicker" id="project-title">Project</p>
+    <div class="project-list">
+      {% for project in site.data.projects %}
+        <a class="project-card" href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
+          <img class="project-card-image" src="{{ project.image | relative_url }}" alt="{{ project.alt }}" loading="lazy" width="160" height="112">
+          <span class="project-card-copy">
+            <span class="project-label">{{ project.label }}</span>
+            <strong>{{ project.title }}</strong>
+            <span>{{ project.description }}</span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+</aside>
