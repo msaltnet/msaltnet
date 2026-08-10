@@ -2,3 +2,5 @@ User-agent: *
 Disallow: /api
 Disallow: /error
 Allow: /
+
+Sitemap: https://msalt.net/sitemap.xml
