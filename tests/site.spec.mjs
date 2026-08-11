@@ -1,10 +1,20 @@
 import { test, expect } from '@playwright/test';
 
+async function expectProjectCardsToHaveOneHeight(page, expectedHeight) {
+  const heights = await page.locator('.project-card').evaluateAll((cards) =>
+    cards.map((card) => card.getBoundingClientRect().height),
+  );
+
+  expect(new Set(heights).size).toBe(1);
+  expect(heights[0]).toBe(expectedHeight);
+}
+
 test('desktop home uses an editorial sidebar and exposes the next section', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
   await expect(page.locator('.project-card')).toHaveCount(6);
+  await expectProjectCardsToHaveOneHeight(page, 78);
 
   const sidebar = await page.locator('.home-sidebar').boundingBox();
   const main = await page.locator('.home-main').boundingBox();
@@ -24,6 +34,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
 test('mobile keeps hero copy and places sidebar content after articles', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
+  await expectProjectCardsToHaveOneHeight(page, 88);
   await expect(page.getByText('지구별에서 소프트웨어를 만들고,')).toBeVisible();
   await expect(page.getByText('때때로 생각을 적습니다.')).toBeVisible();
 
