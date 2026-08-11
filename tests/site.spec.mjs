@@ -9,12 +9,55 @@ async function expectProjectCardsToHaveOneHeight(page, expectedHeight) {
   expect(heights[0]).toBe(expectedHeight);
 }
 
+async function expectProjectCardChildrenToBeContained(page) {
+  await page.locator('.project-card-image').evaluateAll((images) =>
+    Promise.all(
+      images.map((image) =>
+        image.complete
+          ? undefined
+          : new Promise((resolve) => {
+              image.addEventListener('load', resolve, { once: true });
+              image.addEventListener('error', resolve, { once: true });
+            }),
+      ),
+    ),
+  );
+
+  const bounds = await page.locator('.project-card').evaluateAll((cards) =>
+    cards.flatMap((card) => {
+      const parent = card.getBoundingClientRect();
+      return [...card.querySelectorAll('.project-card-image, .project-card-copy')].map((child) => {
+        const rect = child.getBoundingClientRect();
+        return {
+          childBottom: rect.bottom,
+          childLeft: rect.left,
+          childRight: rect.right,
+          childTop: rect.top,
+          parentBottom: parent.bottom,
+          parentLeft: parent.left,
+          parentRight: parent.right,
+          parentTop: parent.top,
+        };
+      });
+    }),
+  );
+
+  for (const bound of bounds) {
+    const tolerance = 0.5;
+    expect(bound.childTop).toBeGreaterThanOrEqual(bound.parentTop - tolerance);
+    expect(bound.childRight).toBeLessThanOrEqual(bound.parentRight + tolerance);
+    expect(bound.childBottom).toBeLessThanOrEqual(bound.parentBottom + tolerance);
+    expect(bound.childLeft).toBeGreaterThanOrEqual(bound.parentLeft - tolerance);
+  }
+}
+
 test('desktop home uses an editorial sidebar and exposes the next section', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
   await expect(page.locator('.project-card')).toHaveCount(6);
   await expectProjectCardsToHaveOneHeight(page, 78);
+  await expectProjectCardChildrenToBeContained(page);
 
   const sidebar = await page.locator('.home-sidebar').boundingBox();
   const main = await page.locator('.home-main').boundingBox();
@@ -35,6 +78,7 @@ test('mobile keeps hero copy and places sidebar content after articles', async (
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expectProjectCardsToHaveOneHeight(page, 88);
+  await expectProjectCardChildrenToBeContained(page);
   await expect(page.getByText('지구별에서 소프트웨어를 만들고,')).toBeVisible();
   await expect(page.getByText('때때로 생각을 적습니다.')).toBeVisible();
 

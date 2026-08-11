@@ -300,6 +300,7 @@ a:focus-visible {
 .project-card {
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   height: 78px;
   overflow: hidden;
   border: 1px solid var(--line);
