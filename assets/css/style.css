@@ -339,15 +339,15 @@ a:focus-visible {
 }
 
 .project-card strong {
+  display: block;
+  min-width: 0;
   overflow: hidden;
   margin: 2px 0;
   font-family: var(--serif);
   font-size: 0.9rem;
   line-height: 1.25;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  white-space: nowrap;
 }
 
 .project-card-copy > span:last-child {
