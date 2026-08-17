@@ -17,6 +17,8 @@ OSI 7 Layer, User Interface, Platform처럼 우리가 아는 많은 용어들이
 
 나는 내가 쓴 첫 책에서도 몇 장을 할애해서 추상화에 대해서 소개했다.
 
+![abstraction](../assets/img/image-1.png)
+
 암호화폐 가상매매 시스템 만드는 책인데, SW 개발에 대한 온갖 생각을 쏟아 부었던 것 같다.
 
 어째든, 추상화는 정말 중요하고 절묘한 것이다.

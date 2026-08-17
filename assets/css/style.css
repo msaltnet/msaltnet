@@ -98,7 +98,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
-  line-height: 1.7;
+  line-height: 1.75;
   word-break: keep-all;
 }
 
@@ -197,7 +197,7 @@ a:focus-visible {
 
 .site-header nav a {
   position: relative;
-  font-size: 0.76rem;
+  font-size: 0.86rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -249,7 +249,7 @@ a:focus-visible {
 .section-kicker {
   margin: 0 0 12px;
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -261,7 +261,7 @@ a:focus-visible {
 .sidebar-poem h2 {
   margin: 0 0 24px;
   font-family: var(--serif);
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   line-height: 1.5;
 }
 
@@ -271,7 +271,7 @@ a:focus-visible {
   border: 0;
   color: #3f4941;
   font-family: var(--serif);
-  font-size: 0.82rem;
+  font-size: 0.96rem;
   line-height: 2;
 }
 
@@ -279,7 +279,7 @@ a:focus-visible {
   margin: 18px 0 0;
   color: var(--muted);
   font-family: var(--serif);
-  font-size: 0.76rem;
+  font-size: 0.86rem;
 }
 
 .personal-note {
@@ -288,7 +288,7 @@ a:focus-visible {
   border-top: 1px solid var(--line);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   line-height: 1.9;
 }
 
@@ -333,7 +333,7 @@ a:focus-visible {
 
 .project-label {
   color: var(--accent);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -342,7 +342,7 @@ a:focus-visible {
   overflow: hidden;
   margin: 2px 0;
   font-family: var(--serif);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -350,7 +350,7 @@ a:focus-visible {
 .project-card-copy > span:last-child {
   overflow: hidden;
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.78rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -378,7 +378,7 @@ a:focus-visible {
 .article-list time,
 .post-date {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .latest-article h3 {
@@ -394,7 +394,7 @@ a:focus-visible {
 
 .latest-article > span {
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 600;
 }
 
@@ -413,7 +413,7 @@ a:focus-visible {
 .article-list span {
   grid-column: 2;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .post-shell {
@@ -425,7 +425,7 @@ a:focus-visible {
 
 .back-link {
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 600;
 }
 
@@ -460,7 +460,7 @@ a:focus-visible {
   border-top: 1px solid var(--line);
   background: var(--ink);
   color: #dfe5df;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
@@ -550,7 +550,7 @@ a:focus-visible {
   }
 
   .site-header nav a {
-    font-size: 0.68rem;
+    font-size: 0.78rem;
   }
 
   .article-list a {
