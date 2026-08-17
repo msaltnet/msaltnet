@@ -301,7 +301,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr);
-  height: 78px;
+  min-height: 96px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--surface);
@@ -343,8 +343,11 @@ a:focus-visible {
   margin: 2px 0;
   font-family: var(--serif);
   font-size: 0.9rem;
+  line-height: 1.25;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .project-card-copy > span:last-child {
@@ -436,7 +439,7 @@ a:focus-visible {
 .post h1 {
   margin: 0 0 56px;
   font-family: var(--serif);
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-size: clamp(1.76rem, 4vw, 3.36rem);
   line-height: 1.25;
 }
 
@@ -532,7 +535,7 @@ a:focus-visible {
 
   .project-card {
     grid-template-columns: 104px minmax(0, 1fr);
-    height: 88px;
+    min-height: 96px;
   }
 
   .project-card-image {
