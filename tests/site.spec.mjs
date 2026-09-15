@@ -56,7 +56,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
   await expect(page.locator('.project-card')).toHaveCount(6);
-  await expectProjectCardsToHaveOneHeight(page, 78);
+  await expectProjectCardsToHaveOneHeight(page, 96);
   await expectProjectCardChildrenToBeContained(page);
 
   const sidebar = await page.locator('.home-sidebar').boundingBox();
@@ -77,7 +77,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
 test('mobile keeps hero copy and places sidebar content after articles', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  await expectProjectCardsToHaveOneHeight(page, 88);
+  await expectProjectCardsToHaveOneHeight(page, 96);
   await expectProjectCardChildrenToBeContained(page);
   await expect(page.getByText('지구별에서 소프트웨어를 만들고,')).toBeVisible();
   await expect(page.getByText('때때로 생각을 적습니다.')).toBeVisible();
