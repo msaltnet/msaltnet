@@ -60,6 +60,23 @@ class BuiltSiteTest(unittest.TestCase):
         self.assertIn("젊은 시인에게 주는 충고", text)
         self.assertIn("때때로 검색과 댓글의 성급한 해답 말고", text)
 
+    def test_home_uses_hero_image_for_large_social_preview(self):
+        meta_by_property = {
+            item["property"]: item.get("content")
+            for item in self.home.meta
+            if "property" in item
+        }
+        meta_by_name = {
+            item["name"]: item.get("content")
+            for item in self.home.meta
+            if "name" in item
+        }
+
+        expected_image = "https://msalt.net/assets/img/hero-bg.jpg"
+        self.assertEqual(meta_by_property.get("og:image"), expected_image)
+        self.assertEqual(meta_by_property.get("twitter:image"), expected_image)
+        self.assertEqual(meta_by_name.get("twitter:card"), "summary_large_image")
+
     def test_project_links_are_preserved_and_safe(self):
         external = {link.get("href"): link for link in self.home.links}
         self.assertTrue(PROJECT_URLS.issubset(external))
