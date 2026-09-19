@@ -15,7 +15,7 @@
 
 ---
 
-# Hello, I'm msalt 👋
+# Hello, I'm massogum 👋
 
 I build software on this small blue planet and share what I learn along the way.
 I currently work on AI Transformation (AX) and software engineering at Samsung Electronics.
