@@ -1,37 +1,31 @@
-# msalt.net
+# 안녕하세요, 맛소금입니다 👋
 
-Jekyll로 생성되는 맛소금의 개인 웹 페이지입니다.
+지구별에서 소프트웨어를 만들고, 일과 생각을 나눕니다.
+현재 삼성전자에서 AX(AI Transformation)와 소프트웨어 엔지니어링을 하고 있습니다.
 
-## 글 쓰기
+## 함께 만든 것들
 
-`_posts/YYYY-MM-DD-title.md` 형식으로 파일을 만들고 다음 front matter 뒤에 Markdown 본문을 작성합니다.
+- [smtm](https://github.com/msaltnet/smtm) — Python으로 만든 암호화폐 자동매매 시스템
+- [nanobot on rpi](https://nanobot.msalt.net) — nanobot과 라즈베리파이로 만든 나만의 AI 비서
+- [T.Viewer](https://github.com/msaltnet/T.Viewer) — Tizen 로그를 위한 크로스 플랫폼 뷰어
+- [암호화폐 자동매매 시스템 만들기 with 파이썬](https://smtm.msalt.net) — 자동매매 시스템을 함께 만들어 보는 책
 
-```yaml
+가끔은 코드 밖의 생각도 적습니다.
+[웹사이트](https://msalt.net) · [블로그](https://blog.msalt.net/) · [브런치](https://brunch.co.kr/@msaltnet)
+
 ---
-title: "글 제목"
-date: 2026-08-10
-description: "홈과 공유 메타데이터에 표시할 한두 문장"
----
-```
 
-홈 왼쪽 사이드바에 글 전문을 함께 표시하려면 front matter에 `sidebar_feature: true`를 추가합니다. 한 편만 지정합니다.
+# Hello, I'm msalt 👋
 
-## 로컬 실행
+I build software on this small blue planet and share what I learn along the way.
+I currently work on AI Transformation (AX) and software engineering at Samsung Electronics.
 
-Ruby와 Bundler가 있는 환경에서는 다음 명령을 사용합니다.
+## Things I've made
 
-```bash
-bundle install
-bundle exec jekyll serve
-```
+- [smtm](https://github.com/msaltnet/smtm) — A Python cryptocurrency trading system
+- [nanobot on rpi](https://nanobot.msalt.net) — A personal AI assistant built with nanobot and Raspberry Pi
+- [T.Viewer](https://github.com/msaltnet/T.Viewer) — A cross-platform log viewer for Tizen
+- [Building a Cryptocurrency Trading System with Python](https://smtm.msalt.net) — A book about building an automated trading system together
 
-사이트는 `http://localhost:4000`에서 확인할 수 있습니다.
-
-## 테스트
-
-Jekyll 빌드 뒤 소스·출력 계약과 브라우저 테스트를 실행합니다.
-
-```bash
-npm test
-npm run test:e2e
-```
+I also write about the thoughts that live beyond code.
+[Website](https://msalt.net) · [Blog](https://blog.msalt.net/) · [Brunch](https://brunch.co.kr/@msaltnet)
