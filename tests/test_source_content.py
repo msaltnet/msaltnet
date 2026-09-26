@@ -51,6 +51,15 @@ class SourceContentTest(unittest.TestCase):
         self.assertIn("Sitemap: https://msalt.net/sitemap.xml", robots)
         self.assertFalse((ROOT / "sitemap.xml").exists())
 
+    def test_root_ads_txt_authorizes_the_blog_publisher(self):
+        path = ROOT / "ads.txt"
+        self.assertTrue(path.is_file(), "msalt.net/ads.txt is missing")
+        ads_txt = path.read_text(encoding="utf-8")
+        self.assertEqual(
+            ads_txt.strip(),
+            "google.com, pub-7998090459933600, DIRECT, f08c47fec0942fa0",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
