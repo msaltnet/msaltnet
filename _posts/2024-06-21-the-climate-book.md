@@ -86,7 +86,3 @@ image: /assets/img/brunch-9-cover.jpg
 ![기후책 The Climate Book 본문 사진 8](/assets/img/brunch-9-image-08.jpg)
 
 개인이, 사회가, 국가가 할 수 있는 일, 해야 하는 일은 여러 가지이지만 가장 중요한 것은 결국 우리 자신을 바꾸는 것이다. 지금처럼은 더 이상 안된다.
-
----
-
-[브런치 원문](https://brunch.co.kr/@msaltnet/9)
