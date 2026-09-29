@@ -9,5 +9,9 @@ body_class: article-page
     <p class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time></p>
     <h1>{{ page.title }}</h1>
     <div class="post-content">{{ content }}</div>
+    <nav class="post-actions" aria-label="글 탐색">
+      <a class="post-action" href="{{ '/' | relative_url }}#article">목록으로 가기</a>
+      <a class="post-action" href="#main-content">위로 가기</a>
+    </nav>
   </article>
 </main>

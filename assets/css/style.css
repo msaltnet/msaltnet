@@ -458,6 +458,34 @@ a:focus-visible {
   font-size: 1.05rem;
 }
 
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.post-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.post-action:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .site-footer {
   padding: 34px 24px;
   border-top: 1px solid var(--line);
