@@ -12,6 +12,8 @@ PROJECT_URLS = {
     "https://github.com/msaltnet/T.Viewer",
     "https://brunch.co.kr/@msaltnet",
     "https://blog.msalt.net/",
+    "https://coding.msalt.net",
+    "https://jinju.msalt.net",
 }
 
 
@@ -93,7 +95,7 @@ class BuiltSiteTest(unittest.TestCase):
             for image in self.home.images
             if "project-card-image" in image.get("class", "")
         ]
-        self.assertEqual(len(project_images), 6)
+        self.assertEqual(len(project_images), 8)
         self.assertTrue(all(image.get("alt", "").strip() for image in project_images))
 
     def test_first_article_contains_poem_and_personal_note(self):
@@ -121,6 +123,7 @@ class BuiltSiteTest(unittest.TestCase):
             "Gemfile",
             "Gemfile.lock",
             "README.md",
+            "Development.md",
             "assets/vendor",
             "package.json",
             "package-lock.json",

@@ -10,6 +10,8 @@ PROJECT_URLS = {
     "https://github.com/msaltnet/T.Viewer",
     "https://brunch.co.kr/@msaltnet",
     "https://blog.msalt.net/",
+    "https://coding.msalt.net",
+    "https://jinju.msalt.net",
 }
 
 
@@ -25,9 +27,9 @@ class SourceContentTest(unittest.TestCase):
         projects = (ROOT / "_data/projects.yml").read_text(encoding="utf-8")
         for url in PROJECT_URLS:
             self.assertIn(url, projects)
-        self.assertEqual(projects.count("- title:"), 6)
-        self.assertEqual(projects.count("  image:"), 6)
-        self.assertEqual(projects.count("  alt:"), 6)
+        self.assertEqual(projects.count("- title:"), 8)
+        self.assertEqual(projects.count("  image:"), 8)
+        self.assertEqual(projects.count("  alt:"), 8)
 
     def test_first_article_is_the_sidebar_feature_and_contains_both_texts(self):
         post = (

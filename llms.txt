@@ -1,0 +1,25 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+# 맛소금 — msalt.net
+
+> {{ site.description }}
+
+이 사이트의 글은 소프트웨어 개발자 맛소금이 직접 작성한 에세이, 독후감, 개발 경험입니다. 프로그래밍, AI 활용과 일상의 생각을 다룹니다. 글의 날짜는 최초 작성일이며, 글마다 제공하는 HTML 페이지가 정식 원문입니다.
+
+## 사이트
+
+- [홈과 글 목록]({{ '/' | absolute_url }}): 맛소금 소개와 전체 글 목록
+- [사이트맵]({{ '/sitemap.xml' | absolute_url }}): 공개 페이지의 정식 URL
+- [Atom 피드]({{ '/feed.xml' | absolute_url }}): 최근 글과 본문
+
+## 글
+{% for post in site.posts %}{% unless post.sitemap == false %}
+- [{{ post.title | replace: '[', '(' | replace: ']', ')' }}]({{ post.url | absolute_url }}): {{ post.date | date: '%Y-%m-%d' }} — {{ post.description | strip_html | strip_newlines }}
+{% endunless %}{% endfor %}
+## 프로젝트
+{% for project in site.data.projects %}
+- [{{ project.title | replace: '[', '(' | replace: ']', ')' }}]({{ project.url }}): {{ project.description }}
+{% endfor %}

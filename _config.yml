@@ -5,6 +5,14 @@ url: "https://msalt.net"
 baseurl: ""
 lang: "ko-KR"
 timezone: "Asia/Seoul"
+author:
+  name: "맛소금"
+  url: "https://msalt.net/"
+social:
+  name: "맛소금"
+  links:
+    - https://github.com/msaltnet
+    - https://blog.msalt.net/
 permalink: /article/:slug/
 markdown: kramdown
 kramdown:
@@ -12,6 +20,9 @@ kramdown:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
+feed:
+  posts_limit: 50
 defaults:
   - scope:
       path: ""
@@ -19,10 +30,23 @@ defaults:
     values:
       layout: post
       image: /assets/img/hero-bg.jpg
+  - scope:
+      path: "google21e62a1687cb22d6.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "naver4c0b9729a529a2a06abf1e75a84b7868.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "naver522b25ba6931e5488d5560ea704caaa3.html"
+    values:
+      sitemap: false
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - Development.md
   - docs
   - node_modules
   - package.json

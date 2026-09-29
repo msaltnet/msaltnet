@@ -10,18 +10,14 @@ async function expectProjectCardsToHaveOneHeight(page, expectedHeight) {
 }
 
 async function expectProjectCardChildrenToBeContained(page) {
-  await page.locator('.project-card-image').evaluateAll((images) =>
-    Promise.all(
-      images.map((image) =>
-        image.complete
-          ? undefined
-          : new Promise((resolve) => {
-              image.addEventListener('load', resolve, { once: true });
-              image.addEventListener('error', resolve, { once: true });
-            }),
-      ),
-    ),
-  );
+  const scrollPosition = await page.evaluate(() => ({ x: scrollX, y: scrollY }));
+  for (const image of await page.locator('.project-card-image').all()) {
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate((element) => element.decode());
+  }
+  await page.evaluate(({ x, y }) => {
+    window.scrollTo({ left: x, top: y, behavior: 'instant' });
+  }, scrollPosition);
 
   const bounds = await page.locator('.project-card').evaluateAll((cards) =>
     cards.flatMap((card) => {
@@ -55,7 +51,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(6);
+  await expect(page.locator('.project-card')).toHaveCount(8);
   await expectProjectCardsToHaveOneHeight(page, 96);
   await expectProjectCardChildrenToBeContained(page);
 
@@ -121,5 +117,26 @@ test('reduced motion disables transitions and content remains visible', async ({
     (element) => getComputedStyle(element).transitionDuration,
   );
   expect(duration).toBe('0s');
+  await context.close();
+});
+
+test('search and AI discovery work without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto('http://127.0.0.1:4173/');
+  await expect(page.locator('#article')).toBeVisible();
+  await expect(page.locator('.project-card')).toHaveCount(8);
+  await page.goto('http://127.0.0.1:4173/article/cooking-book-review/');
+  await expect(page.getByRole('heading', { level: 1, name: '요리를 한다는 것' })).toBeVisible();
+  await expect(page.locator('a[rel="author"]')).toHaveText('맛소금');
+  await expect(page.locator('.post-content')).toContainText('기승전 요리');
+
+  for (const path of ['/sitemap.xml', '/robots.txt', '/ads.txt', '/feed.xml', '/llms.txt']) {
+    const response = await context.request.get(`http://127.0.0.1:4173${path}`);
+    expect(response.status(), path).toBe(200);
+    const text = await response.text();
+    expect(text, path).not.toContain('{{');
+    expect(text, path).not.toContain('{%');
+  }
   await context.close();
 });
