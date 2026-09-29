@@ -40,11 +40,11 @@ class SourceContentTest(unittest.TestCase):
         self.assertIn("때때로 검색과 댓글의 성급한 해답 말고", post)
         self.assertIn("온전히 내 자신의 해답이 필요하다.", post)
 
-    def test_readme_documents_the_article_workflow(self):
-        readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("_posts/YYYY-MM-DD-title.md", readme)
-        self.assertIn("sidebar_feature: true", readme)
-        self.assertIn("bundle exec jekyll serve", readme)
+    def test_development_guide_documents_the_article_workflow(self):
+        guide = (ROOT / "Development.md").read_text(encoding="utf-8")
+        self.assertIn("_posts/YYYY-MM-DD-title.md", guide)
+        self.assertIn("sidebar_feature: true", guide)
+        self.assertIn("bundle exec jekyll serve", guide)
 
     def test_robots_points_to_the_generated_sitemap(self):
         robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
