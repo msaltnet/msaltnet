@@ -15,12 +15,6 @@ image: /assets/img/hero-bg.jpg
     </section>
 
     <section class="article-index" id="article" aria-labelledby="article-title" data-reveal>
-      <nav class="topic-links" aria-label="주제별 글">
-        {% for topic in site.data.navigation limit:3 %}
-          {% assign topic_posts = site.posts | where: "section", topic.key %}
-          <a href="{{ topic.url | relative_url }}">{{ topic.title }} <span>{{ topic_posts.size }}편</span></a>
-        {% endfor %}
-      </nav>
       <p class="section-kicker">최근 글</p>
       <h2 id="article-title">가끔 적는 생각</h2>
       {% assign latest = site.posts | first %}

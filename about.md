@@ -1,5 +1,6 @@
 ---
 layout: page
+body_class: content-page
 title: 소개
 section: about
 permalink: /about/
