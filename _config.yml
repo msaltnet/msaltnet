@@ -56,4 +56,7 @@ exclude:
   - tests
   - vendor
   - webp.py
+  - scripts
+  - .tools
+  - .venv
   - assets/vendor

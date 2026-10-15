@@ -1,0 +1,502 @@
+{
+  "/assets/img/brunch-10-cover.webp": {
+    "src": "/assets/img/optimized/brunch-10-cover-webp-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-10-cover-webp-800.webp",
+    "social": "/assets/img/optimized/brunch-10-cover-webp-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 624628,
+    "optimized_bytes": 317942
+  },
+  "/assets/img/brunch-11-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-11-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-11-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-11-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 801800,
+    "optimized_bytes": 315346
+  },
+  "/assets/img/brunch-11-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-11-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-11-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-11-image-01-jpg-social.jpg",
+    "width": 1280,
+    "height": 1202,
+    "mobile_width": 800,
+    "original_bytes": 498055,
+    "optimized_bytes": 229130
+  },
+  "/assets/img/brunch-11-image-02.jpg": {
+    "src": "/assets/img/optimized/brunch-11-image-02-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-11-image-02-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-11-image-02-jpg-social.jpg",
+    "width": 1280,
+    "height": 938,
+    "mobile_width": 800,
+    "original_bytes": 384427,
+    "optimized_bytes": 173156
+  },
+  "/assets/img/brunch-12-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-12-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-12-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-12-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 687277,
+    "optimized_bytes": 228348
+  },
+  "/assets/img/brunch-12-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-12-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-12-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-12-image-01-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 452482,
+    "optimized_bytes": 234606
+  },
+  "/assets/img/brunch-13-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-13-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-13-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-13-image-01-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 930379,
+    "optimized_bytes": 344418
+  },
+  "/assets/img/brunch-13-image-02.jpg": {
+    "src": "/assets/img/optimized/brunch-13-image-02-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-13-image-02-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-13-image-02-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 388751,
+    "optimized_bytes": 170584
+  },
+  "/assets/img/brunch-13-image-03.jpg": {
+    "src": "/assets/img/optimized/brunch-13-image-03-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-13-image-03-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-13-image-03-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 413573,
+    "optimized_bytes": 203128
+  },
+  "/assets/img/brunch-14-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-14-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-14-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-14-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 782485,
+    "optimized_bytes": 342168
+  },
+  "/assets/img/brunch-14-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-14-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-14-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-14-image-01-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 763814,
+    "optimized_bytes": 332568
+  },
+  "/assets/img/brunch-15-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-15-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-15-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-15-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 866315,
+    "optimized_bytes": 328946
+  },
+  "/assets/img/brunch-15-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-15-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-15-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-15-image-01-jpg-social.jpg",
+    "width": 1280,
+    "height": 1280,
+    "mobile_width": 800,
+    "original_bytes": 588764,
+    "optimized_bytes": 234812
+  },
+  "/assets/img/brunch-15-image-02.png": {
+    "src": "/assets/img/optimized/brunch-15-image-02-png-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-15-image-02-png-800.webp",
+    "social": "/assets/img/optimized/brunch-15-image-02-png-social.jpg",
+    "width": 1171,
+    "height": 755,
+    "mobile_width": 800,
+    "original_bytes": 92833,
+    "optimized_bytes": 25162
+  },
+  "/assets/img/brunch-4-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-4-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-4-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-4-cover-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 713618,
+    "optimized_bytes": 347256
+  },
+  "/assets/img/brunch-4-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-4-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-4-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-4-image-01-jpg-social.jpg",
+    "width": 1280,
+    "height": 959,
+    "mobile_width": 800,
+    "original_bytes": 534236,
+    "optimized_bytes": 312532
+  },
+  "/assets/img/brunch-4-image-02.jpg": {
+    "src": "/assets/img/optimized/brunch-4-image-02-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-4-image-02-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-4-image-02-jpg-social.jpg",
+    "width": 1280,
+    "height": 959,
+    "mobile_width": 800,
+    "original_bytes": 239863,
+    "optimized_bytes": 70886
+  },
+  "/assets/img/brunch-4-image-03.jpg": {
+    "src": "/assets/img/optimized/brunch-4-image-03-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-4-image-03-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-4-image-03-jpg-social.jpg",
+    "width": 1280,
+    "height": 959,
+    "mobile_width": 800,
+    "original_bytes": 356277,
+    "optimized_bytes": 168350
+  },
+  "/assets/img/brunch-7-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-7-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-7-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-7-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 1120111,
+    "optimized_bytes": 345650
+  },
+  "/assets/img/brunch-7-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-7-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-7-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-7-image-01-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 508163,
+    "optimized_bytes": 275924
+  },
+  "/assets/img/brunch-7-image-02.jpg": {
+    "src": "/assets/img/optimized/brunch-7-image-02-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-7-image-02-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-7-image-02-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 374474,
+    "optimized_bytes": 154946
+  },
+  "/assets/img/brunch-9-cover.jpg": {
+    "src": "/assets/img/optimized/brunch-9-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 1008336,
+    "optimized_bytes": 303894
+  },
+  "/assets/img/brunch-9-image-01.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-01-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-01-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-01-jpg-social.jpg",
+    "width": 1280,
+    "height": 1280,
+    "mobile_width": 800,
+    "original_bytes": 801289,
+    "optimized_bytes": 334016
+  },
+  "/assets/img/brunch-9-image-02.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-02-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-02-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-02-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 605641,
+    "optimized_bytes": 320028
+  },
+  "/assets/img/brunch-9-image-03.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-03-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-03-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-03-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 398696,
+    "optimized_bytes": 178880
+  },
+  "/assets/img/brunch-9-image-04.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-04-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-04-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-04-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 534257,
+    "optimized_bytes": 298774
+  },
+  "/assets/img/brunch-9-image-05.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-05-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-05-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-05-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 458159,
+    "optimized_bytes": 233580
+  },
+  "/assets/img/brunch-9-image-06.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-06-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-06-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-06-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 572607,
+    "optimized_bytes": 325146
+  },
+  "/assets/img/brunch-9-image-07.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-07-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-07-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-07-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 411842,
+    "optimized_bytes": 190724
+  },
+  "/assets/img/brunch-9-image-08.jpg": {
+    "src": "/assets/img/optimized/brunch-9-image-08-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/brunch-9-image-08-jpg-800.webp",
+    "social": "/assets/img/optimized/brunch-9-image-08-jpg-social.jpg",
+    "width": 1280,
+    "height": 960,
+    "mobile_width": 800,
+    "original_bytes": 454625,
+    "optimized_bytes": 245400
+  },
+  "/assets/img/call-center.png": {
+    "src": "/assets/img/optimized/call-center-png-1600.webp",
+    "mobile": "/assets/img/optimized/call-center-png-800.webp",
+    "social": "/assets/img/optimized/call-center-png-social.jpg",
+    "width": 1600,
+    "height": 950,
+    "mobile_width": 800,
+    "original_bytes": 1038622,
+    "optimized_bytes": 66560
+  },
+  "/assets/img/climatebook.webp": {
+    "src": "/assets/img/optimized/climatebook-webp-1600.webp",
+    "mobile": "/assets/img/optimized/climatebook-webp-800.webp",
+    "social": "/assets/img/optimized/climatebook-webp-social.jpg",
+    "width": 887,
+    "height": 1024,
+    "mobile_width": 693,
+    "original_bytes": 232362,
+    "optimized_bytes": 241752
+  },
+  "/assets/img/coding-camp.jpg": {
+    "src": "/assets/img/optimized/coding-camp-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/coding-camp-jpg-800.webp",
+    "social": "/assets/img/optimized/coding-camp-jpg-social.jpg",
+    "width": 1084,
+    "height": 825,
+    "mobile_width": 800,
+    "original_bytes": 178754,
+    "optimized_bytes": 87016
+  },
+  "/assets/img/cooking-book-review.jpg": {
+    "src": "/assets/img/optimized/cooking-book-review-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/cooking-book-review-jpg-800.webp",
+    "social": "/assets/img/optimized/cooking-book-review-jpg-social.jpg",
+    "width": 960,
+    "height": 1280,
+    "mobile_width": 600,
+    "original_bytes": 193194,
+    "optimized_bytes": 135850
+  },
+  "/assets/img/hero-bg.jpg": {
+    "src": "/assets/img/optimized/hero-bg-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/hero-bg-jpg-800.webp",
+    "social": "/assets/img/optimized/hero-bg-jpg-social.jpg",
+    "width": 1600,
+    "height": 900,
+    "mobile_width": 800,
+    "original_bytes": 384813,
+    "optimized_bytes": 318476
+  },
+  "/assets/img/human-acts-cover.jpg": {
+    "src": "/assets/img/optimized/human-acts-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/human-acts-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/human-acts-cover-jpg-social.jpg",
+    "width": 1600,
+    "height": 1600,
+    "mobile_width": 800,
+    "original_bytes": 7333323,
+    "optimized_bytes": 330304
+  },
+  "/assets/img/image-1.png": {
+    "src": "/assets/img/optimized/image-1-png-1600.webp",
+    "mobile": "/assets/img/optimized/image-1-png-800.webp",
+    "social": "/assets/img/optimized/image-1-png-social.jpg",
+    "width": 663,
+    "height": 660,
+    "mobile_width": 663,
+    "original_bytes": 266485,
+    "optimized_bytes": 54696
+  },
+  "/assets/img/image.png": {
+    "src": "/assets/img/optimized/image-png-1600.webp",
+    "mobile": "/assets/img/optimized/image-png-800.webp",
+    "social": "/assets/img/optimized/image-png-social.jpg",
+    "width": 667,
+    "height": 595,
+    "mobile_width": 667,
+    "original_bytes": 521306,
+    "optimized_bytes": 23464
+  },
+  "/assets/img/jinju-coding.jpg": {
+    "src": "/assets/img/optimized/jinju-coding-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/jinju-coding-jpg-800.webp",
+    "social": "/assets/img/optimized/jinju-coding-jpg-social.jpg",
+    "width": 1121,
+    "height": 760,
+    "mobile_width": 800,
+    "original_bytes": 364252,
+    "optimized_bytes": 256888
+  },
+  "/assets/img/judgement.webp": {
+    "src": "/assets/img/optimized/judgement-webp-1600.webp",
+    "mobile": "/assets/img/optimized/judgement-webp-800.webp",
+    "social": "/assets/img/optimized/judgement-webp-social.jpg",
+    "width": 1024,
+    "height": 768,
+    "mobile_width": 800,
+    "original_bytes": 39700,
+    "optimized_bytes": 40176
+  },
+  "/assets/img/nanobot.webp": {
+    "src": "/assets/img/optimized/nanobot-webp-1600.webp",
+    "mobile": "/assets/img/optimized/nanobot-webp-800.webp",
+    "social": "/assets/img/optimized/nanobot-webp-social.jpg",
+    "width": 819,
+    "height": 534,
+    "mobile_width": 800,
+    "original_bytes": 22770,
+    "optimized_bytes": 21808
+  },
+  "/assets/img/one-life-book.png": {
+    "src": "/assets/img/optimized/one-life-book-png-1600.webp",
+    "mobile": "/assets/img/optimized/one-life-book-png-800.webp",
+    "social": "/assets/img/optimized/one-life-book-png-social.jpg",
+    "width": 1600,
+    "height": 1600,
+    "mobile_width": 800,
+    "original_bytes": 8771761,
+    "optimized_bytes": 249056
+  },
+  "/assets/img/one-life-cover.jpg": {
+    "src": "/assets/img/optimized/one-life-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/one-life-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/one-life-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 5715054,
+    "optimized_bytes": 282170
+  },
+  "/assets/img/prado.png": {
+    "src": "/assets/img/optimized/prado-png-1600.webp",
+    "mobile": "/assets/img/optimized/prado-png-800.webp",
+    "social": "/assets/img/optimized/prado-png-social.jpg",
+    "width": 600,
+    "height": 800,
+    "mobile_width": 600,
+    "original_bytes": 725052,
+    "optimized_bytes": 55218
+  },
+  "/assets/img/queen.png": {
+    "src": "/assets/img/optimized/queen-png-1600.webp",
+    "mobile": "/assets/img/optimized/queen-png-800.webp",
+    "social": "/assets/img/optimized/queen-png-social.jpg",
+    "width": 449,
+    "height": 340,
+    "mobile_width": 449,
+    "original_bytes": 283117,
+    "optimized_bytes": 37804
+  },
+  "/assets/img/smtm-book.webp": {
+    "src": "/assets/img/optimized/smtm-book-webp-1600.webp",
+    "mobile": "/assets/img/optimized/smtm-book-webp-800.webp",
+    "social": "/assets/img/optimized/smtm-book-webp-social.jpg",
+    "width": 795,
+    "height": 1122,
+    "mobile_width": 567,
+    "original_bytes": 56558,
+    "optimized_bytes": 58260
+  },
+  "/assets/img/smtm.webp": {
+    "src": "/assets/img/optimized/smtm-webp-1600.webp",
+    "mobile": "/assets/img/optimized/smtm-webp-800.webp",
+    "social": "/assets/img/optimized/smtm-webp-social.jpg",
+    "width": 587,
+    "height": 554,
+    "mobile_width": 587,
+    "original_bytes": 9870,
+    "optimized_bytes": 10194
+  },
+  "/assets/img/tviewer.webp": {
+    "src": "/assets/img/optimized/tviewer-webp-1600.webp",
+    "mobile": "/assets/img/optimized/tviewer-webp-800.webp",
+    "social": "/assets/img/optimized/tviewer-webp-social.jpg",
+    "width": 1134,
+    "height": 783,
+    "mobile_width": 800,
+    "original_bytes": 167828,
+    "optimized_bytes": 171898
+  },
+  "/assets/img/ubermensch-book.jpg": {
+    "src": "/assets/img/optimized/ubermensch-book-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/ubermensch-book-jpg-800.webp",
+    "social": "/assets/img/optimized/ubermensch-book-jpg-social.jpg",
+    "width": 1587,
+    "height": 1600,
+    "mobile_width": 793,
+    "original_bytes": 2628937,
+    "optimized_bytes": 164550
+  },
+  "/assets/img/ubermensch-cover.jpg": {
+    "src": "/assets/img/optimized/ubermensch-cover-jpg-1600.webp",
+    "mobile": "/assets/img/optimized/ubermensch-cover-jpg-800.webp",
+    "social": "/assets/img/optimized/ubermensch-cover-jpg-social.jpg",
+    "width": 1200,
+    "height": 1600,
+    "mobile_width": 600,
+    "original_bytes": 5837707,
+    "optimized_bytes": 155346
+  }
+}

@@ -14,7 +14,7 @@
     <div class="project-list">
       {% for project in site.data.projects %}
         <a class="project-card" href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
-          <img class="project-card-image" src="{{ project.image | relative_url }}" alt="{{ project.alt }}" loading="lazy" width="160" height="112">
+          {% include responsive-image.html src=project.image alt=project.alt class="project-card-image" sizes="160px" %}
           <span class="project-card-copy">
             <span class="project-label">{{ project.label }}</span>
             <strong>{{ project.title }}</strong>

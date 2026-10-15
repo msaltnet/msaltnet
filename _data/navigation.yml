@@ -1,0 +1,18 @@
+- key: reviews
+  title: "감상문"
+  url: /reviews/
+  description: "책을 읽고 마음에 남은 문장과 질문을 기록합니다. 줄거리 너머에서 내 경험과 이어지는 생각을 나눕니다."
+- key: thoughts
+  title: "생각"
+  url: /thoughts/
+  description: "일하고 살아가며 마주한 변화와 질문들. 쉽게 답을 내리기보다 내 언어로 천천히 생각해 봅니다."
+- key: ai-development
+  title: "AI와 개발"
+  url: /ai-development/
+  description: "소프트웨어를 설계하고 AI를 일상에 활용하며 얻은 경험을 적습니다. 직접 써 보고 만들면서 알게 된 것들을 나눕니다."
+- key: projects
+  title: "프로젝트"
+  url: /projects/
+- key: about
+  title: "소개"
+  url: /about/

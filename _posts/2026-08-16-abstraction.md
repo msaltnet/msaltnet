@@ -1,7 +1,9 @@
 ---
 title: "추상화 잘하는 사람"
 date: 2026-08-16
+last_modified_at: 2026-08-17T18:26:31+09:00
 description: "SW를 잘하려면 당연히 추상화를 잘해야하고, 성공하려면 당연히 추상화를 잘해야 한다."
+section: ai-development
 sidebar_feature: false
 ---
 
@@ -17,7 +19,7 @@ OSI 7 Layer, User Interface, Platform처럼 우리가 아는 많은 용어들이
 
 나는 내가 쓴 첫 책에서도 몇 장을 할애해서 추상화에 대해서 소개했다.
 
-![abstraction](/assets/img/image-1.png)
+{% include responsive-image.html src="/assets/img/image-1.png" alt="abstraction" priority=true %}
 
 암호화폐 가상매매 시스템 만드는 책인데, SW 개발에 대한 온갖 생각을 쏟아 부었던 것 같다.
 

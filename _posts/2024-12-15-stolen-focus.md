@@ -2,15 +2,16 @@
 title: "도둑맞은 집중력"
 date: 2024-12-15
 description: "《도둑맞은 집중력》을 읽으며 집중력의 위기와 삶의 주도권을 되찾는 방법을 생각했다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/brunch-15-cover.jpg
 ---
 
-![도둑맞은 집중력 글 표지](/assets/img/brunch-15-cover.jpg)
+{% include responsive-image.html src="/assets/img/brunch-15-cover.jpg" alt="도둑맞은 집중력 글 표지" priority=true %}
 
 집중력 위기의 시대, 삶의 주도권을 되찾는 법이라는 부제가 붙어있는데 과연 성공할 수 있을까? 술 담배 하지 말고 꾸준히 운동하고 일찍 자야 건강하다는 것은 나도 아는데, 그런 이야기하려는 것은 아니겠지? 의심을 거두지 못한 채로 읽기 시작했다.
 
-![도둑맞은 집중력 본문 사진 1](/assets/img/brunch-15-image-01.jpg)
+{% include responsive-image.html src="/assets/img/brunch-15-image-01.jpg" alt="도둑맞은 집중력 본문 사진 1" %}
 
 ## 에필로그부터
 
@@ -38,7 +39,7 @@ image: /assets/img/brunch-15-cover.jpg
 
 내가 절제력이 부족한 편이긴 하지만 SNS를 썩 좋아하지 않는 사람이고, 다른 사람 일상에 호기심이 많은 편도 아닌데 한 번 시작하면 좀처럼 빠져나오기 어려운 것이 SNS 서비스다. 시작을 안 하면 일주일, 한 달을 접속하지 않아도 별문제가 없는데, 오래간만에 한 번 들어가게 되면 쉽게 빠져나오질 못한다. 책에서는 이것이 바로 무한 스크롤이라는 혁신적인 기술 때문이라고 소개하고 있다. 언젠가부터 대부분의 서비스는 이렇게 구성되어 있다. 효과가 강력한 만큼 너도 나도 무한 스크롤 기술을 사용한다. 동영상도, 노래도 마찬가지다. 이제 긴 콘텐츠는 소비되기 어려워지고 있다. 최대 1분의 동영상을 공유하는 플랫폼에 동영상도 점점 시간이 짧아지고 있다. 요즘 나오는 신곡들도 계속 짧아지고 있는데, 음악 사이트 10위까지 곡 중 절반이 3분 미만의 짧은 곡이다. 가장 짧은 제니의 만트라는 2분 16초다.
 
-![도둑맞은 집중력 본문 사진 2](/assets/img/brunch-15-image-02.png)
+{% include responsive-image.html src="/assets/img/brunch-15-image-02.png" alt="도둑맞은 집중력 본문 사진 2" %}
 
 [러닝타임](https://namu.wiki/w/%EB%9F%AC%EB%8B%9D%ED%83%80%EC%9E%84)
 

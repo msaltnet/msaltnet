@@ -2,6 +2,7 @@
 title: "젊은 시인에게 주는 충고"
 date: 2026-08-10
 description: "때때로 검색과 댓글의 성급한 해답 말고, 온전히 내 자신의 해답이 필요하다."
+section: thoughts
 sidebar_feature: true
 ---
 

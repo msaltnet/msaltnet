@@ -1,7 +1,8 @@
 <header class="site-header{% if include.home %} site-header--home{% endif %}">
   <a class="wordmark{% if include.home %} wordmark--mobile{% endif %}" href="{{ '/' | relative_url }}">맛소금</a>
   <nav aria-label="주요 메뉴">
-    <a href="{{ '/' | relative_url }}#project">Project</a>
-    <a href="{{ '/' | relative_url }}#article">Article</a>
+    {% for item in site.data.navigation %}
+      <a href="{{ item.url | relative_url }}"{% if page.section == item.key %} aria-current="page"{% endif %}>{{ item.title }}</a>
+    {% endfor %}
   </nav>
 </header>

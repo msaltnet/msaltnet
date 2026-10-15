@@ -74,7 +74,7 @@ class BuiltSiteTest(unittest.TestCase):
             if "name" in item
         }
 
-        expected_image = "https://msalt.net/assets/img/hero-bg.jpg"
+        expected_image = "https://msalt.net/assets/img/optimized/hero-bg-jpg-social.jpg"
         self.assertEqual(meta_by_property.get("og:image"), expected_image)
         self.assertEqual(meta_by_property.get("twitter:image"), expected_image)
         self.assertEqual(meta_by_name.get("twitter:card"), "summary_large_image")
@@ -112,11 +112,11 @@ class BuiltSiteTest(unittest.TestCase):
 
     def test_korean_fonts_are_served_locally(self):
         html = (SITE / "index.html").read_text(encoding="utf-8")
-        css = (SITE / "assets/css/style.css").read_text(encoding="utf-8")
+        css = (SITE / "assets/css/fonts.css").read_text(encoding="utf-8")
         self.assertNotIn("fonts.googleapis.com", html)
         self.assertIn('@font-face', css)
-        self.assertIn('url("../fonts/ibm-plex-sans-kr-400.woff2")', css)
-        self.assertIn('url("../fonts/noto-serif-kr-400.woff2")', css)
+        self.assertIn('url("../fonts/subsets/ibm-plex-sans-kr-400-0.woff2")', css)
+        self.assertIn('url("../fonts/subsets/noto-serif-kr-400-0.woff2")', css)
 
     def test_development_files_and_legacy_vendor_assets_are_not_deployed(self):
         excluded_paths = [

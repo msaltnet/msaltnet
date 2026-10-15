@@ -2,12 +2,13 @@
 title: "예상되는 결과의 중간 길목에 서서"
 date: 2026-09-19
 description: "유난히 더 빠른것 같은 변화의 중간에서 나는 어디쯤 있나. 너무 앞서가는 것도 문제가 될 수 있는데, 타이밍 맞추기 쉽지 않네."
+section: thoughts
 sidebar_feature: false
 ---
 
 이상한 나라 엘리스에서는 붉은 여왕이 엘리스를 데리고 힘껏 달리면서, 같은 곳에 있으려면 쉬지 않고 달려야 하고, 어디론가 다른 데로 가려면 적어도 그보다 두 배는 빨리 달려야 한다고 했다.
 
-![red queen](/assets/img/queen.png)
+{% include responsive-image.html src="/assets/img/queen.png" alt="red queen" priority=true %}
 
 심지어 붉은 여왕 가설이라는 것도 있다.
 
@@ -17,7 +18,7 @@ sidebar_feature: false
 
 AI, AX의 광풍이 저만치에서 밀려오는 것 같다. 우리나라, 우리 회사는 이제 시작인것 같은데, 어떻게 되려나.
 
-![call center](/assets/img/call-center.png)
+{% include responsive-image.html src="/assets/img/call-center.png" alt="call center" %}
 
 콜센터가 사라질 것이라는 말은 정말 오래전부터 들려왔고, 어느 정도 현실이 되었다. 이름이 컨텍센터로 변경된 것도 한 몫함.
 

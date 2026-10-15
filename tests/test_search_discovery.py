@@ -56,6 +56,7 @@ class SearchDiscoveryTest(unittest.TestCase):
         tree = ET.fromstring(self.read("sitemap.xml"))
         urls = [node.text for node in tree.findall("s:url/s:loc", NS)]
         expected = {ORIGIN + "/"}
+        expected.update(ORIGIN + path for path in ['/reviews/', '/thoughts/', '/ai-development/', '/projects/', '/about/'])
         expected.update(ORIGIN + "/article/" + path.stem[11:] + "/"
                         for path in (ROOT / "_posts").glob("*.md"))
         self.assertEqual(set(urls), expected)
@@ -83,9 +84,9 @@ class SearchDiscoveryTest(unittest.TestCase):
                 self.assertEqual(article["author"]["name"], "맛소금")
                 self.assertEqual(article["author"]["url"], ORIGIN + "/")
                 self.assertEqual(article["datePublished"][:10], source.name[:10])
-                for image in page.images:
+                for index, image in enumerate(page.images):
                     self.assertTrue(image.get("alt"))
-                    self.assertEqual(image.get("loading"), "lazy")
+                    self.assertEqual(image.get("loading"), "eager" if index == 0 else "lazy")
                     self.assertEqual(image.get("decoding"), "async")
 
     def test_search_and_ai_bots_can_fetch_public_resources(self):

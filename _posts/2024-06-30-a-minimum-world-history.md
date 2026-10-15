@@ -2,11 +2,12 @@
 title: "요즘 어른을 위한 최소한의 세계사"
 date: 2024-06-30
 description: "《요즘 어른을 위한 최소한의 세계사》를 읽으며 역사를 짧게 요약해서 이해하는 방법과 그 한계를 생각했다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/brunch-10-cover.webp
 ---
 
-![요즘 어른을 위한 최소한의 세계사 글 표지](/assets/img/brunch-10-cover.webp)
+{% include responsive-image.html src="/assets/img/brunch-10-cover.webp" alt="요즘 어른을 위한 최소한의 세계사 글 표지" priority=true %}
 
 요즘은 드라마나 TV 시리즈도 유튭에서 요약본을 보는 것이 유행이라고 하던데, 그래서 그런지 세계사에 대한 요약본도 나왔다. 요즘 어른을 위한 최소한의 세계사는 그런 요약본 중 하나이다. 16부작 TV 시리즈를 1~2시간에 담아내는 것이 요약본인 것처럼, 이 책도 엄청난 압축을 통해서 세계사를 단숨에 읽을 수 있게 만들어 주는 책이다. 사실 압축을 넘어서 거의 메타 정보 수준이다. 어려운 내용이 없고, 시간이나 사건의 흐름을 파악하기 좋게 정리하였으며 읽기 쉽게 풀어써서 누구든 한 두 시간이면 뚝딱 말그대로 최소한의 세계사를 경험 할 수 있게 해준다.
 

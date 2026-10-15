@@ -12,12 +12,15 @@ sitemap: false
 ## 사이트
 
 - [홈과 글 목록]({{ '/' | absolute_url }}): 맛소금 소개와 전체 글 목록
+{% for item in site.data.navigation %}
+- [{{ item.title }}]({{ item.url | absolute_url }}){% if item.description %}: {{ item.description }}{% endif %}
+{% endfor %}
 - [사이트맵]({{ '/sitemap.xml' | absolute_url }}): 공개 페이지의 정식 URL
 - [Atom 피드]({{ '/feed.xml' | absolute_url }}): 최근 글과 본문
 
 ## 글
 {% for post in site.posts %}{% unless post.sitemap == false %}
-- [{{ post.title | replace: '[', '(' | replace: ']', ')' }}]({{ post.url | absolute_url }}): {{ post.date | date: '%Y-%m-%d' }} — {{ post.description | strip_html | strip_newlines }}
+- [{{ post.title | replace: '[', '(' | replace: ']', ')' }}]({{ post.url | absolute_url }}): {{ post.date | date: '%Y-%m-%d' }}{% if post.last_modified_at %}, 수정 {{ post.last_modified_at | date: '%Y-%m-%d' }}{% endif %} — {{ post.description | strip_html | strip_newlines }}
 {% endunless %}{% endfor %}
 ## 프로젝트
 {% for project in site.data.projects %}

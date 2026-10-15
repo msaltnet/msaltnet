@@ -2,11 +2,12 @@
 title: "소년이 온다"
 date: 2025-05-11
 description: "한강의 《소년이 온다》를 읽으며 광주 민주화 운동과 아물지 않는 기억을 돌아봤다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/human-acts-cover.jpg
 ---
 
-![《소년이 온다》 글 표지](/assets/img/human-acts-cover.jpg)
+{% include responsive-image.html src="/assets/img/human-acts-cover.jpg" alt="《소년이 온다》 글 표지" priority=true %}
 
 요즘 보고 있는 드라마 '폭싹 속았수다'는 일주일에 한 회씩만 본다. 감정 소모가 너무 심해서, 아내랑 한 회를 보고 나면, 누가 먼저랄 것도 없이 다음 화가 시작되기 전에 '그만 볼까?' 말을 꺼낸다. 이 책도 내 가방에서 한 달을 살았다. 이 얇은 소설책을 한 달이나 가방에 넣어 가지고 다니면서도, 찔끔찔끔 볼 수밖에 없었다. 책은 처음부터 끝까지 폭력 앞에 무기력함과 우울함, 자책과 안타까움 뿐이었다. 일말의 희망도 없었고, 살면 살아진다는 위로도 없었다. 애써 외면하려는 농담 섞인 대화도 없고, 상갓집에서도 들을 수 있는 웃음소리 하나를 볼 수가 없는 책이었다.
 

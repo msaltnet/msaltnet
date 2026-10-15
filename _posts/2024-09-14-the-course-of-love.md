@@ -2,15 +2,16 @@
 title: "낭만적 연애와 그 후의 일상"
 date: 2024-09-14
 description: "알랭 드 보통의 《낭만적 연애와 그 후의 일상》을 읽으며 낭만적 사랑과 결혼 후의 일상을 생각했다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/brunch-12-cover.jpg
 ---
 
-![낭만적 연애와 그 후의 일상 글 표지](/assets/img/brunch-12-cover.jpg)
+{% include responsive-image.html src="/assets/img/brunch-12-cover.jpg" alt="낭만적 연애와 그 후의 일상 글 표지" priority=true %}
 
 어느 날 문득 "우리는 사랑일까"를 아주 재미있게 읽었던 기억이 떠올라서 다시 알랭 드 보통의 연애 소설을 찾아보게 되었다. 그의 소설을 읽을 때면 소설이 아니라 일기나 에세이 같다는 느낌이 들 정도로 심리묘사가 세밀하다. 정말이지 이건 본인의 이야기인 것이 확실하다는 의심을 몇 번이나 갖게 만든다. 그리고 매우 격하게 공감되는 감정 표현과 심리 묘사가 곳곳에 배치되어 있다. 재치 있고, 풍부한 묘사와 표현 덕에 소설을 읽으면서도 로맨틱 코미디 영화를 보고 있는 기분이 들기도 한다.
 
-![낭만적 연애와 그 후의 일상 본문 사진 1](/assets/img/brunch-12-image-01.jpg)
+{% include responsive-image.html src="/assets/img/brunch-12-image-01.jpg" alt="낭만적 연애와 그 후의 일상 본문 사진 1" %}
 
 ## **낭만적 연애**
 

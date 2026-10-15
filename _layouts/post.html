@@ -5,12 +5,14 @@ body_class: article-page
 {% include site-nav.html %}
 <main class="post-shell" id="main-content">
   <article class="post">
-    <a class="back-link" href="{{ '/' | relative_url }}#article">Article 목록</a>
+    {% assign topic = site.data.navigation | where: "key", page.section | first %}
+    <a class="back-link" href="{% if topic %}{{ topic.url | relative_url }}{% else %}{{ '/' | relative_url }}#article{% endif %}">{% if topic %}{{ topic.title }}{% else %}전체 글{% endif %} 목록</a>
     <p class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time> · <a href="{{ site.author.url }}" rel="author">{{ site.author.name }}</a></p>
+    {% if page.last_modified_at %}<p class="post-date">수정 <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%Y.%m.%d" }}</time></p>{% endif %}
     <h1>{{ page.title }}</h1>
-    <div class="post-content">{{ content | replace: '<img src=', '<img loading="lazy" decoding="async" src=' }}</div>
+    <div class="post-content">{{ content }}</div>
     <nav class="post-actions" aria-label="글 탐색">
-      <a class="post-action" href="{{ '/' | relative_url }}#article">목록으로 가기</a>
+      <a class="post-action" href="{% if topic %}{{ topic.url | relative_url }}{% else %}{{ '/' | relative_url }}#article{% endif %}">목록으로 가기</a>
       <a class="post-action" href="#main-content">위로 가기</a>
     </nav>
   </article>

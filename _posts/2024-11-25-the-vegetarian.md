@@ -2,15 +2,16 @@
 title: "채식주의자"
 date: 2024-11-25
 description: "한강의 《채식주의자》를 읽으며 창작의 시간과 영혜 같은 사람들, 불편함을 돌아봤다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/brunch-14-cover.jpg
 ---
 
-![채식주의자 글 표지](/assets/img/brunch-14-cover.jpg)
+{% include responsive-image.html src="/assets/img/brunch-14-cover.jpg" alt="채식주의자 글 표지" priority=true %}
 
 늦은 퇴근길에 회사 단톡방에 메시지가 하나 올라왔다. "제가 살아 있는 동안 한국에서 노벨상이 나올 줄은..." 이어진 사람들의 대화와 뉴스 기사를 보고 나는 바로 알라딘에 접속해서 책을 주문했다. 낮 시간이었다면 아마 주식도 얼른 주문했을 것이다. 어쩌다 이렇게 단순하게 반응하는 사람이 되었는지 모르겠지만, 단순하고 지루한 쳇바퀴 같은 일상에 오랜만에 문학이 한 컵 와락 쏟아졌다.
 
-![채식주의자 본문 사진 1](/assets/img/brunch-14-image-01.jpg)
+{% include responsive-image.html src="/assets/img/brunch-14-image-01.jpg" alt="채식주의자 본문 사진 1" %}
 
 ## **Roll-out**
 

@@ -1,0 +1,14 @@
+---
+layout: page
+---
+{% assign topic_posts = site.posts | where: "section", page.section %}
+<p class="archive-count">{{ topic_posts.size }}편의 글</p>
+<div class="article-list">
+  {% for post in topic_posts %}
+    <a href="{{ post.url | relative_url }}">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+      <strong>{{ post.title }}</strong>
+      <span>{{ post.description }}</span>
+    </a>
+  {% endfor %}
+</div>

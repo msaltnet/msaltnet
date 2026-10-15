@@ -4,10 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% include gtm-head.html %}
-  {% seo %}
+  {% capture seo_metadata %}{% seo %}{% endcapture %}
+  {% assign social_image = site.data.images[page.image] %}
+  {% if social_image %}
+    {% assign original_image_url = page.image | absolute_url %}
+    {% assign social_image_url = social_image.social | absolute_url %}
+    {{ seo_metadata | replace: original_image_url, social_image_url }}
+  {% else %}
+    {{ seo_metadata }}
+  {% endif %}
   <meta name="robots" content="{{ page.robots | default: 'index, follow, max-image-preview:large' | escape }}">
   {% feed_meta %}
   <link rel="icon" href="{{ '/assets/img/msaltnet.ico' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 </head>

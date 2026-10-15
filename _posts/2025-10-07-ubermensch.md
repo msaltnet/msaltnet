@@ -2,11 +2,12 @@
 title: "위버맨쉬"
 date: 2025-10-07
 description: "《위버맨쉬》를 읽으며 자기 극복과 성장, 감사와 사과, 진심과 진실에 대해 생각했다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/ubermensch-cover.jpg
 ---
 
-![《위버맨쉬》 글 표지](/assets/img/ubermensch-cover.jpg)
+{% include responsive-image.html src="/assets/img/ubermensch-cover.jpg" alt="《위버맨쉬》 글 표지" priority=true %}
 
 자기 개발서는 웬만해서는 읽지 않는 편인데, 회사 업무가 급격하게 변화하면서 약간의 혼란이 있었고 그 혼란 속에서 우연이 눈에 들어온 책 소개 글이 나를 사로잡았다.
 
@@ -42,7 +43,7 @@ image: /assets/img/ubermensch-cover.jpg
 
 사회생활을 하다 보니 때때로 그 말의 무게를 생각해서 망설이는 신중함을 이해할 수는 있다만, 그 말의 무게를 온전히 책임지겠다는 의지를 담아 할 수 있는 말이란 걸 알기에 진심을 담은 감사와 사과를 잘하는 사람은 언제나 참 멋있어 보인다.
 
-![《위버맨쉬》 책 사진](/assets/img/ubermensch-book.jpg)
+{% include responsive-image.html src="/assets/img/ubermensch-book.jpg" alt="《위버맨쉬》 책 사진" %}
 
 ## 진심이 꼭 진실은 아니다
 

@@ -2,11 +2,12 @@
 title: "요리를 한다는 것"
 date: 2026-05-10
 description: "최강록 요리사의 에세이를 읽으며, 요리와 프로그래밍으로 이어지는 삶의 이야기를 생각했다."
+section: reviews
 sidebar_feature: false
 image: /assets/img/cooking-book-review.jpg
 ---
 
-![최강록 요리사의 에세이 《요리를 한다는 것》](/assets/img/cooking-book-review.jpg)
+{% include responsive-image.html src="/assets/img/cooking-book-review.jpg" alt="최강록 요리사의 에세이 《요리를 한다는 것》" priority=true %}
 
 흑백요리사 2 우승자 최강록 요리사의 에세이인데, 참 재미있게 읽었다. 일단 재미있고, 본인의 말투를 그대로 글로 옮겨놔서 마치 목소리가 들리는 듯하다. 대필은 확실히 아님ㅋ 공감되는 부분이 굉장히 많았는데, 전체적으로 삶의 흐름이 나랑 비슷한 부분이 많다는 생각이 들면서 더욱 공감이 많이 되었다. 책을 읽고 나서 나도 비슷한 책을 꼭 써야겠다는 생각이 들었고, 어떻게든 올해 아주 짧게라도 비슷한 형식으로 책 또는 책자로라도 나의 프로그래밍 인생에 대한 에세이를 남겨보고 싶다는 생각이다.
 
