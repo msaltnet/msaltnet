@@ -8,7 +8,6 @@ SITE = ROOT / "_site"
 PROJECT_URLS = {
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
-    "https://nanobot.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
     "https://brunch.co.kr/@msaltnet",
     "https://blog.msalt.net/",
@@ -95,7 +94,7 @@ class BuiltSiteTest(unittest.TestCase):
             for image in self.home.images
             if "project-card-image" in image.get("class", "")
         ]
-        self.assertEqual(len(project_images), 8)
+        self.assertEqual(len(project_images), 7)
         self.assertTrue(all(image.get("alt", "").strip() for image in project_images))
 
     def test_first_article_contains_poem_and_personal_note(self):
