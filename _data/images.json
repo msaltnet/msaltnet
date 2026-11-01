@@ -1,4 +1,14 @@
 {
+  "/assets/img/ax-notes.png": {
+    "src": "/assets/img/optimized/ax-notes-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-notes-png-800.webp",
+    "social": "/assets/img/optimized/ax-notes-png-social.jpg",
+    "width": 180,
+    "height": 180,
+    "mobile_width": 180,
+    "original_bytes": 5577,
+    "optimized_bytes": 2636
+  },
   "/assets/img/brunch-10-cover.webp": {
     "src": "/assets/img/optimized/brunch-10-cover-webp-1600.webp",
     "mobile": "/assets/img/optimized/brunch-10-cover-webp-800.webp",

@@ -88,7 +88,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(7);
+  await expect(page.locator('.project-card')).toHaveCount(8);
   await expectProjectCardsToHaveOneHeight(page, 96);
   await expectProjectCardChildrenToBeContained(page);
 
@@ -162,7 +162,7 @@ test('search and AI discovery work without JavaScript', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4173/');
   await expect(page.locator('#article')).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(7);
+  await expect(page.locator('.project-card')).toHaveCount(8);
   await page.goto('http://127.0.0.1:4173/article/cooking-book-review/');
   await expect(page.getByRole('heading', { level: 1, name: '요리를 한다는 것' })).toBeVisible();
   await expect(page.locator('a[rel="author"]')).toHaveText('맛소금');

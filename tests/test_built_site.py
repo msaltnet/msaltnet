@@ -6,6 +6,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 PROJECT_URLS = {
+    "https://ax.msalt.net",
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
@@ -94,7 +95,7 @@ class BuiltSiteTest(unittest.TestCase):
             for image in self.home.images
             if "project-card-image" in image.get("class", "")
         ]
-        self.assertEqual(len(project_images), 7)
+        self.assertEqual(len(project_images), 8)
         self.assertTrue(all(image.get("alt", "").strip() for image in project_images))
 
     def test_first_article_contains_poem_and_personal_note(self):
