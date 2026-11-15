@@ -11,8 +11,6 @@ from pathlib import Path
 import re
 
 from PIL import Image, ImageOps
-from fontTools import subset
-from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parents[1]
 IMAGE_BUDGET = 350_000
@@ -84,6 +82,8 @@ def unicode_ranges(codepoints):
 
 
 def prepare_fonts():
+    from fontTools import subset
+    from fontTools.ttLib import TTFont
     # Common glyphs come from all published source content. Remaining glyphs are
     # partitioned too: new posts retain Korean/Hanja/punctuation coverage without
     # downloading an entire original font or requiring a build plugin.

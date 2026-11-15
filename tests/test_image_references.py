@@ -11,7 +11,7 @@ class ImageReferencesTest(unittest.TestCase):
         sources = list((ROOT / '_posts').glob('*.md')) + [ROOT / '_data/projects.yml']
         references = set()
         for source in sources:
-            references.update(re.findall(r'/assets/img/[\w.-]+\.(?:jpg|jpeg|png|webp)', source.read_text(encoding='utf-8')))
+            references.update(re.findall(r'(?:src=|image:\s*)["\']?(/assets/img/[\w.-]+\.(?:jpg|jpeg|png|webp))', source.read_text(encoding='utf-8')))
         for reference in sorted(references):
             with self.subTest(image=reference):
                 self.assertIn(reference, metadata)

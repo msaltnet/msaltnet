@@ -53,24 +53,24 @@ npm run test:e2e
 
 ## 이미지와 웹폰트 관리
 
-이미지와 폰트 파생 파일은 Git에 포함하므로 GitHub Pages에서 별도 Python 플러그인 없이 빌드합니다. 원본 이미지와 원본 폰트는 기존 URL 호환성과 재생성을 위해 유지합니다.
+이미지 파일을 `assets/img`에 추가하고 글에 일반 마크다운으로 첨부합니다.
+
+```markdown
+![이미지 설명](/assets/img/example.jpg)
+```
+
+기본 브랜치 배포 시 GitHub Actions가 이미지를 최적화하고, 본문에 반응형 크기와 로딩 설정을 자동으로 적용합니다. 원본 이미지도 함께 배포되므로 최적화 정보가 없는 로컬 빌드에서도 이미지가 표시됩니다. 첫 배포 전에 GitHub 저장소 Settings → Pages → Build and deployment의 Source를 **GitHub Actions**로 설정해야 합니다.
+
+로컬에서도 배포 결과를 확인하려면 Pillow 설치 후 다음을 실행합니다.
 
 ```bash
-python -m venv --system-site-packages .venv
-# Windows: .venv/Scripts/python.exe / macOS·Linux: .venv/bin/python
-.venv/Scripts/python.exe -m pip install -r scripts/asset-requirements.txt
-.venv/Scripts/python.exe scripts/prepare_assets.py
+python -m pip install Pillow==12.1.0
+python -c "from scripts.prepare_assets import prepare_images; prepare_images()"
+bundle exec jekyll build
+python scripts/optimize_html_images.py
 ```
 
-새 이미지가 생기거나 글을 추가·수정하면 위 생성 명령을 다시 실행하고 `_data/images.json`, `_data/font_subsets.json`, `assets/img/optimized`, `assets/fonts/subsets`, `assets/css/fonts.css`를 함께 반영합니다. 기존 글자 전체를 분할한 폰트도 제공하므로 아직 공통 묶음에 없는 한글·한자도 표시할 수 있습니다. 각 공통 폰트는 200KB 이하, 각 이미지 파생 파일은 350KB 이하로 검증합니다.
-
-본문 이미지에는 다음 include를 사용합니다. 첫 이미지는 `priority=true`, 나머지는 생략합니다. 설명은 이미지의 실제 내용으로 작성합니다.
-
-```liquid
-{% include responsive-image.html src="/assets/img/example.jpg" alt="이미지 설명" priority=true %}
-```
-
-원본 종횡비와 EXIF 회전을 유지하며 긴 변을 최대 1600px와 800px로 제한한 WebP를 생성합니다. include가 `srcset`, `sizes`, 실제 `width`·`height`를 넣어 모바일 다운로드와 레이아웃 이동을 줄입니다. 첫 이미지는 즉시 로드하고 나머지는 지연 로드합니다. 소셜 공유 메타데이터에는 최대 1200px JPEG를 사용합니다. 글 front matter의 `image`는 원본 URL을 유지하며 SEO 출력 시 최적화된 공유 이미지 URL로 변환합니다.
+기존 글의 `responsive-image.html` include도 계속 사용할 수 있습니다. 글의 대표 이미지를 공유 미리보기에도 사용하려면 front matter에 `image: /assets/img/example.jpg`를 추가합니다. 웹폰트 갱신이 필요할 때는 `scripts/asset-requirements.txt`의 의존성을 설치하고 `python scripts/prepare_assets.py`를 실행합니다.
 
 ### 실제 수정일의 근거
 
