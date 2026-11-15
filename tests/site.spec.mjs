@@ -177,3 +177,23 @@ test('search and AI discovery work without JavaScript', async ({ browser }) => {
   }
   await context.close();
 });
+
+test('article images load without distortion at narrow and wide widths', async ({ page }) => {
+  for (const width of [320, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const path of ['/article/naming-nature/', '/article/same-as-ever/']) {
+      await page.goto(path);
+      const images = page.locator('.post-content img');
+      expect(await images.count()).toBeGreaterThan(0);
+      for (const image of await images.all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+        const dimensions = await image.evaluate((img) => ({
+          rendered: img.getBoundingClientRect().width / img.getBoundingClientRect().height,
+          natural: img.naturalWidth / img.naturalHeight,
+        }));
+        expect(Math.abs(dimensions.rendered - dimensions.natural)).toBeLessThan(0.01);
+      }
+    }
+  }
+});

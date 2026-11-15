@@ -459,6 +459,16 @@
     "original_bytes": 283117,
     "optimized_bytes": 37804
   },
+  "/assets/img/same-as-ever.png": {
+    "src": "/assets/img/optimized/same-as-ever-png-1600.webp",
+    "mobile": "/assets/img/optimized/same-as-ever-png-800.webp",
+    "social": "/assets/img/optimized/same-as-ever-png-social.jpg",
+    "width": 600,
+    "height": 800,
+    "mobile_width": 600,
+    "original_bytes": 457904,
+    "optimized_bytes": 51318
+  },
   "/assets/img/smtm-book.webp": {
     "src": "/assets/img/optimized/smtm-book-webp-1600.webp",
     "mobile": "/assets/img/optimized/smtm-book-webp-800.webp",
