@@ -349,6 +349,16 @@
     "original_bytes": 193194,
     "optimized_bytes": 135850
   },
+  "/assets/img/give-and-take.png": {
+    "src": "/assets/img/optimized/give-and-take-png-1600.webp",
+    "mobile": "/assets/img/optimized/give-and-take-png-800.webp",
+    "social": "/assets/img/optimized/give-and-take-png-social.jpg",
+    "width": 600,
+    "height": 800,
+    "mobile_width": 600,
+    "original_bytes": 772039,
+    "optimized_bytes": 71486
+  },
   "/assets/img/hero-bg.jpg": {
     "src": "/assets/img/optimized/hero-bg-jpg-1600.webp",
     "mobile": "/assets/img/optimized/hero-bg-jpg-800.webp",
