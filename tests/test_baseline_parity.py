@@ -17,10 +17,18 @@ snapshot = _module.snapshot
 ADDED_PAGES = {"search/index.html", "app-privacy/index.html"}
 ADDED_FILE_PREFIXES = ("app/v1/", "pagefind/")
 ADDED_NAV = []  # Menu items appended after the baseline navigation.
+# Jekyll emitted the raw invalid tag "<연금술사>", which browsers show as text; Astro escapes it (same visible text).
+# kramdown and Astro's smartypants disagree on the direction of one apostrophe after an ellipsis.
+KNOWN_TEXT_FIXES = {
+    "article/give-and-take/index.html": [("< 연금술사>", "<연금술사>")],
+    "article/stolen-focus/index.html": [("저거…‘라는", "저거…’라는")],
+}
 
 
-def expected_page(baseline_page):
+def expected_page(path, baseline_page):
     page = json.loads(json.dumps(baseline_page))
+    for old, new in KNOWN_TEXT_FIXES.get(path, []):
+        page["main_text"] = page["main_text"].replace(old, new)
     if page["nav"]:
         page["nav"] = page["nav"] + ADDED_NAV
     return page
@@ -35,7 +43,7 @@ class BaselineParityTest(unittest.TestCase):
         for path, baseline_page in BASELINE["pages"].items():
             with self.subTest(page=path):
                 self.assertIn(path, self.current["pages"])
-                self.assertEqual(self.current["pages"][path], expected_page(baseline_page))
+                self.assertEqual(self.current["pages"][path], expected_page(path, baseline_page))
 
     def test_no_unexpected_new_pages_or_files(self):
         new_pages = set(self.current["pages"]) - set(BASELINE["pages"])

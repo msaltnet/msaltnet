@@ -1,0 +1,37 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import { getSiteContent, displayDate, isoDate, type Post } from '../../lib/data';
+import { categories } from '../../lib/site-data';
+import { SITE } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const { posts } = await getSiteContent();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props as { post: Post };
+const { Content } = await render(post);
+const topic = categories().find((item) => item.key === post.data.category);
+const listUrl = topic ? topic.url : '/#article';
+const listTitle = topic ? topic.title : '전체 글';
+---
+<BaseLayout seo={{
+  title: post.data.title, description: post.data.description, path: `/article/${post.id}/`, kind: 'article',
+  image: post.data.image ?? SITE.defaultImage, datePublished: post.data.date, dateModified: post.data.last_modified_at,
+}}>
+<SiteNav current={post.data.category} />
+<main class="post-shell" id="main-content">
+  <article class="post">
+    <a class="back-link" href={listUrl}>{listTitle} 목록</a>
+    <p class="post-date"><time datetime={isoDate(post.data.date)}>{displayDate(post.data.date)}</time> · <a href={SITE.authorUrl} rel="author">{SITE.title}</a></p>
+    {post.data.last_modified_at && <p class="post-date">수정 <time datetime={isoDate(post.data.last_modified_at)}>{displayDate(post.data.last_modified_at)}</time></p>}
+    <h1>{post.data.title}</h1>
+    <div class="post-content"><Content /></div>
+    <nav class="post-actions" aria-label="글 탐색">
+      <a class="post-action" href={listUrl}>목록으로 가기</a>
+      <a class="post-action" href="#main-content">위로 가기</a>
+    </nav>
+  </article>
+</main>
+</BaseLayout>

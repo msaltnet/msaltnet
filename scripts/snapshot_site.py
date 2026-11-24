@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 IGNORED_META = {"generator"}
+VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 IMG_ATTRS = ("src", "alt", "loading", "srcset", "sizes", "width", "height")
 ATOM = "{http://www.w3.org/2005/Atom}"
 SITEMAP = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
@@ -37,7 +38,7 @@ class PageParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        if self._main_depth:
+        if self._main_depth and tag not in VOID:
             self._main_depth += 1
         if tag == "main":
             self._main_depth = max(self._main_depth, 1)
@@ -68,8 +69,13 @@ class PageParser(HTMLParser):
         elif tag == "img":
             self.img.append({key: attrs.get(key) for key in IMG_ATTRS})
 
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        if tag not in VOID:
+            self.handle_endtag(tag)
+
     def handle_endtag(self, tag):
-        if self._main_depth:
+        if self._main_depth and tag not in VOID:
             self._main_depth -= 1
         if tag == "nav" and self._in_nav:
             self._in_nav -= 1
@@ -157,8 +163,8 @@ def snapshot(site_dir):
     return {
         "pages": pages,
         "files": files,
-        "sitemap": sitemap_snapshot(site_dir / "sitemap.xml"),
-        "feed": feed_snapshot(site_dir / "feed.xml"),
+        "sitemap": sitemap_snapshot(site_dir / "sitemap.xml") if (site_dir / "sitemap.xml").is_file() else None,
+        "feed": feed_snapshot(site_dir / "feed.xml") if (site_dir / "feed.xml").is_file() else None,
     }
 
 

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import ArticleList from '../components/ArticleList.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getSiteContent, displayDate, isoDate } from '../lib/data';
+import { SITE } from '../lib/site';
+
+const { posts } = await getSiteContent();
+const [latest, ...rest] = posts;
+---
+<BaseLayout seo={{ path: '/', kind: 'home', image: SITE.defaultImage }} bodyClass="home-page">
+<div class="home-shell">
+  <main class="home-main" id="main-content">
+    <SiteNav home />
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy" data-reveal>
+        <h1 id="hero-title">맛소금</h1>
+        <p>지구별에서 소프트웨어를 만들고,<br>때때로 생각을 적습니다.</p>
+      </div>
+    </section>
+
+    <section class="article-index" id="article" aria-labelledby="article-title" data-reveal>
+      <p class="section-kicker">최근 글</p>
+      <h2 id="article-title">가끔 적는 생각</h2>
+      {latest && (
+        <a class="latest-article" href={`/article/${latest.id}/`}>
+          <time datetime={isoDate(latest.data.date)}>{displayDate(latest.data.date)}</time>
+          <h3>{latest.data.title}</h3>
+          <p>{latest.data.description}</p>
+          <span aria-hidden="true">읽기 →</span>
+        </a>
+      )}
+      {rest.length > 0 && <ArticleList posts={rest} />}
+    </section>
+  </main>
+
+  <Sidebar posts={posts} />
+</div>
+</BaseLayout>
