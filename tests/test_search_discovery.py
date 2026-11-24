@@ -6,6 +6,7 @@ import json
 import os
 import re
 import unittest
+from posts import posts
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,8 +58,7 @@ class SearchDiscoveryTest(unittest.TestCase):
         urls = [node.text for node in tree.findall("s:url/s:loc", NS)]
         expected = {ORIGIN + "/"}
         expected.update(ORIGIN + path for path in ['/reviews/', '/thoughts/', '/ai-development/', '/projects/', '/about/'])
-        expected.update(ORIGIN + "/article/" + path.stem[11:] + "/"
-                        for path in (ROOT / "_posts").glob("*.md"))
+        expected.update(ORIGIN + "/article/" + post.slug + "/" for post in posts())
         self.assertEqual(set(urls), expected)
         self.assertEqual(len(urls), len(set(urls)))
         for url in urls:
@@ -66,8 +66,8 @@ class SearchDiscoveryTest(unittest.TestCase):
             self.assertTrue((SITE / path / "index.html").is_file(), url)
 
     def test_every_article_has_author_canonical_and_original_date(self):
-        for source in (ROOT / "_posts").glob("*.md"):
-            slug = source.stem[11:]
+        for source in posts():
+            slug = source.slug
             with self.subTest(article=slug):
                 page = Page(self.read(f"article/{slug}/index.html"))
                 canonical = [link["href"] for link in page.links
@@ -83,7 +83,7 @@ class SearchDiscoveryTest(unittest.TestCase):
                 article = articles[0]
                 self.assertEqual(article["author"]["name"], "맛소금")
                 self.assertEqual(article["author"]["url"], ORIGIN + "/")
-                self.assertEqual(article["datePublished"][:10], source.name[:10])
+                self.assertEqual(article["datePublished"][:10], source.date)
                 for index, image in enumerate(page.images):
                     self.assertTrue(image.get("alt"))
                     self.assertEqual(image.get("loading"), "eager" if index == 0 else "lazy")
@@ -102,7 +102,7 @@ class SearchDiscoveryTest(unittest.TestCase):
         self.assertEqual(self.read("ads.txt").strip(),
                          "google.com, pub-7998090459933600, DIRECT, f08c47fec0942fa0")
         for source in ["google21e62a1687cb22d6.html", "naver4c0b9729a529a2a06abf1e75a84b7868.html", "naver522b25ba6931e5488d5560ea704caaa3.html"]:
-            self.assertEqual(self.read(source), (ROOT / source).read_text(encoding="utf-8"))
+            self.assertEqual(self.read(source), (ROOT / "public" / source).read_text(encoding="utf-8"))
         self.assertFalse((SITE / "Development/index.html").exists())
         self.assertFalse((SITE / "Development.md").exists())
 
@@ -111,10 +111,10 @@ class SearchDiscoveryTest(unittest.TestCase):
         self.assertTrue(text.startswith("# 맛소금"))
         self.assertNotIn("{{", text)
         self.assertNotIn("{%", text)
-        for source in (ROOT / "_posts").glob("*.md"):
-            url = f"{ORIGIN}/article/{source.stem[11:]}/"
+        for source in posts():
+            url = f"{ORIGIN}/article/{source.slug}/"
             self.assertIn(f"]({url})", text)
-            self.assertIn(source.name[:10], text)
+            self.assertIn(source.date, text)
         projects = (ROOT / "_data/projects.yml").read_text(encoding="utf-8")
         for url in re.findall(r'  url: "([^"]+)"', projects):
             self.assertIn(f"]({url})", text)
@@ -129,7 +129,7 @@ class SearchDiscoveryTest(unittest.TestCase):
         feed = ET.fromstring(self.read("feed.xml"))
         self.assertEqual(feed.tag, "{" + NS["a"] + "}feed")
         entries = feed.findall("a:entry", NS)
-        self.assertEqual(len(entries), len(list((ROOT / "_posts").glob("*.md"))))
+        self.assertEqual(len(entries), len(posts()))
         for entry in entries:
             self.assertTrue(entry.find("a:content", NS).text.strip())
 

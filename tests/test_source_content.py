@@ -33,7 +33,7 @@ class SourceContentTest(unittest.TestCase):
 
     def test_first_article_is_the_sidebar_feature_and_contains_both_texts(self):
         post = (
-            ROOT / "_posts/2026-08-10-advice-to-a-young-poet.md"
+            ROOT / "src/content/posts/advice-to-a-young-poet.md"
         ).read_text(encoding="utf-8")
         self.assertIn('title: "젊은 시인에게 주는 충고"', post)
         self.assertIn("sidebar_feature: true", post)
@@ -49,12 +49,12 @@ class SourceContentTest(unittest.TestCase):
         self.assertIn("bundle exec jekyll serve", guide)
 
     def test_robots_points_to_the_generated_sitemap(self):
-        robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
+        robots = (ROOT / "public/robots.txt").read_text(encoding="utf-8")
         self.assertIn("Sitemap: https://msalt.net/sitemap.xml", robots)
         self.assertFalse((ROOT / "sitemap.xml").exists())
 
     def test_root_ads_txt_authorizes_the_blog_publisher(self):
-        path = ROOT / "ads.txt"
+        path = ROOT / "public/ads.txt"
         self.assertTrue(path.is_file(), "msalt.net/ads.txt is missing")
         ads_txt = path.read_text(encoding="utf-8")
         self.assertEqual(

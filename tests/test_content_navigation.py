@@ -1,6 +1,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import unittest
+from posts import posts
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,7 +60,7 @@ class ContentNavigationTest(unittest.TestCase):
             self.assertTrue(articles, f'Empty topic: {url}')
             self.assertEqual(len(articles), len(set(articles)))
             discovered.extend(articles)
-        expected = [f'/article/{p.stem[11:]}/' for p in (ROOT / '_posts').glob('*.md')]
+        expected = [f'/article/{p.slug}/' for p in posts()]
         self.assertCountEqual(discovered, expected)
 
     def test_selected_topic_remains_active_when_reading_a_post(self):
