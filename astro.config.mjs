@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
+import appFeed from './src/integrations/app-feed.mjs';
 import rehypeResponsiveImages from './src/lib/rehype-responsive-images.mjs';
 import { remarkKramdownClasses, remarkResponsiveImageInclude } from './src/lib/remark-jekyll-compat.mjs';
 
@@ -12,6 +13,7 @@ export default defineConfig({
   outDir: './_site',
   publicDir: './public',
   build: { format: 'directory' },
+  integrations: [appFeed()],
   markdown: {
     remarkPlugins: [remarkKramdownClasses, [remarkResponsiveImageInclude, { images }]],
     rehypePlugins: [[rehypeResponsiveImages, { images }]] },

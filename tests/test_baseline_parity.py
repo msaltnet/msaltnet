@@ -49,7 +49,7 @@ class BaselineParityTest(unittest.TestCase):
 
     def test_no_unexpected_new_pages_or_files(self):
         new_pages = set(self.current["pages"]) - set(BASELINE["pages"])
-        self.assertLessEqual(new_pages, ADDED_PAGES)
+        self.assertEqual(new_pages, ADDED_PAGES)
         new_files = {
             path for path in set(self.current["files"]) - set(BASELINE["files"])
             if not path.startswith(ADDED_FILE_PREFIXES)
