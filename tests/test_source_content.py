@@ -31,6 +31,16 @@ class SourceContentTest(unittest.TestCase):
         self.assertIn("npm run verify", workflow)
         self.assertIn("path: _site", workflow)
         self.assertNotIn("jekyll", workflow.lower())
+        verify_job = workflow.split("deploy:")[0]
+        self.assertIn("verify:", verify_job)
+        self.assertIn("github.ref != format(", verify_job)
+        self.assertIn("pull_request:", workflow)
+
+    def test_jekyll_baseline_comparison_is_not_a_deploy_gate(self):
+        self.assertFalse((ROOT / "tests/test_baseline_parity.py").exists())
+        self.assertTrue((ROOT / "tests/migration_baseline_parity.py").is_file())
+        package = (ROOT / "package.json").read_text(encoding="utf-8")
+        self.assertIn("migration_baseline_parity", package)
 
     def test_all_existing_project_urls_and_images_are_declared(self):
         projects = (ROOT / "_data/projects.yml").read_text(encoding="utf-8")

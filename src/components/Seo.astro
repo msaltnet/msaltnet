@@ -3,6 +3,7 @@
 import { SITE, absolute } from '../lib/site';
 import { images } from '../lib/site-data';
 import { isoDate } from '../lib/data';
+import { jsonLdText } from '../lib/json-ld';
 
 export interface Props {
   title?: string;
@@ -44,4 +45,4 @@ const jsonld = kind === 'article'
 <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
 {imageUrl && <meta property="twitter:image" content={imageUrl} />}
 <meta property="twitter:title" content={headline} />
-<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld)} />
+<script type="application/ld+json" is:inline set:html={jsonLdText(jsonld)} />

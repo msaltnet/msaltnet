@@ -38,7 +38,7 @@ npm run verify     # astro check → 빌드(_site) + Pagefind 색인 → Vitest 
 npm run test:e2e   # Playwright 브라우저 테스트 (빌드된 _site 사용)
 ```
 
-`tests/test_baseline_parity.py`는 Jekyll 시절 빌드 결과(`tests/fixtures/jekyll-baseline.json`)와 현재 빌드의 페이지·주소·메타데이터·본문 텍스트를 비교합니다. 의도한 차이는 그 파일 상단의 목록에만 적습니다. 글을 추가·수정하면 이 비교가 실패하므로, 그때는 스냅샷을 다시 만들지 판단합니다(`python3 scripts/snapshot_site.py`).
+`npm run test:baseline`(`tests/migration_baseline_parity.py`)은 Jekyll 시절 빌드 결과(`tests/fixtures/jekyll-baseline.json`)와 현재 빌드의 페이지·주소·메타데이터·본문 텍스트를 비교하는 전환 검증용 테스트입니다. 의도한 차이는 그 파일 상단의 목록에만 적습니다. 글을 추가·수정하면 당연히 달라지므로 배포 검증(`verify`)에는 포함하지 않습니다.
 
 ## 검색과 AI 콘텐츠 탐색
 
