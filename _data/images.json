@@ -419,16 +419,6 @@
     "original_bytes": 39700,
     "optimized_bytes": 40176
   },
-  "/assets/img/nanobot.webp": {
-    "src": "/assets/img/optimized/nanobot-webp-1600.webp",
-    "mobile": "/assets/img/optimized/nanobot-webp-800.webp",
-    "social": "/assets/img/optimized/nanobot-webp-social.jpg",
-    "width": 819,
-    "height": 534,
-    "mobile_width": 800,
-    "original_bytes": 22770,
-    "optimized_bytes": 21808
-  },
   "/assets/img/one-life-book.png": {
     "src": "/assets/img/optimized/one-life-book-png-1600.webp",
     "mobile": "/assets/img/optimized/one-life-book-png-800.webp",

@@ -36,7 +36,7 @@ Each note summary contains:
 | `collectionId` | Existing collection ID or `null` |
 | `projectId`, `projectTitle`, `projectOrder` | Additive optional project identity, authored collection title, and positive `collection_order`; `null` when this note is not in a project |
 | `seriesId`, `seriesTitle`, `seriesOrder` | Additive optional series identity, authored collection title, and positive `collection_order`; `null` when this note is not in a series |
-| `projectUrl` | Public `/series/{collectionId}/` project overview if the collection is a project; otherwise `null` |
+| `projectUrl` | Always `null` on msalt.net (no projects); kept for schema v1 clients |
 
 Taxonomy is read from each note's existing `collection` and `collection_order`, joined to `src/content/collections/<id>.md`. A note belongs to at most one collection, so project and series fields are mutually exclusive. IDs remain stable when editorial titles change. Within each project/series, clients use the positive order value rather than publication date to follow the authored sequence. Standalone notes have `null` taxonomy; do not infer a group from a note title or URL. Clients must continue to accept older schema-v1 manifests that omit all six additive fields, and keep those articles readable without inventing a group.
 
