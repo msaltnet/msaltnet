@@ -16,12 +16,14 @@ snapshot = _module.snapshot
 # The only intended differences from the Jekyll output.
 ADDED_PAGES = {"search/index.html", "app-privacy/index.html"}
 ADDED_FILE_PREFIXES = ("app/v1/", "pagefind/")
-ADDED_NAV = []  # Menu items appended after the baseline navigation.
+ADDED_NAV = [["검색", "/search/"]]  # Menu items appended after the baseline navigation.
 # Jekyll emitted the raw invalid tag "<연금술사>", which browsers show as text; Astro escapes it (same visible text).
 # kramdown and Astro's smartypants disagree on the direction of one apostrophe after an ellipsis.
 KNOWN_TEXT_FIXES = {
     "article/give-and-take/index.html": [("< 연금술사>", "<연금술사>")],
     "article/stolen-focus/index.html": [("저거…‘라는", "저거…’라는")],
+    # The home menu sits inside <main>, so the added search item also appears in its text.
+    "index.html": [("프로젝트 소개 맛소금", "프로젝트 소개 검색 맛소금")],
 }
 
 

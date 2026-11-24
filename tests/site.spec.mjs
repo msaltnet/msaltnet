@@ -15,11 +15,11 @@ test('content page footers reach the bottom of short and long viewports', async 
   }
 });
 
-test('five content menus navigate on narrow screens and retain the current topic', async ({ page }) => {
+test('all content menus navigate on narrow screens and retain the current topic', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/');
   const destinations = [['감상문', '/reviews/'], ['생각', '/thoughts/'],
-    ['AI와 개발', '/ai-development/'], ['프로젝트', '/projects/'], ['소개', '/about/']];
+    ['AI와 개발', '/ai-development/'], ['프로젝트', '/projects/'], ['소개', '/about/'], ['검색', '/search/']];
   for (const [title, url] of destinations) {
     await page.getByRole('navigation', { name: '주요 메뉴', exact: true }).getByRole('link', { name: title, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`${url}$`));
@@ -196,4 +196,11 @@ test('article images load without distortion at narrow and wide widths', async (
       }
     }
   }
+});
+
+test('search finds an article by a title word', async ({ page }) => {
+  await page.goto('/search/');
+  await page.getByRole('textbox', { name: '검색어를 입력하세요' }).fill('Give');
+  const result = page.locator('.pagefind-ui__result-link').first();
+  await expect(result).toHaveAttribute('href', '/article/give-and-take/');
 });

@@ -1,10 +1,11 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import SiteNav from '../components/SiteNav.astro';
-interface Props { title: string; description: string; path: string; section: string; kind?: 'page' | 'about' }
-const { title, description, path, section, kind = 'page' } = Astro.props;
+interface Props { title: string; description: string; path: string; section: string; kind?: 'page' | 'about'; robots?: string }
+const { title, description, path, section, kind = 'page', robots } = Astro.props;
 ---
-<BaseLayout seo={{ title, description, path, kind }} bodyClass="content-page">
+<BaseLayout seo={{ title, description, path, kind }} bodyClass="content-page" robots={robots}>
+  <slot name="head" slot="head" />
   <SiteNav current={section} />
   <main class="page-shell" id="main-content">
     <header class="page-heading">

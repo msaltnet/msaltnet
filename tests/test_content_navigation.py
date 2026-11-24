@@ -1,5 +1,6 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import json
 import unittest
 from posts import posts
 
@@ -7,7 +8,7 @@ from posts import posts
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_site'
 MENU = [('감상문', '/reviews/'), ('생각', '/thoughts/'),
-        ('AI와 개발', '/ai-development/'), ('프로젝트', '/projects/'), ('소개', '/about/')]
+        ('AI와 개발', '/ai-development/'), ('프로젝트', '/projects/'), ('소개', '/about/'), ('검색', '/search/')]
 
 
 class Navigation(HTMLParser):
@@ -46,7 +47,7 @@ class ContentNavigationTest(unittest.TestCase):
         self.assertTrue(path.is_file(), f'Missing content page: {url}')
         return Navigation(path.read_text(encoding='utf-8'))
 
-    def test_all_pages_offer_five_independent_menu_destinations(self):
+    def test_all_pages_offer_the_same_menu_destinations(self):
         for url in ['/', *(url for _, url in MENU), '/article/abstraction/']:
             with self.subTest(url=url):
                 page = self.page(url)
@@ -69,6 +70,17 @@ class ContentNavigationTest(unittest.TestCase):
         self.assertEqual([a['href'] for a in active], ['/ai-development/'])
         self.assertTrue(any(a.get('href') == '/ai-development/' and a not in page.menu
                             for a in page.links))
+
+    def test_search_index_covers_only_published_articles(self):
+        entry = json.loads((SITE / 'pagefind/pagefind-entry.json').read_text(encoding='utf-8'))
+        indexed = sum(language['page_count'] for language in entry['languages'].values())
+        self.assertEqual(indexed, len(posts()))
+        search = (SITE / 'search/index.html').read_text(encoding='utf-8')
+        self.assertIn('/pagefind/pagefind-ui.js', search)
+        self.assertIn('noindex', search)
+        for post in posts():
+            article = (SITE / 'article' / post.slug / 'index.html').read_text(encoding='utf-8')
+            self.assertEqual(article.count('data-pagefind-body'), 1, post.slug)
 
 
 if __name__ == '__main__':

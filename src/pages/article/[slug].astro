@@ -22,7 +22,7 @@ const listTitle = topic ? topic.title : '전체 글';
 }}>
 <SiteNav current={post.data.category} />
 <main class="post-shell" id="main-content">
-  <article class="post">
+  <article class="post" data-pagefind-body>
     <a class="back-link" href={listUrl}>{listTitle} 목록</a>
     <p class="post-date"><time datetime={isoDate(post.data.date)}>{displayDate(post.data.date)}</time> · <a href={SITE.authorUrl} rel="author">{SITE.title}</a></p>
     {post.data.last_modified_at && <p class="post-date">수정 <time datetime={isoDate(post.data.last_modified_at)}>{displayDate(post.data.last_modified_at)}</time></p>}
