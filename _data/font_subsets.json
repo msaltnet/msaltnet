@@ -1,34 +1,34 @@
 {
   "ibm-plex-sans-kr-400": {
-    "common_bytes": 92860,
+    "common_bytes": 103568,
     "original_bytes": 517652,
     "coverage_complete": true,
     "original_codepoints": 11459,
     "covered_codepoints": 11459,
-    "subsets": 43
+    "subsets": 42
   },
   "ibm-plex-sans-kr-600": {
-    "common_bytes": 103692,
+    "common_bytes": 117820,
     "original_bytes": 557972,
     "coverage_complete": true,
     "original_codepoints": 11459,
     "covered_codepoints": 11459,
-    "subsets": 43
+    "subsets": 42
   },
   "noto-serif-kr-400": {
-    "common_bytes": 137164,
+    "common_bytes": 152992,
     "original_bytes": 971428,
     "coverage_complete": true,
     "original_codepoints": 11541,
     "covered_codepoints": 11541,
-    "subsets": 43
+    "subsets": 42
   },
   "noto-serif-kr-700": {
-    "common_bytes": 140328,
+    "common_bytes": 156696,
     "original_bytes": 1033556,
     "coverage_complete": true,
     "original_codepoints": 11541,
     "covered_codepoints": 11541,
-    "subsets": 43
+    "subsets": 42
   }
 }

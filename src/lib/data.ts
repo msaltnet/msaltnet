@@ -4,6 +4,7 @@ import { assertContentIntegrity, publishedPosts } from './content';
 import { CATEGORY_KEYS } from './site-data';
 
 export type Post = CollectionEntry<'posts'>;
+export type Series = CollectionEntry<'series'>;
 
 export async function getSiteContent() {
   // Skip the empty series collection to avoid a warning on every page.
@@ -12,6 +13,10 @@ export async function getSiteContent() {
   assertContentIntegrity(rawPosts, [...CATEGORY_KEYS], series.map(({ id }) => id));
   return { posts: publishedPosts(rawPosts), series };
 }
+
+/** Posts of one series in authored order. */
+export const seriesEntries = (posts: Post[], seriesId: string) =>
+  posts.filter((post) => post.data.series === seriesId).sort((a, b) => (a.data.series_order ?? 0) - (b.data.series_order ?? 0));
 
 /** Front matter dates are Asia/Seoul calendar dates. */
 export const isoDate = (date: string) => (date.includes('T') ? date : `${date}T00:00:00+09:00`);

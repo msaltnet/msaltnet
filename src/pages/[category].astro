@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import ArticleList from '../components/ArticleList.astro';
+import SeriesList from '../components/SeriesList.astro';
 import { categories, type NavItem } from '../lib/site-data';
 import { getSiteContent } from '../lib/data';
 
@@ -8,10 +9,11 @@ export function getStaticPaths() {
   return categories().map((category) => ({ params: { category: category.key }, props: { category } }));
 }
 const { category } = Astro.props as { category: NavItem };
-const { posts } = await getSiteContent();
+const { posts, series } = await getSiteContent();
 const topicPosts = posts.filter((post) => post.data.category === category.key);
 ---
 <PageLayout title={category.title} description={category.description ?? ''} path={category.url} section={category.key}>
+  <SeriesList series={series} posts={topicPosts} />
   <p class="archive-count">{topicPosts.length}편의 글</p>
   <ArticleList posts={topicPosts} />
 </PageLayout>

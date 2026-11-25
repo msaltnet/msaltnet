@@ -3,7 +3,7 @@ title: "추상화 잘하는 사람"
 date: "2026-08-16"
 last_modified_at: "2026-08-17T18:26:31+09:00"
 description: "SW를 잘하려면 당연히 추상화를 잘해야하고, 성공하려면 당연히 추상화를 잘해야 한다."
-category: ai-development
+category: ax
 sidebar_feature: false
 ---
 

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('content page footers reach the bottom of short and long viewports', async ({ page }) => {
   for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 1440 }]) {
     await page.setViewportSize(viewport);
-    for (const path of ['/thoughts/', '/ai-development/', '/reviews/', '/projects/', '/about/']) {
+    for (const path of ['/thoughts/', '/ax/', '/reviews/', '/projects/', '/about/']) {
       await page.goto(path);
       await page.evaluate(async () => {
         await document.fonts.ready;
@@ -19,7 +19,7 @@ test('all content menus navigate on narrow screens and retain the current topic'
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/');
   const destinations = [['감상문', '/reviews/'], ['생각', '/thoughts/'],
-    ['AI와 개발', '/ai-development/'], ['프로젝트', '/projects/'], ['소개', '/about/'], ['검색', '/search/']];
+    ['AX Notes', '/ax/'], ['프로젝트', '/projects/'], ['소개', '/about/'], ['검색', '/search/']];
   for (const [title, url] of destinations) {
     await page.getByRole('navigation', { name: '주요 메뉴', exact: true }).getByRole('link', { name: title, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`${url}$`));
@@ -30,11 +30,11 @@ test('all content menus navigate on narrow screens and retain the current topic'
       await expect(page.locator('.post-content a').first()).toHaveCSS('text-decoration-line', 'underline');
     }
   }
-  await page.goto('/ai-development/');
+  await page.goto('/ax/');
   await page.getByRole('link', { name: /추상화 잘하는 사람/ }).click();
-  await expect(page.locator('nav[aria-label="주요 메뉴"] [aria-current="page"]')).toHaveText('AI와 개발');
+  await expect(page.locator('nav[aria-label="주요 메뉴"] [aria-current="page"]')).toHaveText('AX Notes');
   await page.getByRole('link', { name: '목록으로 가기', exact: true }).click();
-  await expect(page).toHaveURL(/\/ai-development\/$/);
+  await expect(page).toHaveURL(/\/ax\/$/);
 });
 
 async function expectProjectCardsToHaveOneHeight(page, expectedHeight) {

@@ -9,8 +9,7 @@
     "test": "vitest run && python3 -m unittest discover -s tests -p 'test_*.py' -v",
     "test:e2e": "playwright test",
     "test:all": "npm test && npm run test:e2e",
-    "verify": "npm run check && npm run build && npm test",
-    "test:baseline": "python3 -m unittest discover -s tests -p 'migration_baseline_parity.py' -v"
+    "verify": "npm run check && npm run build && npm test"
   },
   "dependencies": {
     "astro": "7.3.5",

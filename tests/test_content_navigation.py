@@ -8,7 +8,7 @@ from posts import posts
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_site'
 MENU = [('감상문', '/reviews/'), ('생각', '/thoughts/'),
-        ('AI와 개발', '/ai-development/'), ('프로젝트', '/projects/'), ('소개', '/about/'), ('검색', '/search/')]
+        ('AX Notes', '/ax/'), ('프로젝트', '/projects/'), ('소개', '/about/'), ('검색', '/search/')]
 
 
 class Navigation(HTMLParser):
@@ -67,8 +67,8 @@ class ContentNavigationTest(unittest.TestCase):
     def test_selected_topic_remains_active_when_reading_a_post(self):
         page = self.page('/article/abstraction/')
         active = [a for a in page.menu if a.get('aria-current') == 'page']
-        self.assertEqual([a['href'] for a in active], ['/ai-development/'])
-        self.assertTrue(any(a.get('href') == '/ai-development/' and a not in page.menu
+        self.assertEqual([a['href'] for a in active], ['/ax/'])
+        self.assertTrue(any(a.get('href') == '/ax/' and a not in page.menu
                             for a in page.links))
 
     def test_search_index_covers_only_published_articles(self):
@@ -81,6 +81,26 @@ class ContentNavigationTest(unittest.TestCase):
         for post in posts():
             article = (SITE / 'article' / post.slug / 'index.html').read_text(encoding='utf-8')
             self.assertEqual(article.count('data-pagefind-body'), 1, post.slug)
+
+    def test_former_ai_development_address_moves_to_ax_notes(self):
+        html = (SITE / 'ai-development/index.html').read_text(encoding='utf-8')
+        self.assertIn('<meta http-equiv="refresh" content="0; url=/ax/">', html)
+        self.assertIn('<link rel="canonical" href="https://msalt.net/ax/">', html)
+        self.assertIn('noindex', html)
+        self.assertNotIn('https://msalt.net/ai-development/', (SITE / 'sitemap.xml').read_text(encoding='utf-8'))
+
+    def test_ax_notes_series_pages_list_posts_in_authored_order(self):
+        html = (SITE / 'series/nanobot/index.html').read_text(encoding='utf-8')
+        order = ['nanobot-requirements-first', 'nanobot-bot-selection', 'nanobot-ubuntu-setup', 'nanobot-telegram']
+        positions = [html.index(f'/article/{slug}/') for slug in order]
+        self.assertEqual(positions, sorted(positions))
+        article = (SITE / 'article/nanobot-telegram/index.html').read_text(encoding='utf-8')
+        self.assertIn('href="/series/nanobot/"', article)
+
+    def test_aftertaste_closes_the_article_body(self):
+        article = (SITE / 'article/dots-connected/index.html').read_text(encoding='utf-8')
+        body = article.split('<div class="post-content">', 1)[1].split('<nav class="post-actions"', 1)[0]
+        self.assertIn('<aside class="aftertaste">', body)
 
 
 if __name__ == '__main__':

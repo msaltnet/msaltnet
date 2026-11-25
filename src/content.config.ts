@@ -16,6 +16,7 @@ const posts = defineCollection({
     series_order: z.number().int().positive().optional(),
     image: z.string().startsWith('/assets/').optional(),
     last_modified_at: dateTime.optional(),
+    aftertaste: z.string().min(1).optional(),
     sidebar_feature: z.boolean().default(false),
     draft: z.boolean().default(false),
   }).strict(),
@@ -26,7 +27,7 @@ const series = defineCollection({
   schema: z.object({
     title: z.string().min(1),
     description: z.string().min(1),
-    cover_image: z.string().optional(),
+    cover_image: z.string().startsWith('/assets/').optional(),
     cover_alt: z.string().min(1).optional(),
   }).strict(),
 });

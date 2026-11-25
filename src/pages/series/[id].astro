@@ -1,0 +1,21 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import { getSiteContent, seriesEntries, type Series } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const { series } = await getSiteContent();
+  return series.map((item) => ({ params: { id: item.id }, props: { series: item } }));
+}
+const { series } = Astro.props as { series: Series };
+const { posts } = await getSiteContent();
+const entries = seriesEntries(posts, series.id);
+---
+<PageLayout title={series.data.title} description={series.data.description} path={`/series/${series.id}/`} section="ax">
+  {series.data.cover_image && (
+    <ResponsiveImage src={series.data.cover_image} alt={series.data.cover_alt ?? ''} class="series-cover" priority />
+  )}
+  <p class="archive-count">{entries.length}편의 연재</p>
+  <ArticleList posts={entries} />
+</PageLayout>

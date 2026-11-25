@@ -12,7 +12,7 @@ The app currently still reads `https://ax.msalt.net/app/v1/manifest.json`, serve
 
 ## Selection
 
-`selectAppFeedPosts` in `src/lib/app-feed-source.ts` decides which published posts the app receives. It currently returns no posts, so the msalt.net manifest has an empty `notes` array. The rule will be decided together with the AX Notes content move. Drafts are always excluded before selection.
+`selectAppFeedPosts` in `src/lib/app-feed-source.ts` decides which published posts the app receives. It returns every published post with `category: ax` (AX Notes). Drafts are always excluded before selection.
 
 Projects no longer exist on msalt.net, so `projectUrl`, `projectId`, `projectTitle` and `projectOrder` are always `null`. A post's optional `series` fills `collectionId` and the `series*` fields.
 

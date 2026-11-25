@@ -8,7 +8,7 @@ export type ImageAsset = {
   src: string; mobile: string; social: string; width: number; height: number; mobile_width: number;
 };
 
-export const CATEGORY_KEYS = ['reviews', 'thoughts', 'ai-development'] as const;
+export const CATEGORY_KEYS = ['reviews', 'thoughts', 'ax'] as const;
 const DATA = join(process.cwd(), '_data');
 const read = (file: string) => readFileSync(join(DATA, file), 'utf8');
 

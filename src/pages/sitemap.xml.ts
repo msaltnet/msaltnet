@@ -4,7 +4,7 @@ import { navigation } from '../lib/site-data';
 import { SITE, absolute } from '../lib/site';
 
 // Same page set as the former jekyll-sitemap output; search and app pages stay out.
-const SITEMAP_KEYS = new Set(['reviews', 'thoughts', 'ai-development', 'projects', 'about']);
+const SITEMAP_KEYS = new Set(['reviews', 'thoughts', 'ax', 'projects', 'about']);
 
 export async function GET() {
   const { posts } = await getSiteContent();

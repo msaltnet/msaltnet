@@ -5,12 +5,9 @@ type FeedSeries = { id: string; data: { title: string } };
 
 const withBase = (base: string, path: string) => `${base.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 
-/**
- * Which published posts the AX Notes app receives.
- * Intentionally empty: the selection rule is decided in a later session (see docs/app-feed-contract.md).
- */
-export function selectAppFeedPosts<T extends PostRecord>(_posts: T[]): T[] {
-  return [];
+/** The AX Notes app receives every published AX Notes post. */
+export function selectAppFeedPosts<T extends PostRecord>(posts: T[]): T[] {
+  return posts.filter((post) => post.data.category === 'ax');
 }
 
 /** App feed metadata. The website's publication policy (drafts excluded) is always applied first. */

@@ -3,7 +3,7 @@ title: "gpt와 함께한 유럽 여행"
 date: "2026-08-13"
 last_modified_at: "2026-08-17T18:26:31+09:00"
 description: "회사에서 하는 일도 AX이고 개인 프로젝트도 AX, 일상도 AX 그 와중에 휴가까지 AX!"
-category: ai-development
+category: ax
 sidebar_feature: false
 ---
 

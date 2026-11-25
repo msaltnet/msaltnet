@@ -15,7 +15,7 @@ category: reviews
 ---
 ```
 
-`category`는 `reviews`(감상문), `thoughts`(생각), `ai-development`(AI와 개발) 중 하나입니다. 분류의 이름·설명·주소와 주요 메뉴는 `_data/navigation.yml` 한 곳에서 관리합니다. 태그는 없습니다.
+`category`는 `reviews`(감상문), `thoughts`(생각), `ax`(AX Notes) 중 하나입니다. 예전 `/ai-development/` 주소는 `/ax/`로 이동합니다. 분류의 이름·설명·주소와 주요 메뉴는 `_data/navigation.yml` 한 곳에서 관리합니다. 태그는 없습니다.
 
 선택 항목:
 
@@ -38,7 +38,6 @@ npm run verify     # astro check → 빌드(_site) + Pagefind 색인 → Vitest 
 npm run test:e2e   # Playwright 브라우저 테스트 (빌드된 _site 사용)
 ```
 
-`npm run test:baseline`(`tests/migration_baseline_parity.py`)은 Jekyll 시절 빌드 결과(`tests/fixtures/jekyll-baseline.json`)와 현재 빌드의 페이지·주소·메타데이터·본문 텍스트를 비교하는 전환 검증용 테스트입니다. 의도한 차이는 그 파일 상단의 목록에만 적습니다. 글을 추가·수정하면 당연히 달라지므로 배포 검증(`verify`)에는 포함하지 않습니다.
 
 ## 검색과 AI 콘텐츠 탐색
 
@@ -72,7 +71,7 @@ python scripts/prepare_assets.py
 
 ## AX Notes 앱 피드
 
-빌드는 `/app/v1/manifest.json`을 만듭니다(계약: `docs/app-feed-contract.md`). 앱에 보낼 글은 `src/lib/app-feed-source.ts`의 `selectAppFeedPosts`가 정하며 지금은 아무 글도 고르지 않습니다. 앱 개인정보처리방침은 `/app-privacy/`입니다.
+빌드는 `/app/v1/manifest.json`을 만듭니다(계약: `docs/app-feed-contract.md`). 앱에 보낼 글은 `src/lib/app-feed-source.ts`의 `selectAppFeedPosts`가 정하며, 공개된 AX Notes(`category: ax`) 글을 모두 보냅니다. 앱 개인정보처리방침은 `/app-privacy/`입니다.
 
 ## 배포
 

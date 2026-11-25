@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { unified } from 'unified';
@@ -30,9 +30,9 @@ describe('app feed source and addressing', () => {
     expect(feed.notes[0].updatedAt).toBeNull();
   });
 
-  it('selects no posts by default', () => {
-    expect(selectAppFeedPosts(fixture)).toEqual([]);
-    expect(buildFeedSource(fixture, [], new URL('https://msalt.net'), '/').notes).toEqual([]);
+  it('selects only AX Notes posts by default', () => {
+    expect(selectAppFeedPosts(fixture).map((post) => post.id)).toEqual(['published-new']);
+    expect(buildFeedSource(fixture, [], new URL('https://msalt.net'), '/').notes.map((note) => note.id)).toEqual(['published-new']);
   });
 
   it('honors a GitHub subpath without duplicating it', () => {
@@ -151,9 +151,16 @@ describe('built app/v1 contract', () => {
     expect(manifest.author.channels).toEqual([]);
     expect(manifest.author.aboutUrl).toBe(new URL('about/', root).href);
     expect(manifest.author.name).toBe('AX Notes');
-    // No post is selected for the app until the selection rule is decided.
-    expect(manifest.notes).toEqual([]);
-    expect(existsSync(join(process.cwd(), '_site/app/v1/notes'))).toBe(false);
+    // The app receives every published AX Notes post.
+    const axPosts = readdirSync(join(process.cwd(), 'src/content/posts'))
+      .filter((file) => {
+        const text = readFileSync(join(process.cwd(), 'src/content/posts', file), 'utf8');
+        return /\ncategory: ax\n/.test(text) && !/\ndraft: true\n/.test(text);
+      })
+      .map((file) => file.replace(/\.md$/, ''));
+    expect(axPosts.length).toBe(15);
+    expect(manifest.notes.map((note: { id: string }) => note.id).sort()).toEqual(axPosts.sort());
+    expect(manifest.notes.some((note: { seriesId: string | null }) => note.seriesId === 'nanobot')).toBe(true);
     expect(new Set(manifest.notes.map((note: { id: string }) => note.id)).size).toBe(manifest.notes.length);
     const dates: string[] = [];
     for (const summary of manifest.notes) {

@@ -1,5 +1,5 @@
 [
-  { "id": "published-new", "data": { "title": "Published newest", "description": "Visible note", "date": "2026-10-07", "category": "ai-development", "series": "demo-series", "series_order": 1, "sidebar_feature": false, "draft": false } },
+  { "id": "published-new", "data": { "title": "Published newest", "description": "Visible note", "date": "2026-10-07", "category": "ax", "series": "demo-series", "series_order": 1, "sidebar_feature": false, "draft": false } },
   { "id": "synthetic-draft", "data": { "title": "PRIVATE DRAFT SENTINEL", "description": "Must never be exported", "date": "2099-01-01", "category": "thoughts", "sidebar_feature": false, "draft": true } },
   { "id": "published-old", "data": { "title": "Published older", "description": "Visible older note", "date": "2026-01-01", "category": "reviews", "sidebar_feature": false, "draft": false } }
 ]

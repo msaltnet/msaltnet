@@ -4,7 +4,7 @@ import { projects } from '../lib/site-data';
 ---
 <div class="project-list">
   {projects().map((project) => (
-    <a class="project-card" href={project.url} target="_blank" rel="noopener noreferrer">
+    <a class="project-card" href={project.url} {...(project.url.startsWith('https://msalt.net/') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
       <ResponsiveImage src={project.image} alt={project.alt} class="project-card-image" sizes="160px" />
       <span class="project-card-copy">
         <span class="project-label">{project.label}</span>

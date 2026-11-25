@@ -6,7 +6,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 PROJECT_URLS = {
-    "https://ax.msalt.net",
+    "https://msalt.net/ax/",
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
@@ -83,6 +83,9 @@ class BuiltSiteTest(unittest.TestCase):
         external = {link.get("href"): link for link in self.home.links}
         self.assertTrue(PROJECT_URLS.issubset(external))
         for url in PROJECT_URLS:
+            if url.startswith("https://msalt.net/"):
+                self.assertIsNone(external[url].get("target"), url)
+                continue
             self.assertEqual(external[url].get("target"), "_blank")
             self.assertEqual(
                 set(external[url].get("rel", "").split()),

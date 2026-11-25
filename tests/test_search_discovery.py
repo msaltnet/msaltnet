@@ -57,7 +57,7 @@ class SearchDiscoveryTest(unittest.TestCase):
         tree = ET.fromstring(self.read("sitemap.xml"))
         urls = [node.text for node in tree.findall("s:url/s:loc", NS)]
         expected = {ORIGIN + "/"}
-        expected.update(ORIGIN + path for path in ['/reviews/', '/thoughts/', '/ai-development/', '/projects/', '/about/'])
+        expected.update(ORIGIN + path for path in ['/reviews/', '/thoughts/', '/ax/', '/projects/', '/about/'])
         expected.update(ORIGIN + "/article/" + post.slug + "/" for post in posts())
         self.assertEqual(set(urls), expected)
         self.assertEqual(len(urls), len(set(urls)))

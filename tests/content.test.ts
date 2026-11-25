@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { assertContentIntegrity, publishedPosts, type PostRecord } from '../src/lib/content';
 
-const CATS = ['reviews', 'thoughts', 'ai-development'];
+const CATS = ['reviews', 'thoughts', 'ax'];
 const post = (id: string, data: Partial<PostRecord['data']> = {}): PostRecord => ({
   id,
   data: { title: id, date: '2026-01-01', category: 'reviews', sidebar_feature: false, draft: false, ...data },
