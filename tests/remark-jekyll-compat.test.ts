@@ -30,7 +30,7 @@ describe('remarkKramdownClasses', () => {
 describe('remarkResponsiveImageInclude', () => {
   it('replaces the include with an unwrapped responsive img', async () => {
     const out = await run('{% include responsive-image.html src="/assets/img/a.jpg" alt="사진 2" %}\n');
-    expect(out).toBe('<img src="/o/a-1600.webp" srcset="/o/a-800.webp 800w, /o/a-1600.webp 1280w" sizes="(max-width: 608px) calc(100vw - 48px), 560px" width="1280" height="960" alt="사진 2" loading="lazy" decoding="async">');
+    expect(out).toBe('<img src="/o/a-1600.webp" srcset="/o/a-800.webp 800w, /o/a-1600.webp 1280w" sizes="(max-width: 528px) calc(100vw - 48px), 480px" width="1280" height="960" alt="사진 2" loading="lazy" decoding="async">');
   });
   it('honors priority=true', async () => {
     const out = await run('{% include responsive-image.html src="/assets/img/a.jpg" alt="a" priority=true %}\n');

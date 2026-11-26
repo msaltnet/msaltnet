@@ -1,7 +1,7 @@
 ---
 import { images } from '../lib/site-data';
 interface Props { src: string; alt: string; class?: string; sizes?: string; priority?: boolean }
-const { src, alt, class: className, sizes = '(max-width: 608px) calc(100vw - 48px), 560px', priority = false } = Astro.props;
+const { src, alt, class: className, sizes = '(max-width: 528px) calc(100vw - 48px), 480px', priority = false } = Astro.props;
 const asset = images()[src];
 if (!asset) throw new Error(`Missing responsive image metadata for ${src}`);
 const srcset = `${asset.mobile} ${asset.mobile_width}w${asset.width > asset.mobile_width ? `, ${asset.src} ${asset.width}w` : ''}`;

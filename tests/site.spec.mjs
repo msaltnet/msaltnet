@@ -208,8 +208,8 @@ test('article images sit smaller than the text column and centered on wide scree
     for (const image of await images.all()) {
       await image.scrollIntoViewIfNeeded();
       const box = await image.evaluate((img) => img.getBoundingClientRect().toJSON());
-      expect(box.width, path).toBeLessThanOrEqual(560.5);
-      expect(box.height, path).toBeLessThanOrEqual(560.5);
+      expect(box.width, path).toBeLessThanOrEqual(480.5);
+      expect(box.height, path).toBeLessThanOrEqual(480.5);
       const left = box.left - column.left;
       const right = column.right - box.right;
       expect(Math.abs(left - right), path).toBeLessThan(1.5);

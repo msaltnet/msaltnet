@@ -452,8 +452,8 @@ body:not(.home-page) > .site-header {
 
 .post-content img {
   width: auto;
-  max-width: min(100%, 560px);
-  max-height: 560px;
+  max-width: min(100%, 480px);
+  max-height: 480px;
   margin-inline: auto;
 }
 
