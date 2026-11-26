@@ -1,6 +1,6 @@
 import { visit } from 'unist-util-visit';
 
-const SIZES = '(max-width: 528px) calc(100vw - 48px), 480px';
+const SIZES = '(max-width: 608px) calc(100vw - 48px), 560px';
 
 /**
  * Responsive variants for Markdown images, using the metadata from _data/images.json

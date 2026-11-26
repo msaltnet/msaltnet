@@ -23,7 +23,7 @@ export function remarkKramdownClasses() {
 
 const INCLUDE = /^\{%\s*include\s+responsive-image\.html\s+(.*?)\s*%\}$/s;
 const ARG = /(\w+)=(?:["“”]([^"“”]*)["“”]|(\S+))/g;
-const SIZES = '(max-width: 528px) calc(100vw - 48px), 480px';
+const SIZES = '(max-width: 608px) calc(100vw - 48px), 560px';
 const escape = (value) => String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 /** {% include responsive-image.html src="..." alt="..." [priority=true] %} as its own paragraph. */
