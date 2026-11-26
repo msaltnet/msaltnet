@@ -99,6 +99,15 @@ class ContentNavigationTest(unittest.TestCase):
         article = (SITE / 'article/nanobot-telegram/index.html').read_text(encoding='utf-8')
         self.assertIn('href="/ax/#series-nanobot"', article)
 
+    def test_each_ax_notes_series_shows_its_cover_image(self):
+        html = (SITE / 'ax/index.html').read_text(encoding='utf-8')
+        for series_id in ['ax-notes-app', 'dots-and-muse', 'nanobot', 'vibe-coding-workflow']:
+            block = html.split(f'<details class="series-group" id="series-{series_id}">', 1)[1]
+            summary = block.split('</summary>', 1)[0]
+            self.assertIn('class="series-cover"', summary, series_id)
+            self.assertIn(f'/assets/img/optimized/ax-series-{series_id}-cover-webp-', summary, series_id)
+            self.assertRegex(summary, r'alt="[^"]+"', series_id)
+
     def test_aftertaste_closes_the_article_body(self):
         article = (SITE / 'article/dots-connected/index.html').read_text(encoding='utf-8')
         body = article.split('<div class="post-content">', 1)[1].split('<nav class="post-actions"', 1)[0]

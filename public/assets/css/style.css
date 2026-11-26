@@ -697,6 +697,21 @@ body:not(.home-page) > .site-header {
   content: "−";
 }
 
+.series-group summary:has(.series-cover) {
+  grid-template-columns: 112px minmax(0, 1fr) auto;
+  column-gap: 18px;
+  align-items: start;
+}
+
+.series-cover {
+  grid-row: 1 / span 2;
+  width: 112px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--line);
+}
+
 .series-count {
   color: var(--muted);
   font-size: 0.86rem;
@@ -706,6 +721,10 @@ body:not(.home-page) > .site-header {
   grid-column: 1 / -1;
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.series-group summary:has(.series-cover) .series-description {
+  grid-column: 2 / -1;
 }
 
 .series-group .article-list {
@@ -748,4 +767,15 @@ body:not(.home-page) > .site-header {
 
 .post-content th {
   background: var(--rail);
+}
+
+@media (max-width: 480px) {
+  .series-group summary:has(.series-cover) {
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    column-gap: 14px;
+  }
+
+  .series-cover {
+    width: 72px;
+  }
 }
