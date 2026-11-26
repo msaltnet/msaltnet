@@ -450,13 +450,6 @@ body:not(.home-page) > .site-header {
   line-height: 2;
 }
 
-.post-content img {
-  width: auto;
-  max-width: min(100%, 560px);
-  max-height: 560px;
-  margin-inline: auto;
-}
-
 .post-content .poem-quote {
   font-size: 1.04rem;
 }

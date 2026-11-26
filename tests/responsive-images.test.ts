@@ -16,7 +16,7 @@ describe('rehypeResponsiveImages', () => {
     const out = await run('<p><img src="/assets/img/book.png" alt="Book &#x26; page"></p>');
     expect(out).toContain('src="/assets/img/book-1600.webp"');
     expect(out).toContain('srcset="/assets/img/book-800.webp 600w, /assets/img/book-1600.webp 1200w"');
-    expect(out).toContain('sizes="(max-width: 608px) calc(100vw - 48px), 560px"');
+    expect(out).toContain('sizes="(max-width: 800px) calc(100vw - 48px), 760px"');
     expect(out).toContain('width="1200" height="1600"');
     expect(out).toContain('alt="Book &#x26; page"');
   });
