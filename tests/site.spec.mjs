@@ -198,6 +198,25 @@ test('article images load without distortion at narrow and wide widths', async (
   }
 });
 
+test('article images sit smaller than the text column and centered on wide screens', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  for (const path of ['/article/human-acts/', '/article/nanobot-bot-selection/']) {
+    await page.goto(path);
+    const column = await page.locator('.post-content').evaluate((el) => el.getBoundingClientRect());
+    const images = page.locator('.post-content img');
+    expect(await images.count()).toBeGreaterThan(0);
+    for (const image of await images.all()) {
+      await image.scrollIntoViewIfNeeded();
+      const box = await image.evaluate((img) => img.getBoundingClientRect().toJSON());
+      expect(box.width, path).toBeLessThanOrEqual(560.5);
+      expect(box.height, path).toBeLessThanOrEqual(560.5);
+      const left = box.left - column.left;
+      const right = column.right - box.right;
+      expect(Math.abs(left - right), path).toBeLessThan(1.5);
+    }
+  }
+});
+
 test('search finds an article by a title word', async ({ page }) => {
   await page.goto('/search/');
   await page.getByRole('textbox', { name: '검색어를 입력하세요' }).fill('Give');
