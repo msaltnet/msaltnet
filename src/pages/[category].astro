@@ -11,9 +11,13 @@ export function getStaticPaths() {
 const { category } = Astro.props as { category: NavItem };
 const { posts, series } = await getSiteContent();
 const topicPosts = posts.filter((post) => post.data.category === category.key);
+// Posts in a series appear once, inside their series; the rest are listed below.
+const seriesIds = new Set(series.map((item) => item.id));
+const standalone = topicPosts.filter((post) => !post.data.series || !seriesIds.has(post.data.series));
 ---
 <PageLayout title={category.title} description={category.description ?? ''} path={category.url} section={category.key}>
-  <SeriesList series={series} posts={topicPosts} />
   <p class="archive-count">{topicPosts.length}편의 글</p>
-  <ArticleList posts={topicPosts} />
+  <SeriesList series={series} posts={topicPosts} />
+  {standalone.length < topicPosts.length && <h2 class="series-index-title">글</h2>}
+  <ArticleList posts={standalone} />
 </PageLayout>

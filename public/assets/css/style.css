@@ -173,10 +173,15 @@ a:focus-visible {
   flex-shrink: 0;
 }
 
+/* Header content lines up with the 760px page and article column (24px inner gutter). */
+body:not(.home-page) > .site-header {
+  padding-inline: max(24px, calc((100% - 760px) / 2 + 24px));
+}
+
 .page-shell {
   flex: 1;
   width: 100%;
-  max-width: 960px;
+  max-width: 760px;
   min-height: 75vh;
   margin-inline: auto;
   padding: 64px 24px 100px;
@@ -653,19 +658,58 @@ a:focus-visible {
   margin-bottom: 40px;
 }
 
+.series-index-title,
 .series-index h2 {
   margin: 0 0 12px;
   font-family: var(--serif);
   font-size: 1.15rem;
 }
 
-.series-cover {
-  display: block;
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  margin: 0 0 28px;
-  border-radius: 4px;
+.series-group {
+  border-top: 1px solid var(--line);
+}
+
+.series-group:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.series-group summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.series-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.series-group summary strong::before {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--accent);
+  content: "+";
+}
+
+.series-group[open] summary strong::before {
+  content: "−";
+}
+
+.series-count {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.series-description {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.series-group .article-list {
+  margin: 0 0 12px 20px;
 }
 
 .post-content pre {

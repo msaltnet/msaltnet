@@ -88,7 +88,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(8);
+  await expect(page.locator('.project-card')).toHaveCount(7);
   await expectProjectCardsToHaveOneHeight(page, 96);
   await expectProjectCardChildrenToBeContained(page);
 
@@ -162,7 +162,7 @@ test('search and AI discovery work without JavaScript', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4173/');
   await expect(page.locator('#article')).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(8);
+  await expect(page.locator('.project-card')).toHaveCount(7);
   await page.goto('http://127.0.0.1:4173/article/cooking-book-review/');
   await expect(page.getByRole('heading', { level: 1, name: '요리를 한다는 것' })).toBeVisible();
   await expect(page.locator('a[rel="author"]')).toHaveText('맛소금');
@@ -203,4 +203,33 @@ test('search finds an article by a title word', async ({ page }) => {
   await page.getByRole('textbox', { name: '검색어를 입력하세요' }).fill('Give');
   const result = page.locator('.pagefind-ui__result-link').first();
   await expect(result).toHaveAttribute('href', '/article/give-and-take/');
+});
+
+test('header content and page content share one column on list and article pages', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const edges = async (path, content) => {
+    await page.goto(path);
+    const header = await page.locator('.site-header .wordmark').boundingBox();
+    const nav = await page.locator('.site-header nav').boundingBox();
+    const body = await page.locator(content).boundingBox();
+    return { headerLeft: header.x, headerRight: nav.x + nav.width, left: body.x, right: body.x + body.width };
+  };
+  const list = await edges('/reviews/', '.page-shell .page-heading h1');
+  const article = await edges('/article/give-and-take/', '.post-shell .post-content');
+  expect(Math.abs(list.left - article.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(list.headerLeft - list.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(article.headerLeft - article.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(article.headerRight - article.right)).toBeLessThanOrEqual(1);
+});
+
+test('AX Notes series open in place and a post links back to its open series', async ({ page }) => {
+  await page.goto('/ax/');
+  const series = page.locator('#series-nanobot');
+  await expect(series).not.toHaveAttribute('open', '');
+  await series.locator('summary').click();
+  await expect(series.getByRole('link', { name: /Telegram 연결/ })).toBeVisible();
+  await page.goto('/article/nanobot-telegram/');
+  await page.locator('.post-series a').click();
+  await expect(page).toHaveURL(/\/ax\/#series-nanobot$/);
+  await expect(page.locator('#series-nanobot')).toHaveAttribute('open', '');
 });

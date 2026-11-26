@@ -89,13 +89,15 @@ class ContentNavigationTest(unittest.TestCase):
         self.assertIn('noindex', html)
         self.assertNotIn('https://msalt.net/ai-development/', (SITE / 'sitemap.xml').read_text(encoding='utf-8'))
 
-    def test_ax_notes_series_pages_list_posts_in_authored_order(self):
-        html = (SITE / 'series/nanobot/index.html').read_text(encoding='utf-8')
+    def test_ax_notes_series_expand_in_place_in_authored_order(self):
+        html = (SITE / 'ax/index.html').read_text(encoding='utf-8')
+        block = html.split('<details class="series-group" id="series-nanobot">', 1)[1].split('</details>', 1)[0]
         order = ['nanobot-requirements-first', 'nanobot-bot-selection', 'nanobot-ubuntu-setup', 'nanobot-telegram']
-        positions = [html.index(f'/article/{slug}/') for slug in order]
+        positions = [block.index(f'/article/{slug}/') for slug in order]
         self.assertEqual(positions, sorted(positions))
+        self.assertFalse((SITE / 'series').exists())
         article = (SITE / 'article/nanobot-telegram/index.html').read_text(encoding='utf-8')
-        self.assertIn('href="/series/nanobot/"', article)
+        self.assertIn('href="/ax/#series-nanobot"', article)
 
     def test_aftertaste_closes_the_article_body(self):
         article = (SITE / 'article/dots-connected/index.html').read_text(encoding='utf-8')

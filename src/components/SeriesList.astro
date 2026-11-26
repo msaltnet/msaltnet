@@ -1,22 +1,24 @@
 ---
+import ArticleList from './ArticleList.astro';
 import { seriesEntries, type Post, type Series } from '../lib/data';
 interface Props { series: Series[]; posts: Post[] }
 const { series, posts } = Astro.props;
 const groups = series
-  .map((item) => ({ item, count: seriesEntries(posts, item.id).length }))
-  .filter(({ count }) => count > 0);
+  .map((item) => ({ item, entries: seriesEntries(posts, item.id) }))
+  .filter(({ entries }) => entries.length > 0);
 ---
 {groups.length > 0 && (
   <section class="series-index" aria-labelledby="series-title">
     <h2 id="series-title">연재</h2>
-    <div class="article-list">
-      {groups.map(({ item, count }) => (
-        <a href={`/series/${item.id}/`}>
-          <time>{count}편</time>
+    {groups.map(({ item, entries }) => (
+      <details class="series-group" id={`series-${item.id}`}>
+        <summary>
           <strong>{item.data.title}</strong>
-          <span>{item.data.description}</span>
-        </a>
-      ))}
-    </div>
+          <span class="series-count">{entries.length}편</span>
+          <span class="series-description">{item.data.description}</span>
+        </summary>
+        <ArticleList posts={entries} />
+      </details>
+    ))}
   </section>
 )}

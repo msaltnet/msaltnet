@@ -17,3 +17,15 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
 
   revealTargets.forEach((target) => observer.observe(target));
 }
+
+// Open the AX Notes series named in the address (e.g. /ax/#series-nanobot).
+function openSeriesFromHash() {
+  const id = decodeURIComponent(window.location.hash.slice(1));
+  const target = id && document.getElementById(id);
+  if (target && target.tagName === 'DETAILS') {
+    target.open = true;
+    target.scrollIntoView();
+  }
+}
+openSeriesFromHash();
+window.addEventListener('hashchange', openSeriesFromHash);

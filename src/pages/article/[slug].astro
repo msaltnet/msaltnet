@@ -32,7 +32,7 @@ const listTitle = topic ? topic.title : '전체 글';
     {post.data.last_modified_at && <p class="post-date">수정 <time datetime={isoDate(post.data.last_modified_at)}>{displayDate(post.data.last_modified_at)}</time></p>}
     <h1>{post.data.title}</h1>
     {series && (
-      <p class="post-series">연재 <a href={`/series/${series.id}/`}>{series.data.title}</a> · {seriesPosts.findIndex((item) => item.id === post.id) + 1}/{seriesPosts.length}</p>
+      <p class="post-series">연재 <a href={`/ax/#series-${series.id}`}>{series.data.title}</a> · {seriesPosts.findIndex((item) => item.id === post.id) + 1}/{seriesPosts.length}</p>
     )}
     <div class="post-content"><Content />{post.data.aftertaste && <aside class="aftertaste"><p>{post.data.aftertaste}</p></aside>}</div>
     <nav class="post-actions" aria-label="글 탐색">

@@ -6,7 +6,6 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 PROJECT_URLS = {
-    "https://msalt.net/ax/",
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
@@ -83,9 +82,6 @@ class BuiltSiteTest(unittest.TestCase):
         external = {link.get("href"): link for link in self.home.links}
         self.assertTrue(PROJECT_URLS.issubset(external))
         for url in PROJECT_URLS:
-            if url.startswith("https://msalt.net/"):
-                self.assertIsNone(external[url].get("target"), url)
-                continue
             self.assertEqual(external[url].get("target"), "_blank")
             self.assertEqual(
                 set(external[url].get("rel", "").split()),
@@ -98,7 +94,7 @@ class BuiltSiteTest(unittest.TestCase):
             for image in self.home.images
             if "project-card-image" in image.get("class", "")
         ]
-        self.assertEqual(len(project_images), 8)
+        self.assertEqual(len(project_images), 7)
         self.assertTrue(all(image.get("alt", "").strip() for image in project_images))
 
     def test_first_article_contains_poem_and_personal_note(self):

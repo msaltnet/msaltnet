@@ -4,7 +4,6 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT_URLS = {
-    "https://msalt.net/ax/",
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
@@ -41,9 +40,9 @@ class SourceContentTest(unittest.TestCase):
         projects = (ROOT / "_data/projects.yml").read_text(encoding="utf-8")
         for url in PROJECT_URLS:
             self.assertIn(url, projects)
-        self.assertEqual(projects.count("- title:"), 8)
-        self.assertEqual(projects.count("  image:"), 8)
-        self.assertEqual(projects.count("  alt:"), 8)
+        self.assertEqual(projects.count("- title:"), 7)
+        self.assertEqual(projects.count("  image:"), 7)
+        self.assertEqual(projects.count("  alt:"), 7)
 
     def test_first_article_is_the_sidebar_feature_and_contains_both_texts(self):
         post = (
