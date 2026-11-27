@@ -5,7 +5,9 @@
     "coverage_complete": true,
     "original_codepoints": 11459,
     "covered_codepoints": 11459,
-    "subsets": 42
+    "subsets": 42,
+    "supplement_codepoints": 27,
+    "supplement_bytes": 2568
   },
   "ibm-plex-sans-kr-600": {
     "common_bytes": 117820,
@@ -13,7 +15,9 @@
     "coverage_complete": true,
     "original_codepoints": 11459,
     "covered_codepoints": 11459,
-    "subsets": 42
+    "subsets": 42,
+    "supplement_codepoints": 27,
+    "supplement_bytes": 2632
   },
   "noto-serif-kr-400": {
     "common_bytes": 152992,
@@ -21,7 +25,9 @@
     "coverage_complete": true,
     "original_codepoints": 11541,
     "covered_codepoints": 11541,
-    "subsets": 42
+    "subsets": 42,
+    "supplement_codepoints": 67,
+    "supplement_bytes": 6400
   },
   "noto-serif-kr-700": {
     "common_bytes": 156696,
@@ -29,6 +35,8 @@
     "coverage_complete": true,
     "original_codepoints": 11541,
     "covered_codepoints": 11541,
-    "subsets": 42
+    "subsets": 42,
+    "supplement_codepoints": 67,
+    "supplement_bytes": 6364
   }
 }

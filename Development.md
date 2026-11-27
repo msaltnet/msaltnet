@@ -66,8 +66,10 @@ Google·네이버 소유권 확인 파일은 `public/`에 그대로 둡니다.
 
 ```bash
 python -m pip install -r scripts/asset-requirements.txt
-python scripts/prepare_assets.py
+python scripts/prepare_assets.py               # 폰트만 다시 만들 때: --fonts-only
 ```
+
+번들 웹폰트에는 《》「」 같은 CJK 문장부호가 없습니다. 스크립트가 고정된 google/fonts 커밋의 원본 OFL 폰트를 `.tools/font-sources/`(git 제외)에 내려받아, CJK 문장부호 블록(U+3000–303F)과 글에 쓰였지만 번들 폰트에 없는 글자만 `*-supplement.woff2`(수 KB)로 만듭니다.
 
 ## AX Notes 앱 피드
 

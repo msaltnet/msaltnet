@@ -16,6 +16,17 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
 SOURCES = ROOT / 'src'
 IMAGE_BUDGET = 350_000
+# The bundled webfonts lack CJK punctuation such as 《》「」. Those glyphs come
+# from the full upstream OFL fonts (pinned google/fonts commit), downloaded into
+# the git-ignored .tools/ directory and reduced to a small supplement subset.
+FONT_UPSTREAM = 'https://raw.githubusercontent.com/google/fonts/6ebe737e44fd64ee736bbc6feed6136a6dbfd222/ofl'
+FONT_SUPPLEMENTS = {
+    ('ibm-plex-sans-kr', 400): ('ibmplexsanskr/IBMPlexSansKR-Regular.ttf', None),
+    ('ibm-plex-sans-kr', 600): ('ibmplexsanskr/IBMPlexSansKR-SemiBold.ttf', None),
+    ('noto-serif-kr', 400): ('notoserifkr/NotoSerifKR[wght].ttf', 400),
+    ('noto-serif-kr', 700): ('notoserifkr/NotoSerifKR[wght].ttf', 700),
+}
+SUPPLEMENT_BLOCK = (0x3000, 0x303F)  # CJK symbols and punctuation
 
 
 def write_json(path, value):
@@ -83,6 +94,44 @@ def unicode_ranges(codepoints):
     return ','.join(f'U+{start:X}' if start == end else f'U+{start:X}-{end:X}' for start, end in ranges)
 
 
+def upstream_font(path):
+    from urllib.parse import quote
+    from urllib.request import urlopen
+    target = ROOT / '.tools/font-sources' / path
+    if not target.exists():
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with urlopen(f'{FONT_UPSTREAM}/{quote(path)}') as response:
+            target.write_bytes(response.read())
+    return target
+
+
+def supplement_font(key, existing, used, output):
+    """Write punctuation/symbol glyphs the bundled font lacks; return their codepoints."""
+    from fontTools import subset
+    from fontTools.ttLib import TTFont
+    from fontTools.varLib import instancer
+    path, weight = FONT_SUPPLEMENTS[key]
+    font = TTFont(upstream_font(path), recalcTimestamp=False)
+    start, end = SUPPLEMENT_BLOCK
+    wanted = sorted(code for code in font.getBestCmap() if code not in existing
+                    and (start <= code <= end or code in used))
+    options = subset.Options()
+    options.flavor = 'woff2'
+    options.recalc_timestamp = False
+    subsetter = subset.Subsetter(options=options)
+    subsetter.populate(unicodes=wanted)
+    subsetter.subset(font)
+    if weight is not None:
+        font = instancer.instantiateVariableFont(font, {'wght': weight})
+    font.flavor = 'woff2'
+    font.save(output)
+    with TTFont(output) as saved:
+        actual = set(saved.getBestCmap())
+    if actual != set(wanted):
+        raise ValueError(f'Incomplete supplement font subset: {output}')
+    return actual
+
+
 def prepare_fonts():
     from fontTools import subset
     from fontTools.ttLib import TTFont
@@ -133,15 +182,25 @@ def prepare_fonts():
         original.close()
         if covered != supported or sizes[0] > 200_000:
             raise ValueError(f'Font coverage/budget failed: {source}')
+        output = directory / f'{filename}-{weight}-supplement.woff2'
+        extra = supplement_font((filename, weight), supported, counts.keys(), output)
+        css.append(f'@font-face {{\n  font-family: "{family}";\n  font-style: normal;\n'
+                   f'  font-weight: {weight};\n  font-display: swap;\n'
+                   f'  src: url("../fonts/subsets/{output.name}") format("woff2");\n'
+                   f'  unicode-range: {unicode_ranges(extra)};\n}}\n')
         manifest[f'{filename}-{weight}'] = {'common_bytes': sizes[0], 'original_bytes': source.stat().st_size,
                                            'coverage_complete': covered == supported,
                                            'original_codepoints': len(supported), 'covered_codepoints': len(covered),
-                                           'subsets': len(groups)}
+                                           'subsets': len(groups),
+                                           'supplement_codepoints': len(extra),
+                                           'supplement_bytes': output.stat().st_size}
     (PUBLIC / 'assets/css/fonts.css').write_text('\n'.join(css), encoding='utf-8')
     write_json(ROOT / '_data/font_subsets.json', manifest)
     print('Fonts (common subsets):', ', '.join(f'{key}: {value["common_bytes"]:,} bytes' for key, value in manifest.items()))
 
 
 if __name__ == '__main__':
-    prepare_images()
+    import sys
+    if '--fonts-only' not in sys.argv:
+        prepare_images()
     prepare_fonts()
