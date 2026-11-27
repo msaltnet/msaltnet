@@ -158,7 +158,7 @@ describe('built app/v1 contract', () => {
         return /\ncategory: ax\n/.test(text) && !/\ndraft: true\n/.test(text);
       })
       .map((file) => file.replace(/\.md$/, ''));
-    expect(axPosts.length).toBe(15);
+    expect(axPosts.length).toBe(17);
     expect(manifest.notes.map((note: { id: string }) => note.id).sort()).toEqual(axPosts.sort());
     expect(manifest.notes.some((note: { seriesId: string | null }) => note.seriesId === 'nanobot')).toBe(true);
     expect(new Set(manifest.notes.map((note: { id: string }) => note.id)).size).toBe(manifest.notes.length);

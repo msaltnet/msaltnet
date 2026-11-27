@@ -3,11 +3,11 @@
     "src": "/assets/img/optimized/ax-ai-is-scale-andrew-ng-interview-thread-png-1600.webp",
     "mobile": "/assets/img/optimized/ax-ai-is-scale-andrew-ng-interview-thread-png-800.webp",
     "social": "/assets/img/optimized/ax-ai-is-scale-andrew-ng-interview-thread-png-social.jpg",
-    "width": 1600,
-    "height": 1080,
-    "mobile_width": 800,
-    "original_bytes": 439039,
-    "optimized_bytes": 75660
+    "width": 1078,
+    "height": 1091,
+    "mobile_width": 790,
+    "original_bytes": 432817,
+    "optimized_bytes": 80984
   },
   "/assets/img/ax-ax-notes-app-requirements-first-image-1.webp": {
     "src": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-1-webp-1600.webp",
@@ -38,6 +38,26 @@
     "mobile_width": 800,
     "original_bytes": 10526,
     "optimized_bytes": 10188
+  },
+  "/assets/img/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram.png": {
+    "src": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram-png-800.webp",
+    "social": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram-png-social.jpg",
+    "width": 1181,
+    "height": 803,
+    "mobile_width": 800,
+    "original_bytes": 689419,
+    "optimized_bytes": 95896
+  },
+  "/assets/img/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender.png": {
+    "src": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender-png-800.webp",
+    "social": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender-png-social.jpg",
+    "width": 1433,
+    "height": 896,
+    "mobile_width": 800,
+    "original_bytes": 234087,
+    "optimized_bytes": 45304
   },
   "/assets/img/ax-dots-and-muse-delegated-tasks-muse-event-assistance.webp": {
     "src": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-event-assistance-webp-1600.webp",
@@ -228,16 +248,6 @@
     "mobile_width": 800,
     "original_bytes": 31894,
     "optimized_bytes": 30678
-  },
-  "/assets/img/ax-notes.png": {
-    "src": "/assets/img/optimized/ax-notes-png-1600.webp",
-    "mobile": "/assets/img/optimized/ax-notes-png-800.webp",
-    "social": "/assets/img/optimized/ax-notes-png-social.jpg",
-    "width": 180,
-    "height": 180,
-    "mobile_width": 180,
-    "original_bytes": 5577,
-    "optimized_bytes": 2636
   },
   "/assets/img/ax-series-ax-notes-app-cover.webp": {
     "src": "/assets/img/optimized/ax-series-ax-notes-app-cover-webp-1600.webp",
