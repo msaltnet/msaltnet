@@ -1,6 +1,7 @@
 import json
 import re
 import unittest
+from posts import posts
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -8,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class ImageReferencesTest(unittest.TestCase):
     def test_all_responsive_images_have_available_variants(self):
         metadata = json.loads((ROOT / '_data/images.json').read_text(encoding='utf-8'))
-        sources = list((ROOT / '_posts').glob('*.md')) + [ROOT / '_data/projects.yml']
+        sources = [post.path for post in posts()] + [ROOT / '_data/projects.yml']
         references = set()
         for source in sources:
             references.update(re.findall(r'(?:src=|image:\s*)["\']?(/assets/img/[\w.-]+\.(?:jpg|jpeg|png|webp))', source.read_text(encoding='utf-8')))
@@ -16,4 +17,4 @@ class ImageReferencesTest(unittest.TestCase):
             with self.subTest(image=reference):
                 self.assertIn(reference, metadata)
                 for key in ('src', 'mobile', 'social'):
-                    self.assertTrue((ROOT / metadata[reference][key].lstrip('/')).is_file())
+                    self.assertTrue((ROOT / 'public' / metadata[reference][key].lstrip('/')).is_file())

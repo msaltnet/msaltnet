@@ -54,6 +54,20 @@ class AssetPerformanceTest(unittest.TestCase):
             self.assertTrue((SITE / 'assets/css' / url).resolve().is_file(), url)
         self.assertIn('font-display: swap', css)
 
+    def test_every_font_face_covers_korean_book_title_brackets(self):
+        css = (SITE / 'assets/css/fonts.css').read_text(encoding='utf-8')
+        faces = re.findall(r'font-family: "([^"]+)";.*?font-weight: (\d+);.*?unicode-range: ([^;]+);', css, re.S)
+        for family, weight in {(f, w) for f, w, _ in faces}:
+            covered = set()
+            for f, w, ranges in faces:
+                if (f, w) != (family, weight):
+                    continue
+                for part in ranges.split(','):
+                    start, _, end = part.strip()[2:].partition('-')
+                    covered.update(range(int(start, 16), int(end or start, 16) + 1))
+            for char in '《》〈〉「」『』':
+                self.assertTrue(ord(char) in covered, f'{family} {weight} lacks {char}')
+
     def test_substantive_revision_reaches_schema_sitemap_feed_and_llms(self):
         slug = 'abstraction'
         html = (SITE / f'article/{slug}/index.html').read_text(encoding='utf-8')

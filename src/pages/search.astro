@@ -1,0 +1,16 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+<PageLayout title="검색" description="글의 제목과 본문에서 찾습니다." path="/search/" section="search" robots="noindex, follow">
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+    <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  </Fragment>
+  <div id="search" class="site-search"></div>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      new PagefindUI({ element: '#search', showSubResults: true, showImages: false, translations: { placeholder: '검색어를 입력하세요' } });
+    });
+  </script>
+  <noscript><p>검색은 JavaScript가 필요합니다. <a href="/">전체 글 목록</a>에서 글을 찾을 수 있습니다.</p></noscript>
+</PageLayout>

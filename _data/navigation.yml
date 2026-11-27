@@ -6,13 +6,16 @@
   title: "생각"
   url: /thoughts/
   description: "일하고 살아가며 마주한 변화와 질문들. 쉽게 답을 내리기보다 내 언어로 천천히 생각해 봅니다."
-- key: ai-development
-  title: "AI와 개발"
-  url: /ai-development/
-  description: "소프트웨어를 설계하고 AI를 일상에 활용하며 얻은 경험을 적습니다. 직접 써 보고 만들면서 알게 된 것들을 나눕니다."
+- key: ax
+  title: "AX Notes"
+  url: /ax/
+  description: "악소리 나는 AX 경험담. AI로 일하는 방식을 바꾸며 배우고 생각한 것들."
 - key: projects
   title: "프로젝트"
   url: /projects/
 - key: about
   title: "소개"
   url: /about/
+- key: search
+  title: "검색"
+  url: /search/

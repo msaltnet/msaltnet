@@ -1,0 +1,15 @@
+---
+import type { Post } from '../lib/data';
+import { displayDate, isoDate } from '../lib/data';
+interface Props { posts: Post[] }
+const { posts } = Astro.props;
+---
+<div class="article-list">
+  {posts.map((post) => (
+    <a href={`/article/${post.id}/`}>
+      <time datetime={isoDate(post.data.date)}>{displayDate(post.data.date)}</time>
+      <strong>{post.data.title}</strong>
+      <span>{post.data.description}</span>
+    </a>
+  ))}
+</div>

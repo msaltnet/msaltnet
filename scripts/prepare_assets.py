@@ -13,7 +13,20 @@ import re
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC = ROOT / 'public'
+SOURCES = ROOT / 'src'
 IMAGE_BUDGET = 350_000
+# The bundled webfonts lack CJK punctuation such as 《》「」. Those glyphs come
+# from the full upstream OFL fonts (pinned google/fonts commit), downloaded into
+# the git-ignored .tools/ directory and reduced to a small supplement subset.
+FONT_UPSTREAM = 'https://raw.githubusercontent.com/google/fonts/6ebe737e44fd64ee736bbc6feed6136a6dbfd222/ofl'
+FONT_SUPPLEMENTS = {
+    ('ibm-plex-sans-kr', 400): ('ibmplexsanskr/IBMPlexSansKR-Regular.ttf', None),
+    ('ibm-plex-sans-kr', 600): ('ibmplexsanskr/IBMPlexSansKR-SemiBold.ttf', None),
+    ('noto-serif-kr', 400): ('notoserifkr/NotoSerifKR[wght].ttf', 400),
+    ('noto-serif-kr', 700): ('notoserifkr/NotoSerifKR[wght].ttf', 700),
+}
+SUPPLEMENT_BLOCK = (0x3000, 0x303F)  # CJK symbols and punctuation
 
 
 def write_json(path, value):
@@ -42,16 +55,16 @@ def image_variant(image, path, width, format):
 
 
 def prepare_images():
-    directory = ROOT / 'assets/img/optimized'
+    directory = PUBLIC / 'assets/img/optimized'
     directory.mkdir(parents=True, exist_ok=True)
-    inputs = [ROOT / 'index.html', ROOT / '_data/projects.yml', *sorted((ROOT / '_posts').glob('*.md'))]
+    inputs = [ROOT / '_data/projects.yml', *sorted(SOURCES.rglob('*.md')), *sorted(SOURCES.rglob('*.astro')), *sorted(SOURCES.rglob('*.ts'))]
     urls = set()
     for path in inputs:
         urls.update(re.findall(r'/assets/img/[\w.-]+\.(?:jpg|jpeg|png|webp)', path.read_text(encoding='utf-8')))
     urls.add('/assets/img/hero-bg.jpg')
     metadata = {}
     for url in sorted(urls):
-        source = ROOT / url.lstrip('/')
+        source = PUBLIC / url.lstrip('/')
         with Image.open(source) as original:
             image = ImageOps.exif_transpose(original).convert('RGBA')
             stem = source.name.replace('.', '-')
@@ -61,7 +74,7 @@ def prepare_images():
             width, height = image_variant(image, desktop, 1600, 'WEBP')
             mobile_width, _ = image_variant(image, mobile, 800, 'WEBP')
             image_variant(image, social, 1200, 'JPEG')
-        relative = lambda path: '/' + path.relative_to(ROOT).as_posix()
+        relative = lambda path: '/' + path.relative_to(PUBLIC).as_posix()
         metadata[url] = {'src': relative(desktop), 'mobile': relative(mobile),
                          'social': relative(social), 'width': width, 'height': height,
                          'mobile_width': mobile_width, 'original_bytes': source.stat().st_size,
@@ -81,18 +94,55 @@ def unicode_ranges(codepoints):
     return ','.join(f'U+{start:X}' if start == end else f'U+{start:X}-{end:X}' for start, end in ranges)
 
 
+def upstream_font(path):
+    from urllib.parse import quote
+    from urllib.request import urlopen
+    target = ROOT / '.tools/font-sources' / path
+    if not target.exists():
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with urlopen(f'{FONT_UPSTREAM}/{quote(path)}') as response:
+            target.write_bytes(response.read())
+    return target
+
+
+def supplement_font(key, existing, used, output):
+    """Write punctuation/symbol glyphs the bundled font lacks; return their codepoints."""
+    from fontTools import subset
+    from fontTools.ttLib import TTFont
+    from fontTools.varLib import instancer
+    path, weight = FONT_SUPPLEMENTS[key]
+    font = TTFont(upstream_font(path), recalcTimestamp=False)
+    start, end = SUPPLEMENT_BLOCK
+    wanted = sorted(code for code in font.getBestCmap() if code not in existing
+                    and (start <= code <= end or code in used))
+    options = subset.Options()
+    options.flavor = 'woff2'
+    options.recalc_timestamp = False
+    subsetter = subset.Subsetter(options=options)
+    subsetter.populate(unicodes=wanted)
+    subsetter.subset(font)
+    if weight is not None:
+        font = instancer.instantiateVariableFont(font, {'wght': weight})
+    font.flavor = 'woff2'
+    font.save(output)
+    with TTFont(output) as saved:
+        actual = set(saved.getBestCmap())
+    if actual != set(wanted):
+        raise ValueError(f'Incomplete supplement font subset: {output}')
+    return actual
+
+
 def prepare_fonts():
     from fontTools import subset
     from fontTools.ttLib import TTFont
     # Common glyphs come from all published source content. Remaining glyphs are
     # partitioned too: new posts retain Korean/Hanja/punctuation coverage without
     # downloading an entire original font or requiring a build plugin.
-    paths = [ROOT / 'index.html', ROOT / 'llms.txt', ROOT / '_config.yml',
-             *sorted((ROOT / '_posts').glob('*.md')), *sorted((ROOT / '_includes').glob('*.html')),
-             *sorted((ROOT / '_layouts').glob('*.html')), *sorted((ROOT / '_data').glob('*.yml'))]
+    paths = [*sorted(SOURCES.rglob('*.md')), *sorted(SOURCES.rglob('*.astro')), *sorted(SOURCES.rglob('*.ts')),
+             *sorted(SOURCES.rglob('*.mjs')), *sorted((ROOT / '_data').glob('*.yml'))]
     counts = Counter(ord(char) for path in paths for char in path.read_text(encoding='utf-8'))
     counts.update(map(ord, '수정'))
-    directory = ROOT / 'assets/fonts/subsets'
+    directory = PUBLIC / 'assets/fonts/subsets'
     directory.mkdir(parents=True, exist_ok=True)
     css = ['/* Generated by scripts/prepare_assets.py; do not edit. */']
     manifest = {}
@@ -100,7 +150,7 @@ def prepare_fonts():
                                      ('IBM Plex Sans KR', 'ibm-plex-sans-kr', 600),
                                      ('Noto Serif KR', 'noto-serif-kr', 400),
                                      ('Noto Serif KR', 'noto-serif-kr', 700)]:
-        source = ROOT / f'assets/fonts/{filename}-{weight}.woff2'
+        source = PUBLIC / f'assets/fonts/{filename}-{weight}.woff2'
         original = TTFont(source, recalcTimestamp=False)
         original.ensureDecompiled()
         supported = set(original.getBestCmap())
@@ -132,15 +182,25 @@ def prepare_fonts():
         original.close()
         if covered != supported or sizes[0] > 200_000:
             raise ValueError(f'Font coverage/budget failed: {source}')
+        output = directory / f'{filename}-{weight}-supplement.woff2'
+        extra = supplement_font((filename, weight), supported, counts.keys(), output)
+        css.append(f'@font-face {{\n  font-family: "{family}";\n  font-style: normal;\n'
+                   f'  font-weight: {weight};\n  font-display: swap;\n'
+                   f'  src: url("../fonts/subsets/{output.name}") format("woff2");\n'
+                   f'  unicode-range: {unicode_ranges(extra)};\n}}\n')
         manifest[f'{filename}-{weight}'] = {'common_bytes': sizes[0], 'original_bytes': source.stat().st_size,
                                            'coverage_complete': covered == supported,
                                            'original_codepoints': len(supported), 'covered_codepoints': len(covered),
-                                           'subsets': len(groups)}
-    (ROOT / 'assets/css/fonts.css').write_text('\n'.join(css), encoding='utf-8')
+                                           'subsets': len(groups),
+                                           'supplement_codepoints': len(extra),
+                                           'supplement_bytes': output.stat().st_size}
+    (PUBLIC / 'assets/css/fonts.css').write_text('\n'.join(css), encoding='utf-8')
     write_json(ROOT / '_data/font_subsets.json', manifest)
     print('Fonts (common subsets):', ', '.join(f'{key}: {value["common_bytes"]:,} bytes' for key, value in manifest.items()))
 
 
 if __name__ == '__main__':
-    prepare_images()
+    import sys
+    if '--fonts-only' not in sys.argv:
+        prepare_images()
     prepare_fonts()

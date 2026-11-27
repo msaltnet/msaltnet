@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import ArticleList from '../components/ArticleList.astro';
+import Sidebar from '../components/Sidebar.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { getSiteContent, displayDate, isoDate } from '../lib/data';
+import { cardImage } from '../lib/content';
+import { SITE } from '../lib/site';
+import { images } from '../lib/site-data';
+
+const { posts } = await getSiteContent();
+/** Newest posts across every category: image cards first, then a compact list. */
+const CARD_COUNT = 5;
+const LIST_COUNT = 10;
+const knownImages = new Set(Object.keys(images()));
+const cards = posts.slice(0, CARD_COUNT).map((post) => ({ post, image: cardImage(post, knownImages) }));
+const olderPosts = posts.slice(CARD_COUNT, CARD_COUNT + LIST_COUNT);
+---
+<BaseLayout seo={{ path: '/', kind: 'home', image: SITE.defaultImage }} bodyClass="home-page">
+<SiteNav />
+<div class="home-shell">
+  <main class="home-main" id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy" data-reveal>
+        <h1 id="hero-title">맛소금</h1>
+        <p>지구별에서 소프트웨어를 만들고,<br>때때로 생각을 적습니다.</p>
+      </div>
+    </section>
+
+    <section class="article-index" id="article" aria-labelledby="article-title" data-reveal>
+      <h2 id="article-title" class="section-kicker">최근 글</h2>
+      <ul class="latest-cards">
+        {cards.map(({ post, image }) => (
+          <li>
+            <a class:list={['latest-card', { 'latest-card--image': image }]} href={`/article/${post.id}/`}>
+              {image && (
+                <ResponsiveImage src={image} alt="" class="latest-card-image" sizes="(max-width: 640px) 112px, 200px" />
+              )}
+              <span class="latest-card-copy">
+                <time datetime={isoDate(post.data.date)}>{displayDate(post.data.date)}</time>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {olderPosts.length > 0 && (
+        <>
+          <h3 class="section-kicker article-list-label">지난 글</h3>
+          <ArticleList posts={olderPosts} />
+        </>
+      )}
+    </section>
+  </main>
+
+  <Sidebar posts={posts} />
+</div>
+</BaseLayout>

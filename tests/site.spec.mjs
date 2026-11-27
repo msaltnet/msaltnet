@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('content page footers reach the bottom of short and long viewports', async ({ page }) => {
   for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 1440 }]) {
     await page.setViewportSize(viewport);
-    for (const path of ['/thoughts/', '/ai-development/', '/reviews/', '/projects/', '/about/']) {
+    for (const path of ['/thoughts/', '/ax/', '/reviews/', '/projects/', '/about/']) {
       await page.goto(path);
       await page.evaluate(async () => {
         await document.fonts.ready;
@@ -15,11 +15,11 @@ test('content page footers reach the bottom of short and long viewports', async 
   }
 });
 
-test('five content menus navigate on narrow screens and retain the current topic', async ({ page }) => {
+test('all content menus navigate on narrow screens and retain the current topic', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/');
   const destinations = [['감상문', '/reviews/'], ['생각', '/thoughts/'],
-    ['AI와 개발', '/ai-development/'], ['프로젝트', '/projects/'], ['소개', '/about/']];
+    ['AX Notes', '/ax/'], ['프로젝트', '/projects/'], ['소개', '/about/'], ['검색', '/search/']];
   for (const [title, url] of destinations) {
     await page.getByRole('navigation', { name: '주요 메뉴', exact: true }).getByRole('link', { name: title, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`${url}$`));
@@ -30,11 +30,11 @@ test('five content menus navigate on narrow screens and retain the current topic
       await expect(page.locator('.post-content a').first()).toHaveCSS('text-decoration-line', 'underline');
     }
   }
-  await page.goto('/ai-development/');
+  await page.goto('/ax/');
   await page.getByRole('link', { name: /추상화 잘하는 사람/ }).click();
-  await expect(page.locator('nav[aria-label="주요 메뉴"] [aria-current="page"]')).toHaveText('AI와 개발');
+  await expect(page.locator('nav[aria-label="주요 메뉴"] [aria-current="page"]')).toHaveText('AX Notes');
   await page.getByRole('link', { name: '목록으로 가기', exact: true }).click();
-  await expect(page).toHaveURL(/\/ai-development\/$/);
+  await expect(page).toHaveURL(/\/ax\/$/);
 });
 
 async function expectProjectCardsToHaveOneHeight(page, expectedHeight) {
@@ -88,7 +88,7 @@ test('desktop home uses an editorial sidebar and exposes the next section', asyn
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: '맛소금' })).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(8);
+  await expect(page.locator('.project-card')).toHaveCount(7);
   await expectProjectCardsToHaveOneHeight(page, 96);
   await expectProjectCardChildrenToBeContained(page);
 
@@ -162,7 +162,7 @@ test('search and AI discovery work without JavaScript', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4173/');
   await expect(page.locator('#article')).toBeVisible();
-  await expect(page.locator('.project-card')).toHaveCount(8);
+  await expect(page.locator('.project-card')).toHaveCount(7);
   await page.goto('http://127.0.0.1:4173/article/cooking-book-review/');
   await expect(page.getByRole('heading', { level: 1, name: '요리를 한다는 것' })).toBeVisible();
   await expect(page.locator('a[rel="author"]')).toHaveText('맛소금');
@@ -196,4 +196,66 @@ test('article images load without distortion at narrow and wide widths', async (
       }
     }
   }
+});
+
+test('search finds an article by a title word', async ({ page }) => {
+  await page.goto('/search/');
+  await page.getByRole('textbox', { name: '검색어를 입력하세요' }).fill('Give');
+  const result = page.locator('.pagefind-ui__result-link').first();
+  await expect(result).toHaveAttribute('href', '/article/give-and-take/');
+});
+
+test('header content and page content share one column on list and article pages', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const edges = async (path, content) => {
+    await page.goto(path);
+    const header = await page.locator('.site-header .wordmark').boundingBox();
+    const nav = await page.locator('.site-header nav').boundingBox();
+    const body = await page.locator(content).boundingBox();
+    return { headerLeft: header.x, headerRight: nav.x + nav.width, left: body.x, right: body.x + body.width };
+  };
+  const list = await edges('/reviews/', '.page-shell .page-heading h1');
+  const article = await edges('/article/give-and-take/', '.post-shell .post-content');
+  expect(Math.abs(list.left - article.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(list.headerLeft - list.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(article.headerLeft - article.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(article.headerRight - article.right)).toBeLessThanOrEqual(1);
+});
+
+test('home and list pages share one site header and one list width on desktop', async ({ page }) => {
+  for (const width of [1440, 1024]) {
+    await page.setViewportSize({ width, height: 900 });
+    const measure = async (path, list) => {
+      await page.goto(path);
+      const wordmark = await page.locator('.site-header .wordmark').boundingBox();
+      const nav = await page.locator('.site-header nav').boundingBox();
+      const header = await page.locator('.site-header').boundingBox();
+      const items = await page.locator(list).boundingBox();
+      return { wordmark, nav, header, items };
+    };
+    const home = await measure('/', '#article .article-list');
+    const reviews = await measure('/reviews/', '.page-shell .article-list');
+    for (const key of ['x', 'y', 'width']) {
+      expect(Math.abs(home.wordmark[key] - reviews.wordmark[key]), `${width} wordmark ${key}`).toBeLessThanOrEqual(1);
+      expect(Math.abs(home.nav[key] - reviews.nav[key]), `${width} nav ${key}`).toBeLessThanOrEqual(1);
+    }
+    expect(home.header.x).toBe(0);
+    expect(home.header.width).toBe(width);
+    const sidebar = await page.goto('/').then(() => page.locator('.home-sidebar').boundingBox());
+    expect(sidebar.y).toBeGreaterThanOrEqual(home.header.y + home.header.height - 1);
+    expect(await page.locator('.sidebar-wordmark').count()).toBe(0);
+    if (width >= 1440) expect(Math.abs(home.items.width - reviews.items.width), `${width} list width`).toBeLessThanOrEqual(1);
+  }
+});
+
+test('AX Notes series open in place and a post links back to its open series', async ({ page }) => {
+  await page.goto('/ax/');
+  const series = page.locator('#series-nanobot');
+  await expect(series).not.toHaveAttribute('open', '');
+  await series.locator('summary').click();
+  await expect(series.getByRole('link', { name: /Telegram 연결/ })).toBeVisible();
+  await page.goto('/article/nanobot-telegram/');
+  await page.locator('.post-series a').click();
+  await expect(page).toHaveURL(/\/ax\/#series-nanobot$/);
+  await expect(page.locator('#series-nanobot')).toHaveAttribute('open', '');
 });

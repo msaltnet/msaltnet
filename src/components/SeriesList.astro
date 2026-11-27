@@ -1,0 +1,28 @@
+---
+import ArticleList from './ArticleList.astro';
+import ResponsiveImage from './ResponsiveImage.astro';
+import { seriesEntries, type Post, type Series } from '../lib/data';
+interface Props { series: Series[]; posts: Post[] }
+const { series, posts } = Astro.props;
+const groups = series
+  .map((item) => ({ item, entries: seriesEntries(posts, item.id) }))
+  .filter(({ entries }) => entries.length > 0);
+---
+{groups.length > 0 && (
+  <section class="series-index" aria-labelledby="series-title">
+    <h2 id="series-title">연재</h2>
+    {groups.map(({ item, entries }) => (
+      <details class="series-group" id={`series-${item.id}`}>
+        <summary>
+          {item.data.cover_image && (
+            <ResponsiveImage src={item.data.cover_image} alt={item.data.cover_alt ?? ''} class="series-cover" sizes="(max-width: 480px) 72px, 112px" />
+          )}
+          <strong>{item.data.title}</strong>
+          <span class="series-count">{entries.length}편</span>
+          <span class="series-description">{item.data.description}</span>
+        </summary>
+        <ArticleList posts={entries} />
+      </details>
+    ))}
+  </section>
+)}

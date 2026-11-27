@@ -1,76 +1,83 @@
 # msalt.net
 
-Jekyll로 생성되는 맛소금의 개인 웹 페이지입니다.
+Astro로 생성되는 맛소금의 개인 웹 페이지입니다.
 
 ## 글 쓰기
 
-`_posts/YYYY-MM-DD-title.md` 형식으로 파일을 만들고 다음 front matter 뒤에 Markdown 본문을 작성합니다.
+`src/content/posts/<slug>.md` 파일을 만들고 다음 front matter 뒤에 Markdown 본문을 작성합니다. 파일 이름이 주소가 됩니다(`/article/<slug>/`). slug는 영문 소문자·숫자와 `-`만 씁니다.
 
 ```yaml
 ---
 title: "글 제목"
-date: 2026-08-10
+date: "2026-08-10"
 description: "홈과 공유 메타데이터에 표시할 한두 문장"
-section: reviews
+category: reviews
 ---
 ```
 
-`section`은 `reviews`(감상문), `thoughts`(생각), `ai-development`(AI와 개발) 중 하나로 지정합니다. 글은 해당 주제의 독립 목록에 표시되며 기존 `/article/:slug/` 주소는 유지합니다. 주요 메뉴의 이름과 주소는 `_data/navigation.yml`에서 관리합니다. 프로젝트와 소개는 `/projects/`, `/about/`에서 제공합니다.
+`category`는 `reviews`(감상문), `thoughts`(생각), `ax`(AX Notes) 중 하나입니다. 예전 `/ai-development/` 주소는 `/ax/`로 이동합니다. 분류의 이름·설명·주소와 주요 메뉴는 `_data/navigation.yml` 한 곳에서 관리합니다. 태그는 없습니다.
 
-홈 왼쪽 사이드바에 글 전문을 함께 표시하려면 front matter에 `sidebar_feature: true`를 추가합니다. 한 편만 지정합니다.
+선택 항목:
 
-## 로컬 실행
+- `image: /assets/img/example.jpg` — 공유 미리보기에 쓸 대표 이미지. 없으면 기본 이미지를 씁니다.
+- `last_modified_at: "2026-09-30"` — 실제로 본문을 수정했을 때만 적습니다(아래 참고).
+- `sidebar_feature: true` — 홈 사이드바에 글 전문을 표시합니다. 한 편만 지정할 수 있으며 두 편 이상이면 빌드가 실패합니다.
+- `series: <id>`와 `series_order: 1` — 연재로 묶을 때 함께 씁니다. 연재는 `src/content/series/<id>.md`(`title`, `description`)로 만듭니다.
+- `draft: true` — 목록·sitemap·feed·llms.txt·검색·앱 피드에서 모두 제외합니다.
 
-Ruby와 Bundler가 있는 환경에서는 다음 명령을 사용합니다.
+허용되지 않은 분류, 없는 연재, 순서 누락·중복, 잘못된 slug는 빌드 오류입니다.
 
-```bash
-bundle install
-bundle exec jekyll serve
-```
+## 로컬 실행과 검증
 
-사이트는 `http://localhost:4000`에서 확인할 수 있습니다.
-
-## 테스트
-
-Jekyll 빌드 뒤 소스·출력 계약과 브라우저 테스트를 실행합니다.
+Node.js 22와 Python 3이 필요합니다.
 
 ```bash
-npm test
-npm run test:e2e
+npm ci
+npm run dev        # http://localhost:4321
+npm run verify     # astro check → 빌드(_site) + Pagefind 색인 → Vitest + Python 출력 계약 테스트
+npm run test:e2e   # Playwright 브라우저 테스트 (빌드된 _site 사용)
 ```
+
 
 ## 검색과 AI 콘텐츠 탐색
 
-`_config.yml`의 `author`는 검색 메타데이터와 글의 `BlogPosting` 구조화 데이터에 사용합니다. 제목, 한두 문장의 `description`, 대표 `image`를 글마다 지정하세요. 최초 작성일인 `date`는 유지하고, 내용에 실질적인 수정이 있을 때만 `last_modified_at: 2026-09-30`처럼 실제 수정일을 추가합니다. sitemap과 검색 메타데이터가 이를 반영합니다.
+`src/lib/site.ts`의 사이트 정보는 검색 메타데이터와 글의 `BlogPosting` 구조화 데이터에 사용합니다. 제목, 한두 문장의 `description`, 대표 `image`를 글마다 지정하세요.
 
-- `/sitemap.xml`: jekyll-sitemap이 홈과 공개 글 URL을 자동 생성합니다. 개발 문서는 배포에서 제외하고, Google·네이버 소유권 확인 파일은 접근을 유지하면서 sitemap에서 제외합니다.
-- `/robots.txt`: 공개 페이지를 검색 및 AI 크롤러에 허용하고 정식 sitemap 주소를 안내합니다. AI 검색 접근과 모델 학습 정책은 별개입니다. 현재는 기존 공개 크롤링 정책을 유지합니다.
-- `/ads.txt`: 기존 AdSense 게시자 ID를 유지합니다. 광고 판매자 인증용이며 검색 순위나 AI 노출을 결정하는 파일은 아닙니다.
-- `/feed.xml`: jekyll-feed가 최대 50개의 최근 글과 본문을 Atom 형식으로 제공합니다.
-- `/llms.txt`: 글 목록과 프로젝트를 같은 데이터에서 자동 생성하는 AI용 콘텐츠 안내입니다. 제안된 형식이며 검색 순위나 AI 인용을 보장하지 않습니다.
+- `/sitemap.xml`: 홈, 분류·프로젝트·소개 페이지와 공개 글. 검색·앱 페이지는 제외합니다.
+- `/robots.txt`: `public/robots.txt`. 공개 페이지를 검색 및 AI 크롤러에 허용하고 sitemap 주소를 안내합니다.
+- `/ads.txt`: 기존 AdSense 게시자 ID를 유지합니다.
+- `/feed.xml`: 최근 50개 글과 본문을 Atom 형식으로 제공합니다(기존 주소 유지).
+- `/llms.txt`: 글 목록과 프로젝트를 같은 데이터에서 생성하는 AI용 콘텐츠 안내입니다.
+- `/search/`: Pagefind 검색. 글 본문만 색인하며 검색 페이지 자체는 `noindex`입니다.
 
-글을 추가하면 sitemap, feed, llms.txt도 다음 빌드에서 갱신됩니다. 중복된 수동 sitemap을 만들지 마세요. 검색 제목·canonical·Open Graph·작성자 데이터는 jekyll-seo-tag가 생성하므로 중복해서 추가하지 않습니다.
+Google·네이버 소유권 확인 파일은 `public/`에 그대로 둡니다.
 
-## 이미지와 웹폰트 관리
+## 이미지와 웹폰트
 
-이미지 파일을 `assets/img`에 추가하고 글에 일반 마크다운으로 첨부합니다.
+이미지 파일을 `public/assets/img`에 추가하고 글에 일반 Markdown으로 첨부합니다.
 
 ```markdown
 ![이미지 설명](/assets/img/example.jpg)
 ```
 
-기본 브랜치 배포 시 GitHub Actions가 이미지를 최적화하고, 본문에 반응형 크기와 로딩 설정을 자동으로 적용합니다. 원본 이미지도 함께 배포되므로 최적화 정보가 없는 로컬 빌드에서도 이미지가 표시됩니다. 첫 배포 전에 GitHub 저장소 Settings → Pages → Build and deployment의 Source를 **GitHub Actions**로 설정해야 합니다.
+빌드는 `_data/images.json`에 등록된 이미지를 반응형 변환본(srcset·크기)으로 바꿉니다. 첫 이미지는 바로 불러오고 나머지는 지연 로딩합니다. 등록되지 않은 이미지는 원본 그대로 표시됩니다. 기존 글의 `{% include responsive-image.html src="..." alt="..." %}` 구문과 kramdown 클래스 표기(`{: .poem-quote }`)도 계속 동작합니다.
 
-로컬에서도 배포 결과를 확인하려면 Pillow 설치 후 다음을 실행합니다.
+새 이미지나 새 한글 글자를 추가하면 변환본과 폰트 subset을 다시 만들고 결과를 커밋합니다. CI에서는 이 단계를 실행하지 않습니다.
 
 ```bash
-python -m pip install Pillow==12.1.0
-python -c "from scripts.prepare_assets import prepare_images; prepare_images()"
-bundle exec jekyll build
-python scripts/optimize_html_images.py
+python -m pip install -r scripts/asset-requirements.txt
+python scripts/prepare_assets.py               # 폰트만 다시 만들 때: --fonts-only
 ```
 
-기존 글의 `responsive-image.html` include도 계속 사용할 수 있습니다. 글의 대표 이미지를 공유 미리보기에도 사용하려면 front matter에 `image: /assets/img/example.jpg`를 추가합니다. 웹폰트 갱신이 필요할 때는 `scripts/asset-requirements.txt`의 의존성을 설치하고 `python scripts/prepare_assets.py`를 실행합니다.
+번들 웹폰트에는 《》「」 같은 CJK 문장부호가 없습니다. 스크립트가 고정된 google/fonts 커밋의 원본 OFL 폰트를 `.tools/font-sources/`(git 제외)에 내려받아, CJK 문장부호 블록(U+3000–303F)과 글에 쓰였지만 번들 폰트에 없는 글자만 `*-supplement.woff2`(수 KB)로 만듭니다.
+
+## AX Notes 앱 피드
+
+빌드는 `/app/v1/manifest.json`을 만듭니다(계약: `docs/app-feed-contract.md`). 앱에 보낼 글은 `src/lib/app-feed-source.ts`의 `selectAppFeedPosts`가 정하며, 공개된 AX Notes(`category: ax`) 글을 모두 보냅니다. 앱 개인정보처리방침은 `/app-privacy/`입니다.
+
+## 배포
+
+`.github/workflows/pages.yml`이 기본 브랜치 push에서 `npm run verify` 후 `_site`를 GitHub Pages에 배포합니다. 저장소 Settings → Pages → Build and deployment의 Source가 **GitHub Actions**여야 합니다.
 
 ### 실제 수정일의 근거
 
@@ -79,14 +86,5 @@ python scripts/optimize_html_images.py
 ### 배포 이후 확인
 
 Search Console에서 sitemap 제출 상태, 페이지 색인, 대표 URL, 검색 노출·클릭을 확인합니다. 모바일 PageSpeed Insights와 Core Web Vitals에서 LCP·CLS·INP를 확인하고 변경 전후를 비교합니다. 네이버·Bing도 각 관리 도구에서 색인 상태를 확인합니다. 로컬 테스트와 파일 크기 감소만으로 실제 검색 순위나 Core Web Vitals 통과를 주장하지 않습니다.
-
-검증은 실제 Jekyll 빌드 후 실행합니다.
-
-```bash
-JEKYLL_ENV=production bundle exec jekyll build
-python3 -m unittest discover -s tests -p 'test_*.py' -v
-```
-
-배포 후 Google Search Console, Bing Webmaster Tools, 네이버 서치어드바이저에서 `https://msalt.net/sitemap.xml`을 제출하고 홈과 새 글의 색인 상태를 확인하세요. 확인 파일은 삭제하지 않습니다. Google의 AI 검색도 일반 SEO와 크롤링·색인 요건을 따릅니다.
 
 참고: [Google AI 검색 안내](https://developers.google.com/search/docs/appearance/ai-features), [OpenAI 크롤러 안내](https://developers.openai.com/api/docs/bots), [llms.txt 제안](https://llmstxt.org/).

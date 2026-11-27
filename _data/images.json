@@ -1,13 +1,313 @@
 {
-  "/assets/img/ax-notes.png": {
-    "src": "/assets/img/optimized/ax-notes-png-1600.webp",
-    "mobile": "/assets/img/optimized/ax-notes-png-800.webp",
-    "social": "/assets/img/optimized/ax-notes-png-social.jpg",
-    "width": 180,
-    "height": 180,
-    "mobile_width": 180,
-    "original_bytes": 5577,
-    "optimized_bytes": 2636
+  "/assets/img/ax-ai-is-scale-andrew-ng-interview-thread.png": {
+    "src": "/assets/img/optimized/ax-ai-is-scale-andrew-ng-interview-thread-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-ai-is-scale-andrew-ng-interview-thread-png-800.webp",
+    "social": "/assets/img/optimized/ax-ai-is-scale-andrew-ng-interview-thread-png-social.jpg",
+    "width": 1078,
+    "height": 1091,
+    "mobile_width": 790,
+    "original_bytes": 432817,
+    "optimized_bytes": 80984
+  },
+  "/assets/img/ax-ax-notes-app-requirements-first-image-1.webp": {
+    "src": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-1-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-1-webp-800.webp",
+    "social": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-1-webp-social.jpg",
+    "width": 816,
+    "height": 588,
+    "mobile_width": 800,
+    "original_bytes": 39194,
+    "optimized_bytes": 52440
+  },
+  "/assets/img/ax-ax-notes-app-requirements-first-image-4.webp": {
+    "src": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-4-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-4-webp-800.webp",
+    "social": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-4-webp-social.jpg",
+    "width": 880,
+    "height": 769,
+    "mobile_width": 800,
+    "original_bytes": 53900,
+    "optimized_bytes": 63158
+  },
+  "/assets/img/ax-ax-notes-app-requirements-first-image.webp": {
+    "src": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-webp-800.webp",
+    "social": "/assets/img/optimized/ax-ax-notes-app-requirements-first-image-webp-social.jpg",
+    "width": 815,
+    "height": 204,
+    "mobile_width": 800,
+    "original_bytes": 10526,
+    "optimized_bytes": 10188
+  },
+  "/assets/img/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram.png": {
+    "src": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram-png-800.webp",
+    "social": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-mit-oral-assessment-instagram-png-social.jpg",
+    "width": 1181,
+    "height": 803,
+    "mobile_width": 800,
+    "original_bytes": 689419,
+    "optimized_bytes": 95896
+  },
+  "/assets/img/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender.png": {
+    "src": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender-png-800.webp",
+    "social": "/assets/img/optimized/ax-cognitive-surrender-human-surrender-threads-cognitive-surrender-png-social.jpg",
+    "width": 1433,
+    "height": 896,
+    "mobile_width": 800,
+    "original_bytes": 234087,
+    "optimized_bytes": 45304
+  },
+  "/assets/img/ax-dots-and-muse-delegated-tasks-muse-event-assistance.webp": {
+    "src": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-event-assistance-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-event-assistance-webp-800.webp",
+    "social": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-event-assistance-webp-social.jpg",
+    "width": 1600,
+    "height": 1090,
+    "mobile_width": 800,
+    "original_bytes": 131824,
+    "optimized_bytes": 102414
+  },
+  "/assets/img/ax-dots-and-muse-delegated-tasks-muse-scheduling-and-github.webp": {
+    "src": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-scheduling-and-github-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-scheduling-and-github-webp-800.webp",
+    "social": "/assets/img/optimized/ax-dots-and-muse-delegated-tasks-muse-scheduling-and-github-webp-social.jpg",
+    "width": 1600,
+    "height": 1020,
+    "mobile_width": 800,
+    "original_bytes": 89418,
+    "optimized_bytes": 67528
+  },
+  "/assets/img/ax-dots-ax-notes-beta-testers-play-console-review.png": {
+    "src": "/assets/img/optimized/ax-dots-ax-notes-beta-testers-play-console-review-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-dots-ax-notes-beta-testers-play-console-review-png-800.webp",
+    "social": "/assets/img/optimized/ax-dots-ax-notes-beta-testers-play-console-review-png-social.jpg",
+    "width": 1274,
+    "height": 761,
+    "mobile_width": 800,
+    "original_bytes": 86897,
+    "optimized_bytes": 38546
+  },
+  "/assets/img/ax-dots-ax-notes-beta-testers-play-store-feature.png": {
+    "src": "/assets/img/optimized/ax-dots-ax-notes-beta-testers-play-store-feature-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-dots-ax-notes-beta-testers-play-store-feature-png-800.webp",
+    "social": "/assets/img/optimized/ax-dots-ax-notes-beta-testers-play-store-feature-png-social.jpg",
+    "width": 1024,
+    "height": 500,
+    "mobile_width": 800,
+    "original_bytes": 22853,
+    "optimized_bytes": 13494
+  },
+  "/assets/img/ax-dots-connected-image-3.webp": {
+    "src": "/assets/img/optimized/ax-dots-connected-image-3-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-dots-connected-image-3-webp-800.webp",
+    "social": "/assets/img/optimized/ax-dots-connected-image-3-webp-social.jpg",
+    "width": 1362,
+    "height": 929,
+    "mobile_width": 800,
+    "original_bytes": 123592,
+    "optimized_bytes": 78720
+  },
+  "/assets/img/ax-first-vibe-coding-copilot-payments-redacted.png": {
+    "src": "/assets/img/optimized/ax-first-vibe-coding-copilot-payments-redacted-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-first-vibe-coding-copilot-payments-redacted-png-800.webp",
+    "social": "/assets/img/optimized/ax-first-vibe-coding-copilot-payments-redacted-png-social.jpg",
+    "width": 1600,
+    "height": 1073,
+    "mobile_width": 800,
+    "original_bytes": 137280,
+    "optimized_bytes": 110498
+  },
+  "/assets/img/ax-first-vibe-coding-samsung-stock.png": {
+    "src": "/assets/img/optimized/ax-first-vibe-coding-samsung-stock-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-first-vibe-coding-samsung-stock-png-800.webp",
+    "social": "/assets/img/optimized/ax-first-vibe-coding-samsung-stock-png-social.jpg",
+    "width": 1078,
+    "height": 690,
+    "mobile_width": 800,
+    "original_bytes": 269135,
+    "optimized_bytes": 53854
+  },
+  "/assets/img/ax-first-vibe-coding-technology-adoption.png": {
+    "src": "/assets/img/optimized/ax-first-vibe-coding-technology-adoption-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-first-vibe-coding-technology-adoption-png-800.webp",
+    "social": "/assets/img/optimized/ax-first-vibe-coding-technology-adoption-png-social.jpg",
+    "width": 507,
+    "height": 394,
+    "mobile_width": 507,
+    "original_bytes": 152373,
+    "optimized_bytes": 27868
+  },
+  "/assets/img/ax-free-llm-apis-free-llm.png": {
+    "src": "/assets/img/optimized/ax-free-llm-apis-free-llm-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-free-llm-apis-free-llm-png-800.webp",
+    "social": "/assets/img/optimized/ax-free-llm-apis-free-llm-png-social.jpg",
+    "width": 1600,
+    "height": 754,
+    "mobile_width": 800,
+    "original_bytes": 154945,
+    "optimized_bytes": 37502
+  },
+  "/assets/img/ax-nanobot-bot-selection-bot-comparison.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-bot-selection-bot-comparison-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-bot-selection-bot-comparison-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-bot-selection-bot-comparison-webp-social.jpg",
+    "width": 935,
+    "height": 547,
+    "mobile_width": 800,
+    "original_bytes": 47648,
+    "optimized_bytes": 48320
+  },
+  "/assets/img/ax-nanobot-bot-selection-camp-nou.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-bot-selection-camp-nou-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-bot-selection-camp-nou-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-bot-selection-camp-nou-webp-social.jpg",
+    "width": 1015,
+    "height": 690,
+    "mobile_width": 800,
+    "original_bytes": 142214,
+    "optimized_bytes": 144634
+  },
+  "/assets/img/ax-nanobot-bot-selection-karpathy-post.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-bot-selection-karpathy-post-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-bot-selection-karpathy-post-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-bot-selection-karpathy-post-webp-social.jpg",
+    "width": 816,
+    "height": 541,
+    "mobile_width": 800,
+    "original_bytes": 66276,
+    "optimized_bytes": 66574
+  },
+  "/assets/img/ax-nanobot-bot-selection-macbook.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-bot-selection-macbook-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-bot-selection-macbook-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-bot-selection-macbook-webp-social.jpg",
+    "width": 1015,
+    "height": 745,
+    "mobile_width": 800,
+    "original_bytes": 54436,
+    "optimized_bytes": 52050
+  },
+  "/assets/img/ax-nanobot-bot-selection-raspberry-pi.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-bot-selection-raspberry-pi-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-bot-selection-raspberry-pi-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-bot-selection-raspberry-pi-webp-social.jpg",
+    "width": 1017,
+    "height": 740,
+    "mobile_width": 800,
+    "original_bytes": 122350,
+    "optimized_bytes": 124112
+  },
+  "/assets/img/ax-nanobot-requirements-first-nanobot-readme.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-requirements-first-nanobot-readme-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-requirements-first-nanobot-readme-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-requirements-first-nanobot-readme-webp-social.jpg",
+    "width": 1106,
+    "height": 780,
+    "mobile_width": 800,
+    "original_bytes": 72110,
+    "optimized_bytes": 73994
+  },
+  "/assets/img/ax-nanobot-telegram-openai-data-sharing.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-telegram-openai-data-sharing-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-telegram-openai-data-sharing-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-telegram-openai-data-sharing-webp-social.jpg",
+    "width": 1518,
+    "height": 772,
+    "mobile_width": 800,
+    "original_bytes": 29472,
+    "optimized_bytes": 31046
+  },
+  "/assets/img/ax-nanobot-telegram-openai-free-tokens.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-telegram-openai-free-tokens-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-telegram-openai-free-tokens-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-telegram-openai-free-tokens-webp-social.jpg",
+    "width": 1600,
+    "height": 871,
+    "mobile_width": 800,
+    "original_bytes": 73222,
+    "optimized_bytes": 68560
+  },
+  "/assets/img/ax-nanobot-telegram-telegram-first-chat.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-telegram-telegram-first-chat-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-telegram-telegram-first-chat-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-telegram-telegram-first-chat-webp-social.jpg",
+    "width": 1080,
+    "height": 1554,
+    "mobile_width": 556,
+    "original_bytes": 104686,
+    "optimized_bytes": 110122
+  },
+  "/assets/img/ax-nanobot-ubuntu-setup-raspberry-pi.webp": {
+    "src": "/assets/img/optimized/ax-nanobot-ubuntu-setup-raspberry-pi-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-nanobot-ubuntu-setup-raspberry-pi-webp-800.webp",
+    "social": "/assets/img/optimized/ax-nanobot-ubuntu-setup-raspberry-pi-webp-social.jpg",
+    "width": 1013,
+    "height": 779,
+    "mobile_width": 800,
+    "original_bytes": 31894,
+    "optimized_bytes": 30678
+  },
+  "/assets/img/ax-series-ax-notes-app-cover.webp": {
+    "src": "/assets/img/optimized/ax-series-ax-notes-app-cover-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-series-ax-notes-app-cover-webp-800.webp",
+    "social": "/assets/img/optimized/ax-series-ax-notes-app-cover-webp-social.jpg",
+    "width": 1255,
+    "height": 727,
+    "mobile_width": 800,
+    "original_bytes": 153000,
+    "optimized_bytes": 71450
+  },
+  "/assets/img/ax-series-dots-and-muse-cover.webp": {
+    "src": "/assets/img/optimized/ax-series-dots-and-muse-cover-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-series-dots-and-muse-cover-webp-800.webp",
+    "social": "/assets/img/optimized/ax-series-dots-and-muse-cover-webp-social.jpg",
+    "width": 1362,
+    "height": 929,
+    "mobile_width": 800,
+    "original_bytes": 95782,
+    "optimized_bytes": 73008
+  },
+  "/assets/img/ax-series-nanobot-cover.webp": {
+    "src": "/assets/img/optimized/ax-series-nanobot-cover-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-series-nanobot-cover-webp-800.webp",
+    "social": "/assets/img/optimized/ax-series-nanobot-cover-webp-social.jpg",
+    "width": 1017,
+    "height": 740,
+    "mobile_width": 800,
+    "original_bytes": 122350,
+    "optimized_bytes": 124112
+  },
+  "/assets/img/ax-series-vibe-coding-workflow-cover.webp": {
+    "src": "/assets/img/optimized/ax-series-vibe-coding-workflow-cover-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-series-vibe-coding-workflow-cover-webp-800.webp",
+    "social": "/assets/img/optimized/ax-series-vibe-coding-workflow-cover-webp-social.jpg",
+    "width": 1170,
+    "height": 1370,
+    "mobile_width": 683,
+    "original_bytes": 100604,
+    "optimized_bytes": 70118
+  },
+  "/assets/img/ax-value-maxxing-leadership-ai-layoff-backfire.png": {
+    "src": "/assets/img/optimized/ax-value-maxxing-leadership-ai-layoff-backfire-png-1600.webp",
+    "mobile": "/assets/img/optimized/ax-value-maxxing-leadership-ai-layoff-backfire-png-800.webp",
+    "social": "/assets/img/optimized/ax-value-maxxing-leadership-ai-layoff-backfire-png-social.jpg",
+    "width": 895,
+    "height": 504,
+    "mobile_width": 800,
+    "original_bytes": 398399,
+    "optimized_bytes": 70832
+  },
+  "/assets/img/ax-vibe-coding-docs-first-claude-usage-reset-meme.webp": {
+    "src": "/assets/img/optimized/ax-vibe-coding-docs-first-claude-usage-reset-meme-webp-1600.webp",
+    "mobile": "/assets/img/optimized/ax-vibe-coding-docs-first-claude-usage-reset-meme-webp-800.webp",
+    "social": "/assets/img/optimized/ax-vibe-coding-docs-first-claude-usage-reset-meme-webp-social.jpg",
+    "width": 873,
+    "height": 558,
+    "mobile_width": 800,
+    "original_bytes": 202130,
+    "optimized_bytes": 73020
   },
   "/assets/img/brunch-10-cover.webp": {
     "src": "/assets/img/optimized/brunch-10-cover-webp-1600.webp",
@@ -418,16 +718,6 @@
     "mobile_width": 800,
     "original_bytes": 39700,
     "optimized_bytes": 40176
-  },
-  "/assets/img/nanobot.webp": {
-    "src": "/assets/img/optimized/nanobot-webp-1600.webp",
-    "mobile": "/assets/img/optimized/nanobot-webp-800.webp",
-    "social": "/assets/img/optimized/nanobot-webp-social.jpg",
-    "width": 819,
-    "height": 534,
-    "mobile_width": 800,
-    "original_bytes": 22770,
-    "optimized_bytes": 21808
   },
   "/assets/img/one-life-book.png": {
     "src": "/assets/img/optimized/one-life-book-png-1600.webp",

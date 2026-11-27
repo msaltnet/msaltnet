@@ -1,12 +1,14 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import json
 import unittest
+from posts import posts
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_site'
 MENU = [('감상문', '/reviews/'), ('생각', '/thoughts/'),
-        ('AI와 개발', '/ai-development/'), ('프로젝트', '/projects/'), ('소개', '/about/')]
+        ('AX Notes', '/ax/'), ('프로젝트', '/projects/'), ('소개', '/about/'), ('검색', '/search/')]
 
 
 class Navigation(HTMLParser):
@@ -45,7 +47,7 @@ class ContentNavigationTest(unittest.TestCase):
         self.assertTrue(path.is_file(), f'Missing content page: {url}')
         return Navigation(path.read_text(encoding='utf-8'))
 
-    def test_all_pages_offer_five_independent_menu_destinations(self):
+    def test_all_pages_offer_the_same_menu_destinations(self):
         for url in ['/', *(url for _, url in MENU), '/article/abstraction/']:
             with self.subTest(url=url):
                 page = self.page(url)
@@ -59,15 +61,57 @@ class ContentNavigationTest(unittest.TestCase):
             self.assertTrue(articles, f'Empty topic: {url}')
             self.assertEqual(len(articles), len(set(articles)))
             discovered.extend(articles)
-        expected = [f'/article/{p.stem[11:]}/' for p in (ROOT / '_posts').glob('*.md')]
+        expected = [f'/article/{p.slug}/' for p in posts()]
         self.assertCountEqual(discovered, expected)
 
     def test_selected_topic_remains_active_when_reading_a_post(self):
         page = self.page('/article/abstraction/')
         active = [a for a in page.menu if a.get('aria-current') == 'page']
-        self.assertEqual([a['href'] for a in active], ['/ai-development/'])
-        self.assertTrue(any(a.get('href') == '/ai-development/' and a not in page.menu
+        self.assertEqual([a['href'] for a in active], ['/ax/'])
+        self.assertTrue(any(a.get('href') == '/ax/' and a not in page.menu
                             for a in page.links))
+
+    def test_search_index_covers_only_published_articles(self):
+        entry = json.loads((SITE / 'pagefind/pagefind-entry.json').read_text(encoding='utf-8'))
+        indexed = sum(language['page_count'] for language in entry['languages'].values())
+        self.assertEqual(indexed, len(posts()))
+        search = (SITE / 'search/index.html').read_text(encoding='utf-8')
+        self.assertIn('/pagefind/pagefind-ui.js', search)
+        self.assertIn('noindex', search)
+        for post in posts():
+            article = (SITE / 'article' / post.slug / 'index.html').read_text(encoding='utf-8')
+            self.assertEqual(article.count('data-pagefind-body'), 1, post.slug)
+
+    def test_former_ai_development_address_moves_to_ax_notes(self):
+        html = (SITE / 'ai-development/index.html').read_text(encoding='utf-8')
+        self.assertIn('<meta http-equiv="refresh" content="0; url=/ax/">', html)
+        self.assertIn('<link rel="canonical" href="https://msalt.net/ax/">', html)
+        self.assertIn('noindex', html)
+        self.assertNotIn('https://msalt.net/ai-development/', (SITE / 'sitemap.xml').read_text(encoding='utf-8'))
+
+    def test_ax_notes_series_expand_in_place_in_authored_order(self):
+        html = (SITE / 'ax/index.html').read_text(encoding='utf-8')
+        block = html.split('<details class="series-group" id="series-nanobot">', 1)[1].split('</details>', 1)[0]
+        order = ['nanobot-requirements-first', 'nanobot-bot-selection', 'nanobot-ubuntu-setup', 'nanobot-telegram']
+        positions = [block.index(f'/article/{slug}/') for slug in order]
+        self.assertEqual(positions, sorted(positions))
+        self.assertFalse((SITE / 'series').exists())
+        article = (SITE / 'article/nanobot-telegram/index.html').read_text(encoding='utf-8')
+        self.assertIn('href="/ax/#series-nanobot"', article)
+
+    def test_each_ax_notes_series_shows_its_cover_image(self):
+        html = (SITE / 'ax/index.html').read_text(encoding='utf-8')
+        for series_id in ['ax-notes-app', 'dots-and-muse', 'nanobot', 'vibe-coding-workflow']:
+            block = html.split(f'<details class="series-group" id="series-{series_id}">', 1)[1]
+            summary = block.split('</summary>', 1)[0]
+            self.assertIn('class="series-cover"', summary, series_id)
+            self.assertIn(f'/assets/img/optimized/ax-series-{series_id}-cover-webp-', summary, series_id)
+            self.assertRegex(summary, r'alt="[^"]+"', series_id)
+
+    def test_aftertaste_closes_the_article_body(self):
+        article = (SITE / 'article/dots-connected/index.html').read_text(encoding='utf-8')
+        body = article.split('<div class="post-content">', 1)[1].split('<nav class="post-actions"', 1)[0]
+        self.assertIn('<aside class="aftertaste">', body)
 
 
 if __name__ == '__main__':

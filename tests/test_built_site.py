@@ -6,7 +6,6 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 PROJECT_URLS = {
-    "https://ax.msalt.net",
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
@@ -62,6 +61,16 @@ class BuiltSiteTest(unittest.TestCase):
         self.assertIn("젊은 시인에게 주는 충고", text)
         self.assertIn("때때로 검색과 댓글의 성급한 해답 말고", text)
 
+    def test_home_shows_five_image_cards_then_ten_older_posts(self):
+        html = (SITE / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("가끔 적는 생각", html)
+        section = html.split('id="article"', 1)[1].split("</section>", 1)[0]
+        cards, older = section.split("지난 글", 1)
+        self.assertEqual(cards.count('class="latest-card '), 5)
+        self.assertEqual(cards.count('class="latest-card-image"'), 5)
+        self.assertIn("/assets/img/optimized/give-and-take-png-", cards)
+        self.assertEqual(older.count('href="/article/'), 10)
+
     def test_home_uses_hero_image_for_large_social_preview(self):
         meta_by_property = {
             item["property"]: item.get("content")
@@ -95,7 +104,7 @@ class BuiltSiteTest(unittest.TestCase):
             for image in self.home.images
             if "project-card-image" in image.get("class", "")
         ]
-        self.assertEqual(len(project_images), 8)
+        self.assertEqual(len(project_images), 7)
         self.assertTrue(all(image.get("alt", "").strip() for image in project_images))
 
     def test_first_article_contains_poem_and_personal_note(self):

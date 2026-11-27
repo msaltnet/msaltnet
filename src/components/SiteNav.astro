@@ -1,0 +1,13 @@
+---
+import { navigation } from '../lib/site-data';
+interface Props { current?: string }
+const { current } = Astro.props;
+---
+<header class="site-header">
+  <a class="wordmark" href="/">맛소금</a>
+  <nav aria-label="주요 메뉴">
+    {navigation().map((item) => (
+      <a href={item.url} aria-current={current === item.key ? 'page' : undefined}>{item.title}</a>
+    ))}
+  </nav>
+</header>

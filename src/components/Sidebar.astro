@@ -1,0 +1,21 @@
+---
+import { render } from 'astro:content';
+import ProjectList from './ProjectList.astro';
+import type { Post } from '../lib/data';
+interface Props { posts: Post[] }
+const sidebarPost = Astro.props.posts.find((post) => post.data.sidebar_feature);
+const rendered = sidebarPost ? await render(sidebarPost) : undefined;
+const Content = rendered?.Content;
+---
+<aside class="home-sidebar" id="project" aria-label="소개와 프로젝트">
+  {sidebarPost && Content && (
+    <section class="sidebar-poem" aria-labelledby="sidebar-poem-title">
+      <h2 id="sidebar-poem-title">{sidebarPost.data.title}</h2>
+      <div class="sidebar-poem-content"><Content /></div>
+    </section>
+  )}
+  <section class="projects" aria-labelledby="project-title">
+    <p class="section-kicker" id="project-title">Project</p>
+    <ProjectList />
+  </section>
+</aside>

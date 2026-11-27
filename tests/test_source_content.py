@@ -4,7 +4,6 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT_URLS = {
-    "https://ax.msalt.net",
     "https://github.com/msaltnet/smtm",
     "https://smtm.msalt.net",
     "https://github.com/msaltnet/T.Viewer",
@@ -16,24 +15,38 @@ PROJECT_URLS = {
 
 
 class SourceContentTest(unittest.TestCase):
-    def test_jekyll_configuration_uses_custom_domain_and_article_permalink(self):
-        config = (ROOT / "_config.yml").read_text(encoding="utf-8")
-        self.assertIn('url: "https://msalt.net"', config)
-        self.assertIn("permalink: /article/:slug/", config)
-        self.assertIn("jekyll-seo-tag", config)
-        self.assertIn("jekyll-sitemap", config)
+    def test_astro_configuration_uses_custom_domain_and_article_routes(self):
+        config = (ROOT / "astro.config.mjs").read_text(encoding="utf-8")
+        self.assertIn("site: 'https://msalt.net'", config)
+        self.assertIn("trailingSlash: 'always'", config)
+        self.assertIn("outDir: './_site'", config)
+        self.assertTrue((ROOT / "src/pages/article/[slug].astro").is_file())
+        self.assertFalse((ROOT / "_config.yml").exists())
+
+    def test_pages_workflow_builds_with_node_and_runs_all_checks(self):
+        workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
+        self.assertIn("node-version: '22'", workflow)
+        self.assertIn("npm ci", workflow)
+        self.assertIn("npm run verify", workflow)
+        self.assertIn("path: _site", workflow)
+        self.assertNotIn("jekyll", workflow.lower())
+        verify_job = workflow.split("deploy:")[0]
+        self.assertIn("verify:", verify_job)
+        self.assertIn("github.ref != format(", verify_job)
+        self.assertIn("pull_request:", workflow)
+
 
     def test_all_existing_project_urls_and_images_are_declared(self):
         projects = (ROOT / "_data/projects.yml").read_text(encoding="utf-8")
         for url in PROJECT_URLS:
             self.assertIn(url, projects)
-        self.assertEqual(projects.count("- title:"), 8)
-        self.assertEqual(projects.count("  image:"), 8)
-        self.assertEqual(projects.count("  alt:"), 8)
+        self.assertEqual(projects.count("- title:"), 7)
+        self.assertEqual(projects.count("  image:"), 7)
+        self.assertEqual(projects.count("  alt:"), 7)
 
     def test_first_article_is_the_sidebar_feature_and_contains_both_texts(self):
         post = (
-            ROOT / "_posts/2026-08-10-advice-to-a-young-poet.md"
+            ROOT / "src/content/posts/advice-to-a-young-poet.md"
         ).read_text(encoding="utf-8")
         self.assertIn('title: "젊은 시인에게 주는 충고"', post)
         self.assertIn("sidebar_feature: true", post)
@@ -44,17 +57,21 @@ class SourceContentTest(unittest.TestCase):
 
     def test_development_guide_documents_the_article_workflow(self):
         guide = (ROOT / "Development.md").read_text(encoding="utf-8")
-        self.assertIn("_posts/YYYY-MM-DD-title.md", guide)
+        self.assertIn("src/content/posts/<slug>.md", guide)
+        self.assertIn("category: reviews", guide)
         self.assertIn("sidebar_feature: true", guide)
-        self.assertIn("bundle exec jekyll serve", guide)
+        self.assertIn("npm run dev", guide)
+        self.assertIn("npm run verify", guide)
+        self.assertIn("selectAppFeedPosts", guide)
+        self.assertNotIn("bundle exec jekyll", guide)
 
     def test_robots_points_to_the_generated_sitemap(self):
-        robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
+        robots = (ROOT / "public/robots.txt").read_text(encoding="utf-8")
         self.assertIn("Sitemap: https://msalt.net/sitemap.xml", robots)
         self.assertFalse((ROOT / "sitemap.xml").exists())
 
     def test_root_ads_txt_authorizes_the_blog_publisher(self):
-        path = ROOT / "ads.txt"
+        path = ROOT / "public/ads.txt"
         self.assertTrue(path.is_file(), "msalt.net/ads.txt is missing")
         ads_txt = path.read_text(encoding="utf-8")
         self.assertEqual(

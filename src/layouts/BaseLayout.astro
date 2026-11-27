@@ -1,0 +1,37 @@
+---
+import Seo from '../components/Seo.astro';
+import { SITE } from '../lib/site';
+
+type SeoProps = import('../components/Seo.astro').Props;
+interface Props { seo: SeoProps; bodyClass?: string; robots?: string }
+const { seo, bodyClass = '', robots = 'index, follow, max-image-preview:large' } = Astro.props;
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script is:inline define:vars={{ id: SITE.gtm }}>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',id);
+  </script>
+  <Seo {...seo} />
+  <meta name="robots" content={robots}>
+  <link type="application/atom+xml" rel="alternate" href={`${SITE.origin}/feed.xml`} title={SITE.title} />
+  <link rel="icon" href="/assets/img/msaltnet.ico">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <slot name="head" />
+  <script is:inline src="/assets/js/main.js" defer></script>
+</head>
+<body class={bodyClass}>
+  <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${SITE.gtm}`}
+  height="0" width="0" class="gtm-frame" title="Google Tag Manager"></iframe></noscript>
+  <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+  <slot />
+  <footer class="site-footer"><p>&copy; {new Date().getFullYear()} 맛소금</p></footer>
+</body>
+</html>
