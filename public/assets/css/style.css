@@ -73,7 +73,6 @@ a:focus-visible {
   max-width: 1440px;
   min-height: 100vh;
   margin: 0 auto;
-  background: var(--surface);
 }
 
 .home-main {
@@ -89,16 +88,11 @@ a:focus-visible {
   scroll-margin-top: 24px;
 }
 
-.sidebar-wordmark,
 .wordmark {
   display: inline-block;
   font-family: var(--serif);
   font-size: 1.35rem;
   font-weight: 700;
-}
-
-.sidebar-wordmark {
-  margin-bottom: 54px;
 }
 
 .site-header {
@@ -109,14 +103,6 @@ a:focus-visible {
   padding: 0 clamp(20px, 4vw, 64px);
   border-bottom: 1px solid var(--line);
   background: rgba(251, 252, 250, 0.94);
-}
-
-.site-header--home {
-  justify-content: flex-end;
-}
-
-.wordmark--mobile {
-  display: none;
 }
 
 .site-header nav {
@@ -173,8 +159,8 @@ a:focus-visible {
   flex-shrink: 0;
 }
 
-/* Header content lines up with the 760px page and article column (24px inner gutter). */
-body:not(.home-page) > .site-header {
+/* On every page, header content lines up with the 760px page and article column (24px inner gutter). */
+body > .site-header {
   padding-inline: max(24px, calc((100% - 760px) / 2 + 24px));
 }
 
@@ -360,46 +346,113 @@ body:not(.home-page) > .site-header {
 }
 
 .article-index {
-  max-width: 780px;
-  padding: clamp(68px, 10vw, 130px) clamp(24px, 7vw, 92px);
+  max-width: 760px;
+  margin-inline: auto;
+  padding: clamp(56px, 8vw, 96px) 24px;
   scroll-margin-top: 24px;
 }
 
-.article-index > h2 {
-  margin: 0 0 44px;
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.6rem);
-  line-height: 1.25;
+.article-index > .section-kicker {
+  margin-bottom: 20px;
 }
 
-.latest-article {
+/* Home: newest posts as image cards, then older posts as a labelled compact list. */
+.latest-cards {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.latest-card {
   display: block;
-  padding: 32px 0;
-  border-block: 1px solid var(--line);
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  transition: border-color 0.15s ease;
 }
 
-.latest-article time,
-.article-list time,
-.post-date {
+.latest-card:hover {
+  border-color: var(--accent);
+}
+
+.latest-card--image {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.latest-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--line);
+}
+
+.latest-card h3 {
+  margin: 6px 0 8px;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.35;
+}
+
+.latest-card p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--muted);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.latest-card time {
   color: var(--muted);
   font-size: 0.82rem;
 }
 
-.latest-article h3 {
-  margin: 14px 0;
-  font-family: var(--serif);
-  font-size: clamp(1.45rem, 3vw, 2.2rem);
+.article-index > .article-list-label {
+  margin: 64px 0 12px;
 }
 
-.latest-article p {
-  margin: 0 0 24px;
+.article-index > .article-list {
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+  .latest-card {
+    padding: 14px;
+  }
+
+  .latest-card--image {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+  }
+
+  .latest-card h3 {
+    margin: 2px 0 4px;
+    font-size: 1.05rem;
+  }
+
+  .latest-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .latest-card {
+    transition: none;
+  }
+}
+
+.article-list time,
+.post-date {
   color: var(--muted);
-}
-
-.latest-article > span {
-  color: var(--accent);
-  font-size: 0.86rem;
-  font-weight: 600;
+  font-size: 0.82rem;
 }
 
 .article-list a {
@@ -535,18 +588,6 @@ body:not(.home-page) > .site-header {
     border-right: 0;
   }
 
-  .sidebar-wordmark {
-    display: none;
-  }
-
-  .site-header--home {
-    justify-content: space-between;
-  }
-
-  .wordmark--mobile {
-    display: inline-block;
-  }
-
   .hero {
     min-height: clamp(340px, 48svh, 520px);
     padding: 28px 22px;
@@ -557,7 +598,7 @@ body:not(.home-page) > .site-header {
   }
 
   .article-index {
-    padding: 72px 22px 88px;
+    padding: 56px 24px 80px;
   }
 
   .sidebar-poem,
@@ -581,10 +622,6 @@ body:not(.home-page) > .site-header {
 }
 
 @media (max-width: 480px) {
-  .site-header {
-    padding-inline: 16px;
-  }
-
   .site-header nav {
     width: 100%;
     justify-content: space-between;

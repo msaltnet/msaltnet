@@ -44,3 +44,17 @@ export function publishedPosts<T extends PostRecord>(posts: T[]): T[] {
     .filter(({ data }) => !data.draft)
     .sort((a, b) => b.data.date.localeCompare(a.data.date) || a.id.localeCompare(b.id));
 }
+
+const MARKDOWN_IMAGE = /!\[[^\]]*\]\((\/assets\/[^)\s]+)/g;
+
+/**
+ * Thumbnail for a home card: the front matter `image`, otherwise the first body
+ * image that has responsive-image metadata. Undefined means a text-only card.
+ */
+export function cardImage(post: { data: { image?: string }; body?: string }, known: ReadonlySet<string>): string | undefined {
+  if (post.data.image && known.has(post.data.image)) return post.data.image;
+  for (const match of post.body?.matchAll(MARKDOWN_IMAGE) ?? []) {
+    if (known.has(match[1])) return match[1];
+  }
+  return undefined;
+}

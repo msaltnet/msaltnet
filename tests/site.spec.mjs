@@ -222,6 +222,32 @@ test('header content and page content share one column on list and article pages
   expect(Math.abs(article.headerRight - article.right)).toBeLessThanOrEqual(1);
 });
 
+test('home and list pages share one site header and one list width on desktop', async ({ page }) => {
+  for (const width of [1440, 1024]) {
+    await page.setViewportSize({ width, height: 900 });
+    const measure = async (path, list) => {
+      await page.goto(path);
+      const wordmark = await page.locator('.site-header .wordmark').boundingBox();
+      const nav = await page.locator('.site-header nav').boundingBox();
+      const header = await page.locator('.site-header').boundingBox();
+      const items = await page.locator(list).boundingBox();
+      return { wordmark, nav, header, items };
+    };
+    const home = await measure('/', '#article .article-list');
+    const reviews = await measure('/reviews/', '.page-shell .article-list');
+    for (const key of ['x', 'y', 'width']) {
+      expect(Math.abs(home.wordmark[key] - reviews.wordmark[key]), `${width} wordmark ${key}`).toBeLessThanOrEqual(1);
+      expect(Math.abs(home.nav[key] - reviews.nav[key]), `${width} nav ${key}`).toBeLessThanOrEqual(1);
+    }
+    expect(home.header.x).toBe(0);
+    expect(home.header.width).toBe(width);
+    const sidebar = await page.goto('/').then(() => page.locator('.home-sidebar').boundingBox());
+    expect(sidebar.y).toBeGreaterThanOrEqual(home.header.y + home.header.height - 1);
+    expect(await page.locator('.sidebar-wordmark').count()).toBe(0);
+    if (width >= 1440) expect(Math.abs(home.items.width - reviews.items.width), `${width} list width`).toBeLessThanOrEqual(1);
+  }
+});
+
 test('AX Notes series open in place and a post links back to its open series', async ({ page }) => {
   await page.goto('/ax/');
   const series = page.locator('#series-nanobot');

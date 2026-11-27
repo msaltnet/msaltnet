@@ -8,7 +8,6 @@ const rendered = sidebarPost ? await render(sidebarPost) : undefined;
 const Content = rendered?.Content;
 ---
 <aside class="home-sidebar" id="project" aria-label="소개와 프로젝트">
-  <a class="sidebar-wordmark" href="/">맛소금</a>
   {sidebarPost && Content && (
     <section class="sidebar-poem" aria-labelledby="sidebar-poem-title">
       <h2 id="sidebar-poem-title">{sidebarPost.data.title}</h2>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertContentIntegrity, publishedPosts, type PostRecord } from '../src/lib/content';
+import { assertContentIntegrity, cardImage, publishedPosts, type PostRecord } from '../src/lib/content';
 
 const CATS = ['reviews', 'thoughts', 'ax'];
 const post = (id: string, data: Partial<PostRecord['data']> = {}): PostRecord => ({
@@ -44,5 +44,22 @@ describe('publishedPosts', () => {
       post('c', { date: '2026-02-01' }), post('d', { date: '2026-03-01', draft: true }),
     ];
     expect(publishedPosts(posts).map((p) => p.id)).toEqual(['c', 'a', 'b']);
+  });
+});
+
+describe('cardImage', () => {
+  const known = new Set(['/assets/img/cover.png', '/assets/img/body.webp']);
+
+  it('prefers the front matter image', () => {
+    expect(cardImage({ data: { image: '/assets/img/cover.png' }, body: '![a](/assets/img/body.webp)' }, known)).toBe('/assets/img/cover.png');
+  });
+
+  it('falls back to the first body image with responsive metadata', () => {
+    const body = '글\n\n![외부](https://example.com/x.png)\n![없음](/assets/img/missing.png)\n![본문](/assets/img/body.webp)';
+    expect(cardImage({ data: {}, body }, known)).toBe('/assets/img/body.webp');
+  });
+
+  it('returns undefined when no usable image exists', () => {
+    expect(cardImage({ data: { image: '/assets/img/missing.png' }, body: '글만 있음' }, known)).toBeUndefined();
   });
 });
