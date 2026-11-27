@@ -497,12 +497,40 @@ body > .site-header {
 
 .post-content {
   font-family: var(--serif);
-  font-size: 1.02rem;
+  font-size: 1.1rem;
   line-height: 2;
 }
 
 .post-content .poem-quote {
   font-size: 1.04rem;
+}
+
+.post-content blockquote:not(.poem-quote) {
+  position: relative;
+  margin: 32px 0;
+  padding: 4px 0 4px 44px;
+  border: 0;
+  color: #3f4941;
+  font-style: italic;
+}
+
+.post-content blockquote:not(.poem-quote)::before {
+  content: "\201C";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  color: var(--accent);
+  font-size: 3.6rem;
+  font-style: normal;
+  line-height: 1;
+}
+
+.post-content blockquote:not(.poem-quote) > :first-child {
+  margin-top: 0;
+}
+
+.post-content blockquote:not(.poem-quote) > :last-child {
+  margin-bottom: 0;
 }
 
 .post-content .personal-note {
