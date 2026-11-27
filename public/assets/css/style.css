@@ -369,7 +369,6 @@ body > .site-header {
   display: block;
   padding: 20px;
   border: 1px solid var(--line);
-  border-radius: 6px;
   background: var(--surface);
   transition: border-color 0.15s ease;
 }
@@ -389,7 +388,6 @@ body > .site-header {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 4px;
   background: var(--line);
 }
 
