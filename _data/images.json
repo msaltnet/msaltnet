@@ -789,6 +789,36 @@
     "original_bytes": 9870,
     "optimized_bytes": 10194
   },
+  "/assets/img/thoughts-slotbound-and-self-reflection-business-model-canvas.png": {
+    "src": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-business-model-canvas-png-1600.webp",
+    "mobile": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-business-model-canvas-png-800.webp",
+    "social": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-business-model-canvas-png-social.jpg",
+    "width": 1600,
+    "height": 837,
+    "mobile_width": 800,
+    "original_bytes": 527014,
+    "optimized_bytes": 67860
+  },
+  "/assets/img/thoughts-slotbound-and-self-reflection-devlog-thread.png": {
+    "src": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-devlog-thread-png-1600.webp",
+    "mobile": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-devlog-thread-png-800.webp",
+    "social": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-devlog-thread-png-social.jpg",
+    "width": 785,
+    "height": 608,
+    "mobile_width": 785,
+    "original_bytes": 352172,
+    "optimized_bytes": 52026
+  },
+  "/assets/img/thoughts-slotbound-and-self-reflection-launch-thread.png": {
+    "src": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-launch-thread-png-1600.webp",
+    "mobile": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-launch-thread-png-800.webp",
+    "social": "/assets/img/optimized/thoughts-slotbound-and-self-reflection-launch-thread-png-social.jpg",
+    "width": 789,
+    "height": 493,
+    "mobile_width": 789,
+    "original_bytes": 128583,
+    "optimized_bytes": 35482
+  },
   "/assets/img/tviewer.webp": {
     "src": "/assets/img/optimized/tviewer-webp-1600.webp",
     "mobile": "/assets/img/optimized/tviewer-webp-800.webp",
